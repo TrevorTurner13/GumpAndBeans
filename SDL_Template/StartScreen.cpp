@@ -3,37 +3,12 @@
 StartScreen::StartScreen() {
 	mTimer = Timer::Instance();
 	mInput = InputManager::Instance();
+	mAudio = AudioManager::Instance();
 
-	// top bar entities
-	mTopBar = new GameEntity(Graphics::SCREEN_WIDTH * 0.5f, 80.0f);
-	mPlayerOne = new GLTexture("1UP", "emulogic.ttf", 32, { 200, 0, 0 });
-	mPlayerTwo = new GLTexture("2UP", "emulogic.ttf", 32, { 200, 0, 0 });
-	mHiScore = new GLTexture("HI SCORE", "emulogic.ttf", 32, { 200, 0, 0 });
-	mPlayerOneScore = new Scoreboard();
-	mPlayerTwoScore = new Scoreboard();
-	mTopScore = new Scoreboard();
-
-	mTopBar->Parent(this);
-	mPlayerOne->Parent(mTopBar);
-	mPlayerTwo->Parent(mTopBar);
-	mHiScore->Parent(mTopBar);
-	mPlayerOneScore->Parent(mTopBar);
-	mPlayerTwoScore->Parent(mTopBar);
-	mTopScore->Parent(mTopBar);
-
-	mPlayerOne->Position(-Graphics::SCREEN_WIDTH * 0.35f, 0.0f);
-	mPlayerTwo->Position(Graphics::SCREEN_WIDTH * 0.2f, 0.0f);
-	mHiScore->Position(-30.0f, 0.0f);
-
-	mPlayerOneScore->Position(-Graphics::SCREEN_WIDTH * 0.23f, 40.0f);
-	mPlayerTwoScore->Position(Graphics::SCREEN_WIDTH * 0.32f, 40.0f);
-	mTopScore->Position(Graphics::SCREEN_WIDTH * 0.05f, 40.0f);
-
-	mTopScore->Score(645987);
 
 	// logo entities
-	mLogo = new GLTexture("GalagaLogo.png", 0, 0, 360, 180);
-	mAnimatedLogo = new AnimatedGLTexture("GalagaLogo.png", 0, 0, 360, 180, 3, 0.2f, Animation::Layouts::Vertical);
+	mLogo = new GLTexture("GumpTitle.png", 0, 0, 705, 178);
+	mAnimatedLogo = new AnimatedGLTexture("GumpTitle.png", 0, 0, 705, 178, 3, 0.2f, Animation::Layouts::Vertical);
 
 	mLogo->Parent(this);
 	mAnimatedLogo->Parent(this);
@@ -41,70 +16,69 @@ StartScreen::StartScreen() {
 	mLogo->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.32f);
 	mAnimatedLogo->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.32f);
 
-	// play mode entities
+	//play mode entities
 	mPlayModes = new GameEntity(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.55f);
-	mOnePlayerMode = new GLTexture("1 Player ", "emulogic.ttf", 32, { 230, 230, 230 });
-	mTwoPlayerMode = new GLTexture("2 Players", "emulogic.ttf", 32, { 230, 230, 230 });
-	mCursor = new GLTexture("Cursor.png");
+	mOnePlayerMode = new GLTexture("Play.png", 0, 0, 153, 74);
+	mTwoPlayerMode = new GLTexture("HowToPlay.png", 0, 0, 419, 74);
+
+	mPlayHighlight = new GLTexture("PlayHighlight.png", 0, 0, 163, 84);
+	mHowToPlayHighlight = new GLTexture("HowToPlayHighLight.png", 0, 0, 429, 84);
+	mPlayDefault = new GLTexture("Play.png", 0, 0, 153, 74);
+	mHowToPlayDefault = new GLTexture("HowToPlay.png", 0, 0, 419, 74);
 
 	mPlayModes->Parent(this);
 	mOnePlayerMode->Parent(mPlayModes);
-	mTwoPlayerMode->Parent(mPlayModes);
-	mCursor->Parent(mPlayModes);
+
+	mPlayHighlight->Parent(mPlayModes);
+	mPlayDefault->Parent(mPlayModes);
+	mHowToPlayDefault->Parent(mPlayModes);
+	mHowToPlayHighlight->Parent(mPlayModes);
 
 	mOnePlayerMode->Position(0.0f, -35.0f);
 	mTwoPlayerMode->Position(0.0f, 35.0f);
-	mCursor->Position(-175.0f, -35.0f);
 
-	mCursorStartPos = mCursor->Position(Local);
-	mCursorOffset = Vector2(0.0f, 70.0f);
+	mPlayHighlight->Position(0.0f, -35.0f);
+	mPlayDefault->Position(0.0f, -35.0f);
+	mHowToPlayDefault->Position(0.0f, 45.0f);
+	mHowToPlayHighlight->Position(0.0f, 45.0f);
+
+
 	mSelectedMode = 0;
+	mOnePlayerMode = mPlayHighlight;
+	mTwoPlayerMode = mHowToPlayDefault;
+
+
 
 	// bottom bar entities
-	mBottomBar = new GameEntity(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.7f);
-	mNamco = new GLTexture("namcot", "namco__.ttf", 36, { 200, 0, 0 });
-	mDates = new GLTexture("1981 1985 NAMCO LTD.", "emulogic.ttf", 32, { 230, 230, 230 });
-	mRights = new GLTexture("ALL RIGHTS RESERVED", "emulogic.ttf", 32, { 230, 230, 230 });
+	mBottomBar = new GameEntity(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.85f);
+	mNamco = new GLTexture("BRANDVOR", "LavenderLime.ttf", 70, { 255, 165, 0 });
+	mDates = new GLTexture("2023-Forever Brandvor LTD.", "LavenderLime.ttf", 32, { 255, 165, 0 });
+	mRights = new GLTexture("ALL RIGHTS RESERVED", "LavenderLime.ttf", 32, { 255, 165, 0 });
 
 	mBottomBar->Parent(this);
 	mNamco->Parent(mBottomBar);
 	mDates->Parent(mBottomBar);
 	mRights->Parent(mBottomBar);
 
-	mNamco->Position(Vec2_Zero);
-	mDates->Position(0.0f, 90.0f);
-	mRights->Position(0.0f, 170.0f);
+	mNamco->Position(0.0f, 26.0f);
+	mDates->Position(0.0f, 75.0f);
+	mRights->Position(0.0f, 110.0f);
 
 	// screen animation variables
 	ResetAnimation();
 
-	/*mStars = BackgroundStars::Instance();
-	mStars->Scroll(true);*/
+	
 }
 
 
 StartScreen::~StartScreen() {
-	// top bar entities
-	delete mTopBar;
-	mTopBar = nullptr;
-	delete mPlayerOne;
-	mPlayerOne = nullptr;
-	delete mPlayerTwo;
-	mPlayerTwo = nullptr;
-	delete mHiScore;
-	mHiScore = nullptr;
-	delete mPlayerOneScore;
-	mPlayerOneScore = nullptr;
-	delete mPlayerTwoScore;
-	mPlayerTwoScore = nullptr;
-	delete mTopScore;
-	mTopScore = nullptr;
 
 	// logo entities
 	delete mLogo;
 	mLogo = nullptr;
 	delete mAnimatedLogo;
 	mAnimatedLogo = nullptr;
+	delete mTopBar;
 
 	// play mode entities
 	delete mPlayModes;
@@ -113,8 +87,15 @@ StartScreen::~StartScreen() {
 	mOnePlayerMode = nullptr;
 	delete mTwoPlayerMode;
 	mTwoPlayerMode = nullptr;
-	delete mCursor;
-	mCursor = nullptr;
+	delete mPlayDefault;
+	mPlayDefault = nullptr;
+
+	delete mPlayHighlight;
+	mPlayHighlight = nullptr;
+	delete mHowToPlayHighlight;
+	mHowToPlayHighlight = nullptr;
+	delete mHowToPlayDefault;
+	mHowToPlayDefault = nullptr;
 
 	// bottom bar entities
 	delete mBottomBar;
@@ -128,6 +109,7 @@ StartScreen::~StartScreen() {
 
 	mTimer = nullptr;
 	mInput = nullptr;
+	mAudio = nullptr;
 }
 
 void StartScreen::ResetAnimation() {
@@ -146,15 +128,26 @@ int StartScreen::SelectedMode() {
 
 void StartScreen::ChangeSelectedMode(int change) {
 	mSelectedMode += change;
-
+	
 	if (mSelectedMode < 0) {
 		mSelectedMode = 1;
+
 	}
 	else if (mSelectedMode > 1) {
 		mSelectedMode = 0;
 	}
+	if (mSelectedMode == 0) {
+		mOnePlayerMode = mPlayHighlight;
+		mTwoPlayerMode = mHowToPlayDefault;
+	}
+	else if (mSelectedMode == 1) {
+		mOnePlayerMode = mPlayDefault;
+		mTwoPlayerMode = mHowToPlayHighlight;
+	}
 
-	mCursor->Position(mCursorStartPos + mCursorOffset * (float)mSelectedMode);
+
+
+
 }
 
 void StartScreen::Update() {
@@ -181,15 +174,13 @@ void StartScreen::Update() {
 			ChangeSelectedMode(-1);
 		}
 	}
+	mTimer->Update();
+	mOnePlayerMode->Update();
+	mTwoPlayerMode->Update();
+
 }
 
 void StartScreen::Render() {
-	mPlayerOne->Render();
-	mPlayerTwo->Render();
-	mHiScore->Render();
-	mPlayerOneScore->Render();
-	mPlayerTwoScore->Render();
-	mTopScore->Render();
 
 	if (!mAnimationDone) {
 		mLogo->Render();
@@ -200,7 +191,6 @@ void StartScreen::Render() {
 
 	mOnePlayerMode->Render();
 	mTwoPlayerMode->Render();
-	mCursor->Render();
 
 	mNamco->Render();
 	mDates->Render();

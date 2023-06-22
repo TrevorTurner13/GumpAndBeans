@@ -2,8 +2,8 @@
 #define __STARTSCREEN_H
 #include "AnimatedGLTexture.h"
 #include "InputManager.h"
-//#include "BackgroundStars.h"
 #include "Scoreboard.h"
+#include "AudioManager.h"
 
 using namespace SDLFramework;
 
@@ -12,15 +12,11 @@ class StartScreen : public GameEntity {
 private:
 	Timer* mTimer;
 	InputManager* mInput;
+	AudioManager* mAudio;
+
 
 	// Top Bar Entities
 	GameEntity* mTopBar;
-	Texture* mPlayerOne;
-	Texture* mPlayerTwo;
-	Texture* mHiScore;
-	Scoreboard* mPlayerOneScore;
-	Scoreboard* mPlayerTwoScore;
-	Scoreboard* mTopScore;
 
 	// Logo Entities
 	Texture* mLogo;
@@ -30,9 +26,10 @@ private:
 	GameEntity* mPlayModes;
 	Texture* mOnePlayerMode;
 	Texture* mTwoPlayerMode;
-	Texture* mCursor;
-	Vector2 mCursorStartPos;
-	Vector2 mCursorOffset;
+	Texture* mPlayDefault;
+	Texture* mPlayHighlight;
+	Texture* mHowToPlayHighlight;
+	Texture* mHowToPlayDefault;
 	int mSelectedMode;
 
 	// Bottom Bar Entities
@@ -51,6 +48,9 @@ private:
 	// stars
 	//BackgroundStars* mStars;
 
+	float mBackgroundColor;
+
+
 public:
 	StartScreen();
 	~StartScreen();
@@ -63,5 +63,6 @@ public:
 
 	void Update() override;
 	void Render() override;
+
 };
 #endif
