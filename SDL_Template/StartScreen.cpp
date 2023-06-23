@@ -67,6 +67,7 @@ StartScreen::StartScreen() {
 	// screen animation variables
 	ResetAnimation();
 
+	mAudio->PlayMusic("MUS/GB Theme.mp3", -1);
 	
 }
 
