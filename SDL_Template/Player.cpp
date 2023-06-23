@@ -3,21 +3,20 @@
 #include "PhysicsManager.h"
 
 void Player::HandleMovement() {
-	if (mInput->KeyDown(SDL_SCANCODE_RIGHT)) {
+	if (mInput->KeyDown(SDL_SCANCODE_D)) {
 		Translate(Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
 	}
-	else if (mInput->KeyDown(SDL_SCANCODE_LEFT)) {
+	else if (mInput->KeyDown(SDL_SCANCODE_A)) {
 		Translate(-Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
 	}
+	else if (mInput->KeyDown(SDL_SCANCODE_W)) {
+		Translate(-Vec2_Up * mMoveSpeed * mTimer->DeltaTime(), World);
+	}
+	else if (mInput->KeyDown(SDL_SCANCODE_S)) {
+		Translate(Vec2_Up * mMoveSpeed * mTimer->DeltaTime(), World);
+}
 
 	Vector2 pos = Position(Local);
-	if (pos.x < mMoveBounds.x) {
-		pos.x = mMoveBounds.x;
-	}
-	else if (pos.x > mMoveBounds.y) {
-		pos.x = mMoveBounds.y;
-	}
-
 	Position(pos);
 }
 
