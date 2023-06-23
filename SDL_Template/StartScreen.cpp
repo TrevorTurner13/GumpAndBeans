@@ -130,6 +130,8 @@ int StartScreen::SelectedMode() {
 void StartScreen::ChangeSelectedMode(int change) {
 	mSelectedMode += change;
 	
+	mAudio->PlaySFX("SFX/menuselect.mp3", 0);
+
 	if (mSelectedMode < 0) {
 		mSelectedMode = 1;
 
