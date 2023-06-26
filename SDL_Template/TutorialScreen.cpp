@@ -19,7 +19,7 @@ TutorialScreen::TutorialScreen() {
 	mBeanz = new GLTexture("Beanz.png", 28, 129, 72, 60);
 	mGump = new GLTexture("Gump.png", 26, 168, 72, 60);
 	
-	mCircle = new GLTexture("CircleCollider.png", 0, 0, 49, 49);
+	mCircle = new GLTexture("floor tile.png", 0, 0, 256, 256);
 	
 	mBeanz->Position(750, 225);
 	mGump->Position(650, 225);
@@ -115,6 +115,7 @@ void TutorialScreen::Update() {
 }
 
 void TutorialScreen::Render() {
+	mCircle->RenderRepeatedTexture(mCircle, 256, 256);
 	mMoveLeft->Render();
 	mMoveRight->Render();
 	mW->Render();
@@ -134,9 +135,8 @@ void TutorialScreen::Render() {
 
 	mBeanz->Render();
 	mGump->Render();
+
 	
-	
-	mCircle->RenderRepeatedTexture(mCircle, 49, 49);
 	
 }
 

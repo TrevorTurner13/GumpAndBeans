@@ -44,7 +44,7 @@ Player::Player() {
 	mScore = 0;
 	mLives = 2;
 
-	mShip = new GLTexture("PlayerShips.png", 0, 0, 60, 64);
+	mShip = new GLTexture("GumpPic.png", 0, 0, 127, 127);
 	mShip->Parent(this);
 	mShip->Position(Vec2_Zero);
 
