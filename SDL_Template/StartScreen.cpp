@@ -5,7 +5,8 @@ StartScreen::StartScreen() {
 	mInput = InputManager::Instance();
 	mAudio = AudioManager::Instance();
 
-
+	mFloor = new GLTexture("floor tile 256x256.png", 0, 0, 256, 256);
+	
 	// logo entities
 	mLogo = new GLTexture("GumpTitle.png", 0, 0, 705, 178);
 	mAnimatedLogo = new AnimatedGLTexture("GumpTitle.png", 0, 0, 705, 178, 3, 0.2f, Animation::Layouts::Vertical);
@@ -190,6 +191,7 @@ void StartScreen::Update() {
 }
 
 void StartScreen::Render() {
+	mFloor->RenderRepeatedTexture(mFloor, 256, 256);
 	
 	if (!mAnimationDone) {
 		mLogo->Render();

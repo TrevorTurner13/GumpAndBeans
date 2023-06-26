@@ -15,6 +15,8 @@ private:
 	AudioManager* mAudio;
 
 
+	GLTexture* mFloor;
+
 	// Top Bar Entities
 	GameEntity* mTopBar;
 

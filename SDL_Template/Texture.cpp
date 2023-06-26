@@ -83,8 +83,8 @@ namespace SDLFramework {
 		int offsetX = textureWidth / 2;
 		int offsetY = textureHeight / 2;
 
-		for (int y = -offsetY; y < Graphics::SCREEN_HEIGHT; y += textureHeight) {
-			for (int x = -offsetX; x < Graphics::SCREEN_WIDTH; x += textureWidth) {
+		for (int y = -offsetY; y < Graphics::SCREEN_HEIGHT + offsetY; y += textureHeight) {
+			for (int x = -offsetX; x < Graphics::SCREEN_WIDTH + offsetX; x += textureWidth) {
 				texture->Position(x, y);
 				texture->Render();
 			}
