@@ -5,7 +5,8 @@ StartScreen::StartScreen() {
 	mInput = InputManager::Instance();
 	mAudio = AudioManager::Instance();
 
-
+	mFloor = new GLTexture("floor tile 256x256.png", 0, 0, 256, 256);
+	
 	// logo entities
 	mLogo = new GLTexture("GumpTitle.png", 0, 0, 705, 178);
 	mAnimatedLogo = new AnimatedGLTexture("GumpTitle.png", 0, 0, 705, 178, 3, 0.2f, Animation::Layouts::Vertical);
@@ -16,11 +17,11 @@ StartScreen::StartScreen() {
 	mLogo->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.32f);
 	mAnimatedLogo->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.32f);
 
-	mGump = new AnimatedGLTexture("Gump.png", 0, 0, 128, 128, 4, 2.85f, Animation::Layouts::Vertical);
+	mGump = new AnimatedGLTexture("Gump 128x128.png", 0, 0, 128, 128, 4, 2.85f, Animation::Layouts::Vertical);
 	mGump->Parent(this);
 	mGump->Position(250.0f, Graphics::SCREEN_HEIGHT * 0.5f);
 
-	mBeanz = new AnimatedGLTexture("Beanz.png", 0, 0, 128, 128, 4, 2.85f, Animation::Layouts::Vertical);
+	mBeanz = new AnimatedGLTexture("Beanz 128x128.png", 0, 0, 128, 128, 4, 2.85f, Animation::Layouts::Vertical);
 	mBeanz->Parent(this);
 	mBeanz->Position(800.0f, Graphics::SCREEN_HEIGHT * 0.5f);
 	
@@ -190,6 +191,7 @@ void StartScreen::Update() {
 }
 
 void StartScreen::Render() {
+	mFloor->RenderRepeatedTexture(mFloor, 256, 256);
 	
 	if (!mAnimationDone) {
 		mLogo->Render();
