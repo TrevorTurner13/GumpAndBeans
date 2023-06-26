@@ -155,10 +155,6 @@ void StartScreen::ChangeSelectedMode(int change) {
 		mOnePlayerMode = mPlayDefault;
 		mTwoPlayerMode = mHowToPlayHighlight;
 	}
-
-
-
-
 }
 
 void StartScreen::Update() {
