@@ -29,6 +29,8 @@ namespace SDLFramework {
 
 		virtual void Render() override;
 
+		void RenderRepeatedTexture(Texture* texture, int textureWidth, int textureHeight);
+
 	protected:
 		void UpdateDstRect();
 	};

@@ -82,3 +82,15 @@ ScreenManager::~ScreenManager() {
 	delete mPlayScreen;
 	mPlayScreen = nullptr;
 }
+
+void ScreenManager::RenderRepeatedTexture(Texture* texture, int textureWidth, int textureHeight) {
+	int offsetX = textureWidth / 2;
+	int offsetY = textureHeight / 2;
+
+	for (int y = -offsetY; y < Graphics::SCREEN_HEIGHT; y += textureHeight) {
+		for (int x = -offsetX; x < Graphics::SCREEN_WIDTH; x += textureWidth) {
+			texture->Position(x, y);
+			texture->Render();
+		}
+	}
+}
