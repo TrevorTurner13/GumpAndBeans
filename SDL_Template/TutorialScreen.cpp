@@ -6,24 +6,37 @@ TutorialScreen::TutorialScreen() {
 	mMoveUp = new GLTexture("Move Up", "emulogic.ttf", 25, { 230,230,230 });
 	mMoveDown = new GLTexture("Move Down", "emulogic.ttf", 25, { 230,230,230 });
 	
-
 	mA = new GLTexture("A", "Key.ttf", 75, { 230,230,230 });
 	mD = new GLTexture("D", "Key.ttf", 75, { 230,230,230 });
 	mW = new GLTexture("W", "Key.ttf", 75, { 230,230,230 });
 	mS = new GLTexture("S", "Key.ttf", 75, { 230,230,230 });
+
+	mLeftArrow = new GLTexture("s", "Key.ttf", 75, { 230,230,230 });
+	mRightArrow = new GLTexture("t", "Key.ttf", 75, { 230,230,230 });
+	mUpArrow = new GLTexture("q", "Key.ttf", 75, { 230,230,230 });
+	mDownArrow = new GLTexture("r", "Key.ttf", 75, { 230,230,230 });
+
+	mBeanz = new GLTexture("Beanz.png", 28, 129, 72, 60);
+	mGump = new GLTexture("Gump.png", 26, 168, 72, 60);
 	
+	mBeanz->Position(750, 225);
+	mGump->Position(650, 225);
 
 	mMoveLeft->Position(350, 300.0f);
 	mA->Position(650, 300);
+	mLeftArrow->Position(750, 300);
 
 	mMoveRight->Position(350, 375);
 	mD->Position(650, 375);
+	mRightArrow->Position(750, 375);
 
 	mMoveUp->Position(350, 450);
 	mW->Position(650, 450);
+	mUpArrow->Position(750, 450);
 
 	mMoveDown->Position(350, 525);
 	mS->Position(650, 525);
+	mDownArrow->Position(750, 525);
 
 
 	// bottom bar entities
@@ -80,6 +93,17 @@ TutorialScreen::~TutorialScreen() {
 	delete mRights;
 	mRights = nullptr;
 
+	delete mLeftArrow;
+	mLeftArrow = nullptr;
+
+	delete mUpArrow;
+	mUpArrow = nullptr;
+
+	delete mRightArrow;
+	mRightArrow = nullptr;
+
+	delete mDownArrow;
+	mDownArrow = nullptr;
 
 }
 
@@ -97,8 +121,15 @@ void TutorialScreen::Render() {
 	mD->Render();
 	mMoveUp->Render();
 	mMoveDown->Render();
-	
+	mLeftArrow->Render();
+	mRightArrow->Render();
+	mDownArrow->Render();
+	mUpArrow->Render();
+
 	mNamco->Render();
 	mDates->Render();
 	mRights->Render();
+
+	mBeanz->Render();
+	mGump->Render();
 }

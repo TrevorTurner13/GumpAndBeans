@@ -20,7 +20,15 @@ private:
 	Texture* mD;
 	Texture* mW;
 	Texture* mS;
-	
+
+	Texture* mUpArrow;
+	Texture* mDownArrow;
+	Texture* mLeftArrow;
+	Texture* mRightArrow;
+
+	Texture* mGump;
+	Texture* mBeanz;
+
 	GameEntity* mBottomBar;
 	Texture* mNamco;
 	Texture* mDates;
