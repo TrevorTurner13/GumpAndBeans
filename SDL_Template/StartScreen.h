@@ -21,6 +21,8 @@ private:
 	// Logo Entities
 	Texture* mLogo;
 	AnimatedGLTexture* mAnimatedLogo;
+	AnimatedGLTexture* mGump;
+	AnimatedGLTexture* mBeanz;
 
 	// Play Mode Entities
 	GameEntity* mPlayModes;

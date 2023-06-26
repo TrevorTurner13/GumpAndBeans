@@ -16,6 +16,14 @@ StartScreen::StartScreen() {
 	mLogo->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.32f);
 	mAnimatedLogo->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.32f);
 
+	mGump = new AnimatedGLTexture("Gump.png", 0, 0, 128, 128, 4, 2.85f, Animation::Layouts::Vertical);
+	mGump->Parent(this);
+	mGump->Position(250.0f, Graphics::SCREEN_HEIGHT * 0.5f);
+
+	mBeanz = new AnimatedGLTexture("Beanz.png", 0, 0, 128, 128, 4, 2.85f, Animation::Layouts::Vertical);
+	mBeanz->Parent(this);
+	mBeanz->Position(800.0f, Graphics::SCREEN_HEIGHT * 0.5f);
+	
 	//play mode entities
 	mPlayModes = new GameEntity(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.55f);
 	mOnePlayerMode = new GLTexture("Play.png", 0, 0, 153, 74);
@@ -180,16 +188,22 @@ void StartScreen::Update() {
 	mTimer->Update();
 	mOnePlayerMode->Update();
 	mTwoPlayerMode->Update();
+	mGump->Update();
+	mBeanz->Update();
 
 }
 
 void StartScreen::Render() {
-
+	
 	if (!mAnimationDone) {
 		mLogo->Render();
+		mGump->Render();
+		mBeanz->Render();
 	}
 	else {
 		mAnimatedLogo->Render();
+		mGump->Render();
+		mBeanz->Render();
 	}
 
 	mOnePlayerMode->Render();
