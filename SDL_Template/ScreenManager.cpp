@@ -21,17 +21,31 @@ void ScreenManager::Update() {
 	case Start:
 		mStartScreen->Update();
 
-		if (mInput->KeyPressed(SDL_SCANCODE_RETURN)) {
+		if (mInput->KeyPressed(SDL_SCANCODE_RETURN)&& mStartScreen->SelectedMode()==0) {
 			mCurrentScreen = Play;
+		}
+		else if (mInput->KeyPressed(SDL_SCANCODE_RETURN) && mStartScreen->SelectedMode()== 1) {
+			mCurrentScreen = Tutorial;
 		}
 		break;
 	case Play:
 		mPlayScreen->Update();
 		break;
+
+	case Tutorial:
+		mTutorialScreen->Update();
+		
+		if (mInput->KeyPressed(SDL_SCANCODE_ESCAPE)) {
+			mCurrentScreen = Start;
+		}
+		break;
+	
+	
 	}
+
 }
 
-void ScreenManager::Render() { 
+void ScreenManager::Render() {
 
 
 	switch (mCurrentScreen) {
@@ -40,6 +54,10 @@ void ScreenManager::Render() {
 		break;
 	case Play:
 		mPlayScreen->Render();
+		break;
+	
+	case Tutorial:
+		mTutorialScreen->Render();
 		break;
 	}
 }
@@ -50,6 +68,7 @@ ScreenManager::ScreenManager() {
 
 	mStartScreen = new StartScreen();
 	mPlayScreen = new PlayScreen();
+	mTutorialScreen = new TutorialScreen();
 
 	mCurrentScreen = Start;
 }

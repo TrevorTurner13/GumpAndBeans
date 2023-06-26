@@ -2,18 +2,20 @@
 #define __SCREENMANAGER_H
 #include "StartScreen.h"
 #include "PlayScreen.h"
+#include "TutorialScreen.h"
 
 class ScreenManager {
 private:
 	static ScreenManager * sInstance;
 
-	enum Screens { Start, Play };
+	enum Screens { Start, Play, Tutorial };
 	Screens mCurrentScreen;
 
 	InputManager * mInput;
 
 	StartScreen * mStartScreen;
 	PlayScreen * mPlayScreen;
+	TutorialScreen* mTutorialScreen; 
 
 public:
 	static ScreenManager * Instance();
