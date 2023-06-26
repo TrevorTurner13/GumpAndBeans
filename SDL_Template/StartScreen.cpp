@@ -60,18 +60,34 @@ StartScreen::StartScreen() {
 
 	// bottom bar entities
 	mBottomBar = new GameEntity(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.85f);
-	mNamco = new GLTexture("BRANDVOR", "LavenderLime.ttf", 70, { 255, 165, 0 });
-	mDates = new GLTexture("2023-Forever Brandvor LTD.", "LavenderLime.ttf", 32, { 255, 165, 0 });
-	mRights = new GLTexture("ALL RIGHTS RESERVED", "LavenderLime.ttf", 32, { 255, 165, 0 });
+	mNamco = new GLTexture("BRANDVOR", "LavenderLime.ttf", 70, { 0, 182, 250 });
+	mDates = new GLTexture("2023-Forever Brandvor LTD.", "LavenderLime.ttf", 32, { 0, 182, 250 });
+	mRights = new GLTexture("ALL RIGHTS RESERVED", "LavenderLime.ttf", 32, { 0, 182, 250 });
+	mNamcoOutline = new GLTexture("BRANDVOR", "LavenderLime.ttf", 70, { 0, 0, 0 });
+	mDatesOutline = new GLTexture("2023-Forever Brandvor LTD.", "LavenderLime.ttf", 32, { 0, 0, 0 });
+	mRightsOutline = new GLTexture("ALL RIGHTS RESERVED", "LavenderLime.ttf", 32, { 0, 0, 0 });
+
 
 	mBottomBar->Parent(this);
 	mNamco->Parent(mBottomBar);
 	mDates->Parent(mBottomBar);
 	mRights->Parent(mBottomBar);
+	mNamcoOutline->Parent(mBottomBar);
+	mDatesOutline->Parent(mBottomBar);
+	mRightsOutline->Parent(mBottomBar);
 
 	mNamco->Position(0.0f, 26.0f);
 	mDates->Position(0.0f, 75.0f);
 	mRights->Position(0.0f, 110.0f);
+	mNamcoOutline->Position(0.0f, 26.0f);
+	mDatesOutline->Position(0.0f, 75.0f);
+	mRightsOutline->Position(0.0f, 110.0f);
+
+	mNamcoOutline->Scale(Vector2(1.015f, 1.1f));
+	mDatesOutline->Scale(Vector2(1.015f, 1.1f));
+	mRightsOutline->Scale(Vector2(1.015f, 1.1f));
+
+
 
 	// screen animation variables
 	ResetAnimation();
@@ -207,6 +223,10 @@ void StartScreen::Render() {
 	mOnePlayerMode->Render();
 	mTwoPlayerMode->Render();
 
+	mNamcoOutline->Render();
+	mDatesOutline->Render();
+	mRightsOutline->Render();
+	
 	mNamco->Render();
 	mDates->Render();
 	mRights->Render();

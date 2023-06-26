@@ -19,7 +19,7 @@ TutorialScreen::TutorialScreen() {
 	mBeanz = new GLTexture("Beanz.png", 28, 129, 72, 60);
 	mGump = new GLTexture("Gump.png", 26, 168, 72, 60);
 	
-	mCircle = new GLTexture("floor tile.png", 0, 0, 256, 256);
+	mCircle = new GLTexture("floor tile 256x256.png", 0, 0, 256, 256);
 	
 	mBeanz->Position(750, 225);
 	mGump->Position(650, 225);
@@ -43,9 +43,9 @@ TutorialScreen::TutorialScreen() {
 
 	// bottom bar entities
 	mBottomBar = new GameEntity(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.85f);
-	mNamco = new GLTexture("BRANDVOR", "LavenderLime.ttf", 70, { 255, 165, 0 });
-	mDates = new GLTexture("2023-Forever Brandvor LTD.", "LavenderLime.ttf", 32, { 255, 165, 0 });
-	mRights = new GLTexture("ALL RIGHTS RESERVED", "LavenderLime.ttf", 32, { 255, 165, 0 });
+	mNamco = new GLTexture("BRANDVOR", "LavenderLime.ttf", 70, { 255, 165, 100 });
+	mDates = new GLTexture("2023-Forever Brandvor LTD.", "LavenderLime.ttf", 32, { 255, 165, 100 });
+	mRights = new GLTexture("ALL RIGHTS RESERVED", "LavenderLime.ttf", 32, { 255, 165, 100 });
 	
 	mBottomBar->Parent(this);
 	mNamco->Parent(mBottomBar);
