@@ -34,11 +34,15 @@ private:
 	Texture* mDates;
 	Texture* mRights;
 
+
+	Texture* mCircle;
+
 public:
 	TutorialScreen();
 	~TutorialScreen();
 
 	void Update() override;
 	void Render() override;
+	
 };
 #endif

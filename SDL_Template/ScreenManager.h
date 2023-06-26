@@ -23,6 +23,7 @@ public:
 
 	void Update();
 	void Render();
+	void RenderRepeatedTexture(Texture* texture, int textureWidth, int textureHeight);
 
 private:
 	ScreenManager();
