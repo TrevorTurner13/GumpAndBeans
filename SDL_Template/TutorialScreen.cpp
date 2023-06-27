@@ -1,25 +1,25 @@
 #include "TutorialScreen.h"
 
 TutorialScreen::TutorialScreen() {
-	mMoveLeft = new GLTexture("Move Left", "emulogic.ttf", 25, { 230,230,230 });
-	mMoveRight = new GLTexture("Move Right", "emulogic.ttf", 25, { 230,230,230 });
-	mMoveUp = new GLTexture("Move Up", "emulogic.ttf", 25, { 230,230,230 });
-	mMoveDown = new GLTexture("Move Down", "emulogic.ttf", 25, { 230,230,230 });
+	mMoveLeft = new GLTexture("Move Left", "emulogic.ttf", 25, { 0,0,0 });
+	mMoveRight = new GLTexture("Move Right", "emulogic.ttf", 25, { 0,0,0 });
+	mMoveUp = new GLTexture("Move Up", "emulogic.ttf", 25, { 0,0,0 });
+	mMoveDown = new GLTexture("Move Down", "emulogic.ttf", 25, { 0,0,0 });
 	
-	mA = new GLTexture("A", "Key.ttf", 75, { 230,230,230 });
-	mD = new GLTexture("D", "Key.ttf", 75, { 230,230,230 });
-	mW = new GLTexture("W", "Key.ttf", 75, { 230,230,230 });
-	mS = new GLTexture("S", "Key.ttf", 75, { 230,230,230 });
+	mA = new GLTexture("A", "Key.ttf", 75, { 0,0,0 });
+	mD = new GLTexture("D", "Key.ttf", 75, { 0,0,0 });
+	mW = new GLTexture("W", "Key.ttf", 75, { 0,0,0 });
+	mS = new GLTexture("S", "Key.ttf", 75, { 0,0,0 });
 
-	mLeftArrow = new GLTexture("s", "Key.ttf", 75, { 230,230,230 });
-	mRightArrow = new GLTexture("t", "Key.ttf", 75, { 230,230,230 });
-	mUpArrow = new GLTexture("q", "Key.ttf", 75, { 230,230,230 });
-	mDownArrow = new GLTexture("r", "Key.ttf", 75, { 230,230,230 });
+	mLeftArrow = new GLTexture("s", "Key.ttf", 75, { 0,0,0 });
+	mRightArrow = new GLTexture("t", "Key.ttf", 75, { 0,0,0 });
+	mUpArrow = new GLTexture("q", "Key.ttf", 75, { 0,0,0 });
+	mDownArrow = new GLTexture("r", "Key.ttf", 75, { 0,0,0 });
 
 	mBeanz = new GLTexture("Beanz.png", 28, 129, 72, 60);
 	mGump = new GLTexture("Gump.png", 26, 168, 72, 60);
 	
-	mCircle = new GLTexture("floor tile 256x256.png", 0, 0, 256, 256);
+	mFloor = new GLTexture("floor tile 256x256.png", 0, 0, 256, 256);
 	
 	mBeanz->Position(750, 225);
 	mGump->Position(650, 225);
@@ -43,18 +43,32 @@ TutorialScreen::TutorialScreen() {
 
 	// bottom bar entities
 	mBottomBar = new GameEntity(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.85f);
-	mNamco = new GLTexture("BRANDVOR", "LavenderLime.ttf", 70, { 255, 165, 100 });
-	mDates = new GLTexture("2023-Forever Brandvor LTD.", "LavenderLime.ttf", 32, { 255, 165, 100 });
-	mRights = new GLTexture("ALL RIGHTS RESERVED", "LavenderLime.ttf", 32, { 255, 165, 100 });
+	mNamco = new GLTexture("BRANDVOR", "LavenderLime.ttf", 70, { 0, 182, 250 });
+	mDates = new GLTexture("2023-Forever Brandvor LTD.", "LavenderLime.ttf", 32, { 0, 182, 250 });
+	mRights = new GLTexture("ALL RIGHTS RESERVED", "LavenderLime.ttf", 32, { 0, 182, 250 });
+	mNamcoOutline = new GLTexture("BRANDVOR", "LavenderLime.ttf", 70, { 0, 0, 0 });
+	mDatesOutline = new GLTexture("2023-Forever Brandvor LTD.", "LavenderLime.ttf", 32, { 0, 0, 0 });
+	mRightsOutline = new GLTexture("ALL RIGHTS RESERVED", "LavenderLime.ttf", 32, { 0, 0, 0 });
 	
 	mBottomBar->Parent(this);
 	mNamco->Parent(mBottomBar);
 	mDates->Parent(mBottomBar);
 	mRights->Parent(mBottomBar);
+	mNamcoOutline->Parent(mBottomBar);
+	mDatesOutline->Parent(mBottomBar);
+	mRightsOutline->Parent(mBottomBar);
 
 	mNamco->Position(0.0f, 26.0f);
 	mDates->Position(0.0f, 75.0f);
 	mRights->Position(0.0f, 110.0f);
+	mNamcoOutline->Position(0.0f, 26.0f);
+	mDatesOutline->Position(0.0f, 75.0f);
+	mRightsOutline->Position(0.0f, 110.0f);
+
+	mNamcoOutline->Scale(Vector2(1.015f, 1.1f));
+	mDatesOutline->Scale(Vector2(1.015f, 1.1f));
+	mRightsOutline->Scale(Vector2(1.015f, 1.1f));
+
 }
 
 
@@ -115,7 +129,9 @@ void TutorialScreen::Update() {
 }
 
 void TutorialScreen::Render() {
-	mCircle->RenderRepeatedTexture(mCircle, 256, 256);
+	
+	mFloor->RenderRepeatedTexture(mFloor, 256, 256);
+
 	mMoveLeft->Render();
 	mMoveRight->Render();
 	mW->Render();
@@ -129,6 +145,9 @@ void TutorialScreen::Render() {
 	mDownArrow->Render();
 	mUpArrow->Render();
 
+	mNamcoOutline->Render();
+	mDatesOutline->Render();
+	mRightsOutline->Render();
 	mNamco->Render();
 	mDates->Render();
 	mRights->Render();
