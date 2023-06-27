@@ -4,18 +4,29 @@
 
 void Player::HandleMovement() {
 	if (mInput->KeyDown(SDL_SCANCODE_D)) {
-		Translate(Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
+		mGump->Translate(Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
 	}
-	else if (mInput->KeyDown(SDL_SCANCODE_A)) {
-		Translate(-Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
+	 if (mInput->KeyDown(SDL_SCANCODE_A)) {
+		mGump->Translate(-Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
 	}
-	else if (mInput->KeyDown(SDL_SCANCODE_W)) {
-		Translate(-Vec2_Up * mMoveSpeed * mTimer->DeltaTime(), World);
+	 if (mInput->KeyDown(SDL_SCANCODE_W)) {
+		mGump->Translate(-Vec2_Up * mMoveSpeed * mTimer->DeltaTime(), World);
 	}
-	else if (mInput->KeyDown(SDL_SCANCODE_S)) {
-		Translate(Vec2_Up * mMoveSpeed * mTimer->DeltaTime(), World);
-}
-
+	 if (mInput->KeyDown(SDL_SCANCODE_S)) {
+		mGump->Translate(Vec2_Up * mMoveSpeed * mTimer->DeltaTime(), World);
+	}
+	 if (mInput->KeyDown(SDL_SCANCODE_RIGHT)) {
+		 mBeanz->Translate(Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
+	 }
+	 if (mInput->KeyDown(SDL_SCANCODE_LEFT)) {
+		 mBeanz->Translate(-Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
+	 }
+	 if (mInput->KeyDown(SDL_SCANCODE_UP)) {
+		 mBeanz->Translate(-Vec2_Up * mMoveSpeed * mTimer->DeltaTime(), World);
+	 }
+	 if (mInput->KeyDown(SDL_SCANCODE_DOWN)) {
+		 mBeanz->Translate(Vec2_Up * mMoveSpeed * mTimer->DeltaTime(), World);
+	 }
 	Vector2 pos = Position(Local);
 	Position(pos);
 }
@@ -44,9 +55,14 @@ Player::Player() {
 	mScore = 0;
 	mLives = 2;
 
-	mShip = new GLTexture("GumpPic.png", 0, 0, 127, 127);
-	mShip->Parent(this);
-	mShip->Position(Vec2_Zero);
+	mGump = new GLTexture("GumpPic.png", 0, 0, 127, 127);
+	mGump->Parent(this);
+	mGump->Position(Vec2_Zero);
+
+	mBeanz = new GLTexture("Beanz.png", 0, 0, 128, 128);
+	mBeanz->Parent(this);
+	mBeanz->Position(100, 100);
+
 
 	mMoveSpeed = 300.0f;
 	mMoveBounds = Vector2(0.0f, 800.0f);
@@ -74,8 +90,11 @@ Player::~Player() {
 	mInput = nullptr;
 	mAudio = nullptr;
 
-	delete mShip;
-	mShip = nullptr;
+	delete mGump;
+	mGump = nullptr;
+
+	delete mBeanz;
+	mBeanz = nullptr;
 
 	delete mDeathAnimation;
 	mDeathAnimation = nullptr;
@@ -150,7 +169,8 @@ void Player::Render() {
 			mDeathAnimation->Render();
 		}
 		else {
-			mShip->Render();
+			mGump->Render();
+			mBeanz->Render();
 		}
 	}
 
