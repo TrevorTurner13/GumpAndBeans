@@ -33,8 +33,11 @@ private:
 	Texture* mNamco;
 	Texture* mDates;
 	Texture* mRights;
+	Texture* mNamcoOutline;
+	Texture* mDatesOutline;
+	Texture* mRightsOutline;
 
-
+	Texture* mFloor;
 	
 
 public:
