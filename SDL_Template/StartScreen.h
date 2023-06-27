@@ -41,6 +41,9 @@ private:
 	Texture* mNamco;
 	Texture* mDates;
 	Texture* mRights;
+	Texture* mNamcoOutline;
+	Texture* mDatesOutline;
+	Texture* mRightsOutline;
 
 	// Screen Animation Variables
 	Vector2 mAnimationStartPos;
