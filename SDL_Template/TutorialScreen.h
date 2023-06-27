@@ -35,7 +35,7 @@ private:
 	Texture* mRights;
 
 
-	Texture* mCircle;
+	
 
 public:
 	TutorialScreen();
