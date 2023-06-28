@@ -10,6 +10,7 @@ private:
 	AudioManager * mAudio;
 
 	Player * mPlayer;
+	Texture* mFloor;
 
 
 

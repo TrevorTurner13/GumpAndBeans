@@ -20,7 +20,9 @@ private:
 	int mScore;
 	int mLives;
 
-	Texture* mShip;
+	Texture* mGump;
+	Texture* mBeanz;
+
 	AnimatedGLTexture* mDeathAnimation;
 
 	float mMoveSpeed;
