@@ -5,27 +5,51 @@
 void Player::HandleMovement() {
 	if (mInput->KeyDown(SDL_SCANCODE_D)) {
 		mGump->Translate(Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
+		Vector2 currentPos = mGump->Position();
+		mGump = mGumpRight;
+		mGump->Position(currentPos);
 	}
 	 if (mInput->KeyDown(SDL_SCANCODE_A)) {
 		mGump->Translate(-Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
+		Vector2 currentPos = mGump->Position();
+		mGump = mGumpLeft;
+		mGump->Position(currentPos);
 	}
 	 if (mInput->KeyDown(SDL_SCANCODE_W)) {
 		mGump->Translate(-Vec2_Up * mMoveSpeed * mTimer->DeltaTime(), World);
+		Vector2 currentPos = mGump->Position();
+		mGump = mGumpUp;
+		mGump->Position(currentPos);
 	}
 	 if (mInput->KeyDown(SDL_SCANCODE_S)) {
 		mGump->Translate(Vec2_Up * mMoveSpeed * mTimer->DeltaTime(), World);
+		Vector2 currentPos = mGump->Position();
+		mGump = mGumpDown;
+		mGump->Position(currentPos);
 	}
 	 if (mInput->KeyDown(SDL_SCANCODE_RIGHT)) {
 		 mBeanz->Translate(Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
+		 Vector2 currentPos = mBeanz->Position();
+		 mBeanz = mBeanzRight;
+		 mBeanz->Position(currentPos);
 	 }
 	 if (mInput->KeyDown(SDL_SCANCODE_LEFT)) {
 		 mBeanz->Translate(-Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
+		 Vector2 currentPos = mBeanz->Position();
+		 mBeanz = mBeanzLeft;
+		 mBeanz->Position(currentPos);
 	 }
 	 if (mInput->KeyDown(SDL_SCANCODE_UP)) {
 		 mBeanz->Translate(-Vec2_Up * mMoveSpeed * mTimer->DeltaTime(), World);
+		 Vector2 currentPos = mBeanz->Position();
+		 mBeanz = mBeanzUp;
+		 mBeanz->Position(currentPos);
 	 }
 	 if (mInput->KeyDown(SDL_SCANCODE_DOWN)) {
 		 mBeanz->Translate(Vec2_Up * mMoveSpeed * mTimer->DeltaTime(), World);
+		 Vector2 currentPos = mBeanz->Position();
+		 mBeanz = mBeanzDown;
+		 mBeanz->Position(currentPos);
 	 }
 	Vector2 pos = Position(Local);
 	Position(pos);
@@ -55,12 +79,20 @@ Player::Player() {
 	mScore = 0;
 	mLives = 2;
 
-	mGump = new GLTexture("GumpPic.png", 0, 0, 127, 127);
-	mGump->Parent(this);
+	mGumpRight = new AnimatedGLTexture ("Gump 128x128.png", 0, 0, 128, 128,7,1.0f, Animation::Layouts::Horizontal);
+	mGumpLeft = new AnimatedGLTexture("Gump 128x128.png", 0, 256, 128, 128, 7, 1.0f, Animation::Layouts::Horizontal);
+	mGumpUp =   new AnimatedGLTexture ("Gump 128x128.png", 0, 384, 128, 128, 7, 1.0f, Animation::Layouts::Horizontal);
+	mGumpDown = new AnimatedGLTexture ("Gump 128x128.png", 0, 128, 128, 128, 7, 1.0f, Animation::Layouts::Horizontal);
+	mGump = new GLTexture("Gump 128x128.png", 0, 0, 128, 128);
+	
 	mGump->Position(Vec2_Zero);
 
+	mBeanzRight = new AnimatedGLTexture("Beanz 128x128.png", 0, 0, 128, 128, 1, 1.0f, Animation::Layouts::Horizontal);
+	mBeanzLeft = new AnimatedGLTexture("Beanz 128x128.png", 0, 256, 128, 128, 1, 1.0f, Animation::Layouts::Horizontal);
+	mBeanzUp = new AnimatedGLTexture("Beanz 128x128.png", 0, 384, 128, 128, 1, 1.0f, Animation::Layouts::Horizontal);
+	mBeanzDown = new AnimatedGLTexture("Beanz 128x128.png", 0, 128, 128, 128, 1, 1.0f, Animation::Layouts::Horizontal);
 	mBeanz = new GLTexture("Beanz.png", 0, 0, 128, 128);
-	mBeanz->Parent(this);
+	
 	mBeanz->Position(100, 100);
 
 
@@ -156,6 +188,8 @@ void Player::Update() {
 			HandleMovement();
 			HandleFiring();
 		}
+		mGump->Update();
+		mBeanz->Update();
 	}
 
 	/*for (int i = 0; i < MAX_BULLETS; ++i) {

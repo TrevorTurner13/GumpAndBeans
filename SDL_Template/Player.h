@@ -21,7 +21,16 @@ private:
 	int mLives;
 
 	Texture* mGump;
+	AnimatedGLTexture* mGumpRight;
+	AnimatedGLTexture* mGumpLeft;
+	AnimatedGLTexture* mGumpUp;
+	AnimatedGLTexture* mGumpDown;
+
 	Texture* mBeanz;
+	AnimatedGLTexture* mBeanzRight;
+	AnimatedGLTexture* mBeanzLeft;
+	AnimatedGLTexture* mBeanzUp;
+	AnimatedGLTexture* mBeanzDown;
 
 	AnimatedGLTexture* mDeathAnimation;
 

@@ -9,7 +9,7 @@ PlayScreen::PlayScreen() {
 	delete mPlayer;
 	mPlayer = new Player();
 	mPlayer->Parent(this);
-	mPlayer->Position(Graphics::SCREEN_WIDTH * 0.4f, Graphics::SCREEN_HEIGHT * 0.8f);
+	//mPlayer->Position(Graphics::SCREEN_WIDTH * 0.4f, Graphics::SCREEN_HEIGHT * 0.8f);
 	mPlayer->Active(true);
 
 	mFloor = new GLTexture("floor tile 256x256.png", 0, 0, 256, 256);
