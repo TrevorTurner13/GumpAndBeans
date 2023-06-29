@@ -61,7 +61,7 @@ namespace SDLFramework {
 		return scaledDimensions;
 	}
 
-	void Texture::SetSourceRect(SDL_Rect* sourceRect) {
+	void Texture::SetSourceRect(SDL_Rect * sourceRect) {
 		mSourceRect = *sourceRect;
 	}
 
@@ -79,16 +79,16 @@ namespace SDLFramework {
 		mDestinationRect.w = (int)(mWidth * scale.x);
 		mDestinationRect.h = (int)(mHeight * scale.y);
 	}
+
 	void Texture::RenderRepeatedTexture(Texture* texture, int textureWidth, int textureHeight) {
 		int offsetX = textureWidth / 2;
 		int offsetY = textureHeight / 2;
 
-		for (int y = -offsetY; y < Graphics::SCREEN_HEIGHT+offsetY; y += textureHeight) {
-			for (int x = -offsetX; x < Graphics::SCREEN_WIDTH+offsetX; x += textureWidth) {
+		for (int y = -offsetY; y < Graphics::SCREEN_HEIGHT + offsetY; y += textureHeight) {
+			for (int x = -offsetX; x < Graphics::SCREEN_WIDTH + offsetX; x += textureWidth) {
 				texture->Position(x, y);
 				texture->Render();
 			}
 		}
 	}
 }
-

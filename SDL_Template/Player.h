@@ -20,28 +20,15 @@ private:
 	int mScore;
 	int mLives;
 
-	Texture* mGump;
-	AnimatedGLTexture* mGumpRight;
-	AnimatedGLTexture* mGumpLeft;
-	AnimatedGLTexture* mGumpUp;
-	AnimatedGLTexture* mGumpDown;
-
-	Texture* mBeanz;
-	AnimatedGLTexture* mBeanzRight;
-	AnimatedGLTexture* mBeanzLeft;
-	AnimatedGLTexture* mBeanzUp;
-	AnimatedGLTexture* mBeanzDown;
-
 	AnimatedGLTexture* mDeathAnimation;
 
-	float mMoveSpeed;
-	Vector2 mMoveBounds;
+	
 
 	static const int MAX_BULLETS = 2;
 	//Bullet* mBullets[MAX_BULLETS];
 
 private:
-	void HandleMovement();
+	
 	void HandleFiring();
 
 public:

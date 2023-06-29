@@ -7,8 +7,8 @@ namespace SDLFramework {
 
 	class Texture : public GameEntity {
 	protected:
-		SDL_Texture* mTex;
-		Graphics* mGraphics;
+		SDL_Texture * mTex;
+		Graphics * mGraphics;
 
 		int mWidth;
 		int mHeight;
@@ -25,10 +25,9 @@ namespace SDLFramework {
 
 		Vector2 ScaledDimensions();
 
-		void SetSourceRect(SDL_Rect* sourceRect);
+		void SetSourceRect(SDL_Rect * sourceRect);
 
 		virtual void Render() override;
-
 		void RenderRepeatedTexture(Texture* texture, int textureWidth, int textureHeight);
 
 	protected:
