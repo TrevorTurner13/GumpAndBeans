@@ -26,7 +26,7 @@ PlayScreen::PlayScreen() {
 	mBeanzJumpScare->Parent(this);
 	mBeanzJumpScare->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	
-	mJumpScareTotalTime = 1.5f;
+	mJumpScareTotalTime = 1.25f;
 	mJumpScareTimer = 0.0f;
 	mJumpScareScale += 0.5f;
 	mJumpScareDone = false;
@@ -51,12 +51,18 @@ void PlayScreen::Update() {
 	if (!mGameOver) {
 		mGump->Update();
 		mBeanz->Update();
+
+		if (mGump->CheckCollision(mBeanz)) {
+			mGameOver = true;
+			mAudio->PauseMusic();
+			mAudio->PlaySFX("SFX/BEANZZZ.wav", 0);
+		}
 	}
 	else {
 		mBeanzJumpScare->Update();
 		if (!mJumpScareDone) {
 			mJumpScareTimer += mTimer->DeltaTime();
-			mJumpScareScale += 0.95f;
+			mJumpScareScale += 0.75f;
 			mBeanzJumpScare->Translate(-Vec2_Up * 50.0f * mTimer->DeltaTime(), World);
 			mBeanzJumpScare->Scale(Vector2(mJumpScareScale, mJumpScareScale));
 
@@ -65,10 +71,7 @@ void PlayScreen::Update() {
 			}
 		}
 	}
-	if (!mGameOver && mGump->CheckCollision(mBeanz)) {
-		mGameOver = true;
-		mAudio->PlaySFX("SFX/BEANZZZ.wav", 0);
-	}
+
 	
 }
 
