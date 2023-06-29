@@ -31,6 +31,8 @@ Player::Player() {
 	mDeathAnimation->Position(Vec2_Zero);
 	mDeathAnimation->SetWrapMode(Animation::WrapModes::Once);
 
+	//Position(Local);
+
 	/*for (int i = 0; i < MAX_BULLETS; ++i) {
 		mBullets[i] = new Bullet(true);
 	}*/

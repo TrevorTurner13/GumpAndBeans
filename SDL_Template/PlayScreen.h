@@ -10,9 +10,13 @@ private:
 	Timer * mTimer;
 	AudioManager * mAudio;
 
+	bool mGameOver;
+
 	Gump * mGump;
 	Beanz* mBeanz;
 	Texture* mFloor;
+
+	Texture* mBeanzJumpScare;
 
 public:
 	PlayScreen();
