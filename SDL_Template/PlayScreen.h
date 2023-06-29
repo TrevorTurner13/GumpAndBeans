@@ -17,6 +17,11 @@ private:
 	Texture* mFloor;
 
 	Texture* mBeanzJumpScare;
+	float mJumpScareTimer;
+	float mJumpScareTotalTime;
+	float mJumpScareScale;
+	bool mJumpScareDone;
+
 
 public:
 	PlayScreen();

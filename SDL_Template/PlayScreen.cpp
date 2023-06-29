@@ -22,10 +22,14 @@ PlayScreen::PlayScreen() {
 
 	mFloor = new GLTexture("floor tile 256x256.png", 0, 0, 256, 256);
 
-	mBeanzJumpScare = new GLTexture("Beanz 128x128.png", 128, 128, 128, 128);
+	mBeanzJumpScare = new GLTexture("JumpScareBeanz.png", 0, 0, 128, 172);
 	mBeanzJumpScare->Parent(this);
 	mBeanzJumpScare->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	
+	mJumpScareTotalTime = 1.5f;
+	mJumpScareTimer = 0.0f;
+	mJumpScareScale += 0.5f;
+	mJumpScareDone = false;
 
 }
 
@@ -49,11 +53,23 @@ void PlayScreen::Update() {
 		mBeanz->Update();
 	}
 	else {
+		mBeanzJumpScare->Update();
+		if (!mJumpScareDone) {
+			mJumpScareTimer += mTimer->DeltaTime();
+			mJumpScareScale += 0.95f;
+			mBeanzJumpScare->Translate(-Vec2_Up * 50.0f * mTimer->DeltaTime(), World);
+			mBeanzJumpScare->Scale(Vector2(mJumpScareScale, mJumpScareScale));
 
+			if (mJumpScareTimer >= mJumpScareTotalTime) {
+				mJumpScareDone = true;
+			}
+		}
 	}
-	if (mGump->CheckCollision(mBeanz)) {
+	if (!mGameOver && mGump->CheckCollision(mBeanz)) {
 		mGameOver = true;
+		mAudio->PlaySFX("SFX/BEANZZZ.wav", 0);
 	}
+	
 }
 
 void PlayScreen::Render() {
