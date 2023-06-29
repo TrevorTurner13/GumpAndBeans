@@ -3,6 +3,7 @@
 #include "StartScreen.h"
 #include "PlayScreen.h"
 #include "TutorialScreen.h"
+#include "AudioManager.h"
 
 class ScreenManager {
 private:
@@ -12,6 +13,7 @@ private:
 	Screens mCurrentScreen;
 
 	InputManager * mInput;
+	AudioManager* mAudio;
 
 	StartScreen * mStartScreen;
 	PlayScreen * mPlayScreen;
