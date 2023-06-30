@@ -1,6 +1,7 @@
 #ifndef __BEANZ_H
 #define __BEANZ_H
 #include "Player.h"
+#include "Gump.h"
 
 using namespace SDLFramework;
 
@@ -9,6 +10,7 @@ private:
 	InputManager* mInput;
 	AudioManager* mAudio;
 	Timer* mTimer;
+	Gump* mGump;
 
 	AnimatedGLTexture* mBeanz;
 	AnimatedGLTexture* mBeanzRight;
@@ -22,8 +24,10 @@ private:
 private:
 	void HandleMovement();
 public:
-	Beanz();
+	Beanz(Gump* gump);
 	~Beanz();
+
+	Vector2 DirectionToGump();
 
 	void Update() override;
 	void Render() override;
