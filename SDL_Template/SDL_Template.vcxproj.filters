@@ -138,6 +138,12 @@
     <ClCompile Include="Beanz.cpp">
       <Filter>Source Files\Galaga</Filter>
     </ClCompile>
+    <ClCompile Include="Wad.cpp">
+      <Filter>Source Files\Galaga</Filter>
+    </ClCompile>
+    <ClCompile Include="Rumpff.cpp">
+      <Filter>Source Files\Galaga</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEntity.h">
@@ -234,6 +240,12 @@
       <Filter>Header Files\Galaga</Filter>
     </ClInclude>
     <ClInclude Include="TopArea1.h">
+      <Filter>Header Files\Galaga</Filter>
+    </ClInclude>
+    <ClInclude Include="Wad.h">
+      <Filter>Header Files\Galaga</Filter>
+    </ClInclude>
+    <ClInclude Include="Rumpff.h">
       <Filter>Header Files\Galaga</Filter>
     </ClInclude>
   </ItemGroup>

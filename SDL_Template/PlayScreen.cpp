@@ -20,6 +20,19 @@ PlayScreen::PlayScreen() {
 	mBeanz->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mBeanz->Active(true);
 
+	delete mWad;
+	mWad = new Wad();
+	mWad->Parent(this);
+	mWad->Position(Graphics::SCREEN_WIDTH * 0.6f, Graphics::SCREEN_HEIGHT * 0.6f);
+	mWad->Active(true);
+
+	delete mRumpff;
+	mRumpff = new Rumpff();
+	mRumpff->Parent(this);
+	mRumpff->Position(Graphics::SCREEN_WIDTH * 0.3f, Graphics::SCREEN_HEIGHT * 0.6f);
+	mRumpff->Active(true);
+
+
 	mFloor = new GLTexture("floor tile 256x256.png", 0, 0, 256, 256);
 
 	mSpoon = new GLTexture("Utensils 256x256.png", 0, 0, 64, 304);
@@ -56,6 +69,9 @@ void PlayScreen::Update() {
 		mGump->Update();
 		mBeanz->Update();
 		mGump->HandleCollision(mGump, mBeanz);
+		mWad->Update();
+		mRumpff->Update();
+
 		if (mGump->CheckCollision(mBeanz)) {
 			
 			/*mGameOver = true;
@@ -85,6 +101,8 @@ void PlayScreen::Render() {
 	mFloor->RenderRepeatedTexture(mFloor, 256, 256);
 	mGump->Render();
 	mBeanz->Render();
+	mWad->Render();
+	mRumpff->Render();
 	if (mGameOver) {
 		mBeanzJumpScare->Render();
 	}

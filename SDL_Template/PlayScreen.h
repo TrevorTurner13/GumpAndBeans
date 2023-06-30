@@ -4,6 +4,8 @@
 #include "AudioManager.h"
 #include "Gump.h"
 #include "Beanz.h"
+#include "Wad.h"
+#include "Rumpff.h"
 
 class PlayScreen : public GameEntity {
 private:
@@ -14,6 +16,9 @@ private:
 
 	Gump * mGump;
 	Beanz* mBeanz;
+	Wad* mWad;
+	Rumpff* mRumpff;
+
 	Texture* mFloor;
 
 	GLTexture* mSpoon;
