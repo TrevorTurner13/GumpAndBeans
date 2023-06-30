@@ -5,42 +5,27 @@
 
 
 void Beanz::HandleMovement() {
-	
-	//mBeanz->Position(Local);
-	
 	if (mInput->KeyDown(SDL_SCANCODE_RIGHT)) {
 		Translate(Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
-		//Vector2 currentPos = Position();
 		mBeanz = mBeanzRight;
-		//mBeanz->Position(currentPos);
 	}
 	if (mInput->KeyDown(SDL_SCANCODE_LEFT)) {
 		Translate(-Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
-		//Vector2 currentPos = Position();
 		mBeanz = mBeanzLeft;
-		//mBeanz->Position(currentPos);
 	}
 	if (mInput->KeyDown(SDL_SCANCODE_UP)) {
 		Translate(-Vec2_Up * mMoveSpeed * mTimer->DeltaTime(), World);
-		//Vector2 currentPos = Position();
 		mBeanz = mBeanzUp;
-		//mBeanz->Position(currentPos);
 	}
 	if (mInput->KeyDown(SDL_SCANCODE_DOWN)) {
 		Translate(Vec2_Up * mMoveSpeed * mTimer->DeltaTime(), World);
-		//Vector2 currentPos = Position();
 		mBeanz = mBeanzDown;
-		//mBeanz->Position(currentPos);
-
 	}
 	if (!mInput->KeyDown(SDL_SCANCODE_RIGHT)&&!mInput->KeyDown(SDL_SCANCODE_LEFT)&&!mInput->KeyDown(SDL_SCANCODE_UP)&&!mInput->KeyDown(SDL_SCANCODE_DOWN)){
 		Vector2 direction = DirectionToGump();
 		Translate(direction * mMoveSpeed * 0.0005 * mTimer->DeltaTime(), World);
-
 	}
 	Vector2 currentPos = Position();
-	//mBeanz->Position(currentPos);
-
 }
 
 Vector2 Beanz::DirectionToGump() {
