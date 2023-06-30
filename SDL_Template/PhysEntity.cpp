@@ -103,10 +103,10 @@ bool PhysEntity::VerticallyAligned(PhysEntity* other) {
 		for (int i = 0; i < mColliders.size(); i++) {
 			for (int j = 0; j < other->mColliders.size(); j++) {
 				
-					float playerTop = mColliders[i]->Position().y - mColliders[i]->GetDimensions().y / 2 ;
-					float playerBottom = mColliders[i]->Position().y + mColliders[i]->GetDimensions().y / 2 ;
-					float objectTop = other->mColliders[j]->Position().y - other->mColliders[j]->GetDimensions().y / 2;
-					float objectBottom = other->mColliders[j]->Position().y + other->mColliders[j]->GetDimensions().y / 2 ;
+					float playerTop = mColliders[i]->Position().y - mColliders[i]->GetDimensions().y / 2 + offset;
+					float playerBottom = mColliders[i]->Position().y + mColliders[i]->GetDimensions().y / 2 - offset;
+					float objectTop = other->mColliders[j]->Position().y - other->mColliders[j]->GetDimensions().y / 2 + offset;
+					float objectBottom = other->mColliders[j]->Position().y + other->mColliders[j]->GetDimensions().y / 2 - offset;
 					if (playerBottom > objectTop && playerTop < objectBottom) {
 						return true;
 					}
@@ -139,19 +139,17 @@ bool PhysEntity::HorizontallyAligned(PhysEntity* other) {
 		for (int i = 0; i < mColliders.size(); i++) {
 			for (int j = 0; j < other->mColliders.size(); j++) {
 				
-				float playerLeft = mColliders[i]->Position().x - mColliders[i]->GetDimensions().x / 2 ;
-					float playerRight = mColliders[i]->Position().x + mColliders[i]->GetDimensions().x / 2 ;
-					float objectLeft = other->mColliders[j]->Position().x - other->mColliders[j]->GetDimensions().x / 2 ;
-					float objectRight = other->mColliders[j]->Position().x + other->mColliders[j]->GetDimensions().x / 2 ;
-
-					if (playerLeft < objectRight && playerRight > objectLeft) {
-						return true;
-					}
-					else {
-						return false;
-					}
-						
+				float playerLeft = mColliders[i]->Position().x - mColliders[i]->GetDimensions().x / 2 + offset;
+				float playerRight = mColliders[i]->Position().x + mColliders[i]->GetDimensions().x / 2 - offset;
+				float objectLeft = other->mColliders[j]->Position().x - other->mColliders[j]->GetDimensions().x / 2 + offset;
+				float objectRight = other->mColliders[j]->Position().x + other->mColliders[j]->GetDimensions().x / 2 - offset;
 				
+				if (playerLeft < objectRight && playerRight > objectLeft) {
+					return true;
+					}
+				else {
+					return false;
+				}
 			}
 		}
 	}
