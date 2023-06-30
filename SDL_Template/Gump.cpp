@@ -6,31 +6,21 @@
 void Gump::HandleMovement() {
 	if (mInput->KeyDown(SDL_SCANCODE_D)) {
 		Translate(Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
-		Vector2 currentPos = Position();
 		mGump = mGumpRight;
-		mGump->Position(currentPos);
 	}
 	if (mInput->KeyDown(SDL_SCANCODE_A)) {
 		Translate(-Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
-		Vector2 currentPos = Position();
 		mGump = mGumpLeft;
-		mGump->Position(currentPos);
 	}
 	if (mInput->KeyDown(SDL_SCANCODE_W)) {
 		Translate(-Vec2_Up * mMoveSpeed * mTimer->DeltaTime(), World);
-		Vector2 currentPos = Position();
 		mGump = mGumpUp;
-		mGump->Position(currentPos);
 	}
 	if (mInput->KeyDown(SDL_SCANCODE_S)) {
 		Translate(Vec2_Up * mMoveSpeed * mTimer->DeltaTime(), World);
-		Vector2 currentPos = Position();
 		mGump = mGumpDown;
-		mGump->Position(currentPos);
 	}
 
-	Vector2 pos = Position(Local);
-	Position(pos);
 }
 
 Gump::Gump() {
@@ -43,15 +33,20 @@ Gump::Gump() {
 	mGumpLeft = new AnimatedGLTexture("Gump 128x128.png", 0, 256, 128, 128, 7, 1.0f, Animation::Layouts::Horizontal);
 	mGumpUp = new AnimatedGLTexture("Gump 128x128.png", 0, 384, 128, 128, 7, 1.0f, Animation::Layouts::Horizontal);
 	mGumpDown = new AnimatedGLTexture("Gump 128x128.png", 0, 128, 128, 128, 7, 1.0f, Animation::Layouts::Horizontal);
-	
 	mGump = new AnimatedGLTexture("Gump 128x128.png", 0, 0, 128, 128, 7, 1.0f, Animation::Layouts::Horizontal);
+	
 	mGump->Parent(this);
+	mGumpRight->Parent(this);
+	mGumpLeft->Parent(this);
+	mGumpUp->Parent(this);
+	mGumpDown->Parent(this);
 
 	AddCollider(new BoxCollider(Vector2(40.0f, 40.0f)), Vector2(Local));
 	//AddCollider(new CircleCollider(20.0f), true);
 
-	mGumpStrength = 100;
+	mGumpStrength = 10;
 	SetStrength(mGumpStrength);
+
 	mMoveSpeed = 300.0f;
 	mMoveBounds = Vector2(0.0f, 800.0f);
 }

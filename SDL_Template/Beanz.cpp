@@ -25,7 +25,7 @@ void Beanz::HandleMovement() {
 		Vector2 direction = DirectionToGump();
 		Translate(direction * mMoveSpeed * 0.0005 * mTimer->DeltaTime(), World);
 	}
-	Vector2 currentPos = Position();
+
 }
 
 Vector2 Beanz::DirectionToGump() {
