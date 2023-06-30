@@ -18,7 +18,8 @@ private:
 	AnimatedGLTexture* mBeanzUp;
 	AnimatedGLTexture* mBeanzDown;
 
-	int mBeanzStrength;
+	int mBeanzVerticalStrength;
+	int mBeanzHorizontalStrength;
 
 	Vector2 mLastPosition;
 

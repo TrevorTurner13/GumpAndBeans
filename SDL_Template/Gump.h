@@ -19,7 +19,8 @@ private:
 	AnimatedGLTexture* mGumpUp;
 	AnimatedGLTexture* mGumpDown;
 
-	int mGumpStrength;
+	int mGumpVerticalStrength;
+	int mGumpHorizontalStrength;
 
 	Vector2 mLastPosition;
 

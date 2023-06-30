@@ -30,14 +30,16 @@ bool PhysEntity::IgnoreCollisions() {
 	return false;
 }
 
-void PhysEntity::SetStrength(int strength) {
-	mStrength = strength;
+void PhysEntity::SetStrength(int vertStrength, int horizStrength) {
+	mVerticalStrength = vertStrength;
+	mHorizontalStrength = horizStrength;
 }
 
 PhysEntity::PhysEntity() {
 	mBroadPhaseCollider = nullptr;
 	mId = 0;
-	mStrength = 0;
+	mVerticalStrength = 0;
+	mHorizontalStrength = 0;
 }
 
 PhysEntity::~PhysEntity() {
@@ -156,8 +158,51 @@ bool PhysEntity::HorizontallyAligned(PhysEntity* other) {
 	return false;
 }
 
+void PhysEntity::ResolveHorizontalPushCollision(PhysEntity* other) {
+	for (int i = 0; i < mColliders.size(); i++) {
+		for (int j = 0; j < other->mColliders.size(); j++) {
+
+			if (VerticallyAligned(other)) {
+				if (mColliders[i]->Position().x < other->mColliders[j]->Position().x) {
+					float pushback = (mColliders[i]->Position().x + mColliders[i]->GetDimensions().x / 2) - (other->mColliders[j]->Position().x - other->mColliders[j]->GetDimensions().x / 2);
+					Position(Position().x - pushback, Position().y);
+				}
+				else {
+					float pushback = (other->mColliders[j]->Position().x + other->mColliders[j]->GetDimensions().x / 2) - (mColliders[i]->Position().x - mColliders[i]->GetDimensions().x / 2);
+					Position(Position().x + pushback, Position().y);
+				}
+			}
+		}
+	}
+}
+
+void PhysEntity::ResolveVerticalPushCollision(PhysEntity* other) {
+	for (int i = 0; i < mColliders.size(); i++) {
+		for (int j = 0; j < other->mColliders.size(); j++) {
+			if (HorizontallyAligned(other)) {
+				if (mColliders[i]->Position().y < other->mColliders[j]->Position().y) {
+					float pushback = (mColliders[i]->Position().y + mColliders[i]->GetDimensions().y / 2) - (other->mColliders[j]->Position().y - other->mColliders[i]->GetDimensions().y / 2);
+					Position(Position().x, Position().y - pushback);
+				}
+				else {
+					float pushback = (other->mColliders[j]->Position().y + other->mColliders[j]->GetDimensions().y / 2) - (mColliders[i]->Position().y - mColliders[i]->GetDimensions().y / 2);
+					Position(Position().x, Position().y + pushback);
+				}
+			}
+		}
+	}
+}
+
 void PhysEntity::ResolveCollision(PhysEntity* first, PhysEntity* other) {
-	if (GetStrength() > other->GetStrength()) {
+	if (GetHorizontalStrength() > other->GetHorizontalStrength() && GetVerticalStrength() < other->GetVerticalStrength()) {
+		other->ResolveHorizontalPushCollision(first);
+		ResolveVerticalPushCollision(other);
+	}
+	else if (GetVerticalStrength() > other->GetVerticalStrength() && GetHorizontalStrength() < other->GetHorizontalStrength()) {
+		other->ResolveVerticalPushCollision(first);
+		ResolveHorizontalPushCollision(other);
+	}
+	else if (GetVerticalStrength() > other->GetVerticalStrength() && GetHorizontalStrength() > other->GetHorizontalStrength()) {
 		other->ResolveCollision(other, first);
 	}
 	else {
@@ -188,6 +233,7 @@ void PhysEntity::ResolveCollision(PhysEntity* first, PhysEntity* other) {
 		}
 	}
 }
+
 
 void PhysEntity::HandleCollision(PhysEntity* first, PhysEntity* other) {
 	if (CheckCollision(other)) {
