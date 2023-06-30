@@ -233,6 +233,9 @@
     <ClInclude Include="Beanz.h">
       <Filter>Header Files\Galaga</Filter>
     </ClInclude>
+    <ClInclude Include="TopArea1.h">
+      <Filter>Header Files\Galaga</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="vs.shader">
