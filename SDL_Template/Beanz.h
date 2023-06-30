@@ -5,7 +5,7 @@
 
 using namespace SDLFramework;
 
-class Beanz : public PhysEntity {
+class Beanz : public Player {
 private:
 	InputManager* mInput;
 	AudioManager* mAudio;
@@ -17,6 +17,10 @@ private:
 	AnimatedGLTexture* mBeanzLeft;
 	AnimatedGLTexture* mBeanzUp;
 	AnimatedGLTexture* mBeanzDown;
+
+	int mBeanzStrength;
+
+	Vector2 mLastPosition;
 
 	float mMoveSpeed;
 	Vector2 mMoveBounds;

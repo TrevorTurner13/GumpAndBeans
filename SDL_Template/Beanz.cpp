@@ -57,7 +57,8 @@ Beanz::Beanz(Gump* gump) {
 	//AddCollider(new CircleCollider(50.0f), false);
 	AddCollider(new BoxCollider(Vector2(50.0f, 128.0f)), Vector2(Local));
 	
-	mBeanz->Position(Vec2_Zero);
+	mBeanzStrength = 50;
+	SetStrength(mBeanzStrength);
 
 	mMoveSpeed = 200.0f;
 	mMoveBounds = Vector2(0.0f, 800.0f);

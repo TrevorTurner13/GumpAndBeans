@@ -22,6 +22,10 @@ public:
 
 	virtual Vector2 GetFurthestPoint() = 0;
 
+	Vector2 GetDimensions() {
+		return mDebugTexture->ScaledDimensions();
+	}
+
 	ColliderType GetType();
 
 	virtual void Render() override;

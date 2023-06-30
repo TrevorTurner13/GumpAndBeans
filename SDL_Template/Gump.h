@@ -7,7 +7,7 @@
 
 using namespace SDLFramework;
 
-class Gump : public PhysEntity {
+class Gump : public Player {
 private:
 	InputManager* mInput;
 	AudioManager* mAudio;
@@ -18,6 +18,10 @@ private:
 	AnimatedGLTexture* mGumpLeft;
 	AnimatedGLTexture* mGumpUp;
 	AnimatedGLTexture* mGumpDown;
+
+	int mGumpStrength;
+
+	Vector2 mLastPosition;
 
 	float mMoveSpeed;
 	Vector2 mMoveBounds;

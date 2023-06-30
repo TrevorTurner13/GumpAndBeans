@@ -15,6 +15,8 @@ protected:
 
 	virtual bool IgnoreCollisions();
 
+	int mStrength;
+
 public:
 	PhysEntity();
 	virtual ~PhysEntity();
@@ -22,6 +24,13 @@ public:
 	unsigned long GetId();
 
 	bool CheckCollision(PhysEntity * other);
+	bool VerticallyAligned(PhysEntity* other);
+	bool HorizontallyAligned(PhysEntity* other);
+	void ResolveCollision(PhysEntity* first, PhysEntity* other);
+	void HandleCollision(PhysEntity* first, PhysEntity* other);
+
+	void SetStrength(int strength);
+	int GetStrength() { return mStrength; }
 
 	virtual void Hit(PhysEntity * other) { }
 

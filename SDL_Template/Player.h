@@ -43,6 +43,8 @@ public:
 
 	void AddScore(int change);
 
+	
+
 	// Inherited from PhysEntity
 	bool IgnoreCollisions() override;
 	void Hit(PhysEntity* other) override;

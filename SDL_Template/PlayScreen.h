@@ -16,6 +16,8 @@ private:
 	Beanz* mBeanz;
 	Texture* mFloor;
 
+	GLTexture* mSpoon;
+
 	Texture* mBeanzJumpScare;
 	float mJumpScareTimer;
 	float mJumpScareTotalTime;
@@ -26,6 +28,12 @@ private:
 public:
 	PlayScreen();
 	~PlayScreen();
+
+	bool CheckGumpCollision(Gump* player, GLTexture* object);
+	bool CheckBeanzCollision(Beanz* player, GLTexture* object);
+	void ResolvePushCollision(Player* player, GLTexture* block);
+	bool VerticallyAligned(Player* player, GLTexture* object);
+	bool HorizontallyAligned(Player* player, GLTexture* object);
 
 	void Update() override;
 	void Render() override;

@@ -47,11 +47,11 @@ Gump::Gump() {
 	mGump = new AnimatedGLTexture("Gump 128x128.png", 0, 0, 128, 128, 7, 1.0f, Animation::Layouts::Horizontal);
 	mGump->Parent(this);
 
-	//AddCollider(new BoxCollider(Vector2(40.0f, 40.0f)), Vector2(Local));
-	AddCollider(new CircleCollider(20.0f), true);
+	AddCollider(new BoxCollider(Vector2(40.0f, 40.0f)), Vector2(Local));
+	//AddCollider(new CircleCollider(20.0f), true);
 
-	
-
+	mGumpStrength = 100;
+	SetStrength(mGumpStrength);
 	mMoveSpeed = 300.0f;
 	mMoveBounds = Vector2(0.0f, 800.0f);
 }

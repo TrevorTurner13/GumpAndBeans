@@ -30,9 +30,14 @@ bool PhysEntity::IgnoreCollisions() {
 	return false;
 }
 
+void PhysEntity::SetStrength(int strength) {
+	mStrength = strength;
+}
+
 PhysEntity::PhysEntity() {
 	mBroadPhaseCollider = nullptr;
 	mId = 0;
+	mStrength = 0;
 }
 
 PhysEntity::~PhysEntity() {
@@ -77,6 +82,119 @@ bool PhysEntity::CheckCollision(PhysEntity * other) {
 	}
 
 	return false;
+}
+
+bool PhysEntity::VerticallyAligned(PhysEntity* other) {
+	float offset = 10.0f;
+	if (IgnoreCollisions() || other->IgnoreCollisions()) {
+		return false;
+	}
+
+	bool narrowPhaseCheck = false;
+
+	if (mBroadPhaseCollider && other->mBroadPhaseCollider) {
+		narrowPhaseCheck = ColliderVsColliderCheck(mBroadPhaseCollider, other->mBroadPhaseCollider);
+	}
+	else {
+		narrowPhaseCheck = true;
+	}
+
+	if (narrowPhaseCheck) {
+		for (int i = 0; i < mColliders.size(); i++) {
+			for (int j = 0; j < other->mColliders.size(); j++) {
+				
+					float playerTop = mColliders[i]->Position().y - mColliders[i]->GetDimensions().y / 2 ;
+					float playerBottom = mColliders[i]->Position().y + mColliders[i]->GetDimensions().y / 2 ;
+					float objectTop = other->mColliders[j]->Position().y - other->mColliders[j]->GetDimensions().y / 2;
+					float objectBottom = other->mColliders[j]->Position().y + other->mColliders[j]->GetDimensions().y / 2 ;
+					if (playerBottom > objectTop && playerTop < objectBottom) {
+						return true;
+					}
+					else {
+						return false;
+					}
+				}
+			
+		}
+	}
+	return false;
+}
+
+bool PhysEntity::HorizontallyAligned(PhysEntity* other) {
+	float offset = 10.0f;
+	if (IgnoreCollisions() || other->IgnoreCollisions()) {
+		return false;
+	}
+
+	bool narrowPhaseCheck = false;
+
+	if (mBroadPhaseCollider && other->mBroadPhaseCollider) {
+		narrowPhaseCheck = ColliderVsColliderCheck(mBroadPhaseCollider, other->mBroadPhaseCollider);
+	}
+	else {
+		narrowPhaseCheck = true;
+	}
+
+	if (narrowPhaseCheck) {
+		for (int i = 0; i < mColliders.size(); i++) {
+			for (int j = 0; j < other->mColliders.size(); j++) {
+				
+				float playerLeft = mColliders[i]->Position().x - mColliders[i]->GetDimensions().x / 2 ;
+					float playerRight = mColliders[i]->Position().x + mColliders[i]->GetDimensions().x / 2 ;
+					float objectLeft = other->mColliders[j]->Position().x - other->mColliders[j]->GetDimensions().x / 2 ;
+					float objectRight = other->mColliders[j]->Position().x + other->mColliders[j]->GetDimensions().x / 2 ;
+
+					if (playerLeft < objectRight && playerRight > objectLeft) {
+						return true;
+					}
+					else {
+						return false;
+					}
+						
+				
+			}
+		}
+	}
+	return false;
+}
+
+void PhysEntity::ResolveCollision(PhysEntity* first, PhysEntity* other) {
+	if (GetStrength() > other->GetStrength()) {
+		other->ResolveCollision(other, first);
+	}
+	else {
+		for (int i = 0; i < mColliders.size(); i++) {
+			for (int j = 0; j < other->mColliders.size(); j++) {
+
+				if (VerticallyAligned(other)) {
+					if (mColliders[i]->Position().x < other->mColliders[j]->Position().x) {
+						float pushback = (mColliders[i]->Position().x + mColliders[i]->GetDimensions().x / 2) - (other->mColliders[j]->Position().x - other->mColliders[j]->GetDimensions().x / 2);
+						Position(Position().x - pushback, Position().y);
+					}
+					else {
+						float pushback = (other->mColliders[j]->Position().x + other->mColliders[j]->GetDimensions().x / 2) - (mColliders[i]->Position().x - mColliders[i]->GetDimensions().x / 2);
+						Position(Position().x + pushback, Position().y);
+					}
+				}
+				if (HorizontallyAligned(other)) {
+					if (mColliders[i]->Position().y < other->mColliders[j]->Position().y) {
+						float pushback = (mColliders[i]->Position().y + mColliders[i]->GetDimensions().y / 2) - (other->mColliders[j]->Position().y - other->mColliders[i]->GetDimensions().y / 2);
+						Position(Position().x, Position().y - pushback);
+					}
+					else {
+						float pushback = (other->mColliders[j]->Position().y + other->mColliders[j]->GetDimensions().y / 2) - (mColliders[i]->Position().y - mColliders[i]->GetDimensions().y / 2);
+						Position(Position().x, Position().y + pushback);
+					}
+				}
+			}
+		}
+	}
+}
+
+void PhysEntity::HandleCollision(PhysEntity* first, PhysEntity* other) {
+	if (CheckCollision(other)) {
+		ResolveCollision(first, other);
+	}
 }
 
 void PhysEntity::Render() {
