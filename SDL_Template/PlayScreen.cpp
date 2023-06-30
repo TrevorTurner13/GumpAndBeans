@@ -15,7 +15,7 @@ PlayScreen::PlayScreen() {
 	mGump->Active(true);
 
 	delete mBeanz;
-	mBeanz = new Beanz();
+	mBeanz = new Beanz(mGump);
 	mBeanz->Parent(this);
 	mBeanz->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mBeanz->Active(true);
