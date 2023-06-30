@@ -28,7 +28,7 @@ PlayScreen::PlayScreen() {
 	
 	mJumpScareTotalTime = 1.25f;
 	mJumpScareTimer = 0.0f;
-	mJumpScareScale += 0.5f;
+	mJumpScareScale = 0.0f;
 	mJumpScareDone = false;
 
 }
