@@ -44,11 +44,9 @@ Gump::Gump() {
 	AddCollider(new BoxCollider(Vector2(40.0f, 40.0f)), Vector2(Local));
 	//AddCollider(new CircleCollider(20.0f), true);
 
-	mGumpVerticalStrength = 100;
+	mGumpVerticalStrength = 10;
 	mGumpHorizontalStrength = 10;
 	SetStrength(mGumpVerticalStrength, mGumpHorizontalStrength);
-	
-
 
 	mMoveSpeed = 300.0f;
 	mMoveBounds = Vector2(0.0f, 800.0f);

@@ -24,6 +24,8 @@ private:
 	GLTexture* mSpoon;
 
 	Texture* mBeanzJumpScare;
+	Texture* mWadJumpScare;
+	Texture* mRumpffJumpScare;
 	float mJumpScareTimer;
 	float mJumpScareTotalTime;
 	float mJumpScareScale;
@@ -33,12 +35,6 @@ private:
 public:
 	PlayScreen();
 	~PlayScreen();
-
-	bool CheckGumpCollision(Gump* player, GLTexture* object);
-	bool CheckBeanzCollision(Beanz* player, GLTexture* object);
-	void ResolvePushCollision(Player* player, GLTexture* block);
-	bool VerticallyAligned(Player* player, GLTexture* object);
-	bool HorizontallyAligned(Player* player, GLTexture* object);
 
 	void Update() override;
 	void Render() override;
