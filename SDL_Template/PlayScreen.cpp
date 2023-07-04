@@ -98,11 +98,12 @@ void PlayScreen::Update() {
 		if (mGump->CheckCollision(mWad)) {
 			mGameOver = true;
 			mAudio->PauseMusic();
+			mAudio->PlaySFX("SFX/EW.wav", 0);
 		}
 		if (mGump->CheckCollision(mRumpff)) {
 			mGameOver = true;
 			mAudio->PauseMusic();
-			mAudio->PlaySFX("SFX/EW.wav", 0);
+			
 		}
 	}
 	else {
