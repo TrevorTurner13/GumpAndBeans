@@ -6,6 +6,7 @@
 #include "Beanz.h"
 #include "Wad.h"
 #include "Rumpff.h"
+#include "Object.h"
 
 class PlayScreen : public GameEntity {
 private:
@@ -21,7 +22,9 @@ private:
 
 	Texture* mFloor;
 
-	GLTexture* mSpoon;
+	Object* mSpoon;
+	Object* mWall;
+	Object* mSugarCube;
 
 	Texture* mBeanzJumpScare;
 	Texture* mWadJumpScare;

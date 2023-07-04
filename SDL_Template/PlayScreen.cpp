@@ -1,7 +1,5 @@
 #include "PlayScreen.h"
 
-
-
 PlayScreen::PlayScreen() {
 	mTimer = Timer::Instance();
 	mAudio = AudioManager::Instance();
@@ -34,7 +32,14 @@ PlayScreen::PlayScreen() {
 
 	mFloor = new GLTexture("floor tile 256x256.png", 0, 0, 256, 256);
 
-	mSpoon = new GLTexture("Utensils 256x256.png", 0, 0, 64, 304);
+	mSpoon = new Object(new GLTexture("Utensils 256x256.png", 0, 0, 64, 304), new BoxCollider(Vector2(30.0f, 275.0f)), 30, 30);
+	mSpoon->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
+
+	mWall = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256),  new BoxCollider(Vector2(100.0f,256.0f)), 100, 100);
+	mWall->Position(800.0f, 200.0f);
+
+	mSugarCube = new Object(new GLTexture("sugar cube 64x64.png", 0, 0, 64, 64), new BoxCollider(Vector2(64.0f, 64.0f)), 30, 30);
+	mSugarCube->Position(200.0f, 500.0f);
 
 	mBeanzJumpScare = new GLTexture("JumpScareBeanz.png", 0, 0, 128, 172);
 	mBeanzJumpScare->Parent(this);
@@ -72,9 +77,18 @@ void PlayScreen::Update() {
 	if (!mGameOver) {
 		mGump->Update();
 		mBeanz->Update();
-		//mGump->HandleCollision(mGump, mBeanz);
 		mWad->Update();
 		mRumpff->Update();
+
+		//Handle Collision
+
+		mGump->HandleCollision(mGump, mSugarCube);
+		mGump->HandleCollision(mGump, mWall);
+		mGump->HandleCollision(mGump, mSpoon);
+
+		mBeanz->HandleCollision(mBeanz, mSugarCube);
+		mBeanz->HandleCollision(mBeanz, mWall);
+		mBeanz->HandleCollision(mBeanz, mSpoon);
 
 		if (mGump->CheckCollision(mBeanz)) {
 			mGameOver = true;
@@ -140,6 +154,9 @@ void PlayScreen::Render() {
 		mBeanz->Render();
 		mWad->Render();
 		mRumpff->Render();
+		mWall->Render();
+		mSpoon->Render();
+		mSugarCube->Render();
 	if (mGameOver) {
 		if (mGump->CheckCollision(mBeanz)) {
 			mBeanzJumpScare->Render();

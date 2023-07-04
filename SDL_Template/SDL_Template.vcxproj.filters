@@ -144,6 +144,9 @@
     <ClCompile Include="Rumpff.cpp">
       <Filter>Source Files\Galaga</Filter>
     </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source Files\Galaga</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEntity.h">
@@ -246,6 +249,9 @@
       <Filter>Header Files\Galaga</Filter>
     </ClInclude>
     <ClInclude Include="Rumpff.h">
+      <Filter>Header Files\Galaga</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
       <Filter>Header Files\Galaga</Filter>
     </ClInclude>
   </ItemGroup>

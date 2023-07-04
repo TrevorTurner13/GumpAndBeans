@@ -22,8 +22,6 @@ private:
 
 	AnimatedGLTexture* mDeathAnimation;
 
-	
-
 	static const int MAX_BULLETS = 2;
 	//Bullet* mBullets[MAX_BULLETS];
 
@@ -42,8 +40,6 @@ public:
 	int Lives();
 
 	void AddScore(int change);
-
-	
 
 	// Inherited from PhysEntity
 	bool IgnoreCollisions() override;

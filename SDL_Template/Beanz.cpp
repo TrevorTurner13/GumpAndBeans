@@ -27,11 +27,10 @@ void Beanz::HandleMovement() {
 		if (direction.x < 0) {
 			mBeanz = mBeanzLeft;
 		}
-		 if {
+		else {
 			mBeanz = mBeanzRight;
 		}
 	}
-
 }
 
 Vector2 Beanz::DirectionToGump() {
@@ -68,9 +67,7 @@ Beanz::Beanz(Gump* gump) {
 	SetStrength(mBeanzVerticalStrength, mBeanzHorizontalStrength);
 
 	mMoveSpeed = 200.0f;
-	mMoveBounds = Vector2(0.0f, 800.0f);
-
-	
+	mMoveBounds = Vector2(0.0f, 800.0f);	
 }
 
 Beanz::~Beanz() {
