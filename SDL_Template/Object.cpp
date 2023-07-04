@@ -4,7 +4,6 @@ Object::Object(GLTexture* texture, BoxCollider* collider, int vertStrength, int 
 	mObjectTexture = texture;
 	mObjectTexture->Parent(this);
 
-
 	AddCollider(collider, Vector2(Local));
 
 	mObjectVerticalStrength = vertStrength;
@@ -13,6 +12,8 @@ Object::Object(GLTexture* texture, BoxCollider* collider, int vertStrength, int 
 }
 
 Object::~Object() {
+	delete mObjectTexture;
+	mObjectTexture = nullptr;
 
 }
 
