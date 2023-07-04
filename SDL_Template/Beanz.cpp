@@ -24,6 +24,12 @@ void Beanz::HandleMovement() {
 	if (!mInput->KeyDown(SDL_SCANCODE_RIGHT)&&!mInput->KeyDown(SDL_SCANCODE_LEFT)&&!mInput->KeyDown(SDL_SCANCODE_UP)&&!mInput->KeyDown(SDL_SCANCODE_DOWN)){
 		Vector2 direction = DirectionToGump();
 		Translate(direction * mMoveSpeed * 0.0005 * mTimer->DeltaTime(), World);
+		if (direction.x < 0) {
+			mBeanz = mBeanzLeft;
+		}
+		 if {
+			mBeanz = mBeanzRight;
+		}
 	}
 
 }
