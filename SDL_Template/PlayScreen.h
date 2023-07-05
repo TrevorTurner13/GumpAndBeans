@@ -6,7 +6,7 @@
 #include "Beanz.h"
 #include "Wad.h"
 #include "Rumpff.h"
-#include "Object.h"
+
 #include "Level1.h"
 
 class PlayScreen : public GameEntity {

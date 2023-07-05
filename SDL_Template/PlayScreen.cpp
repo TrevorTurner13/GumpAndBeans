@@ -4,7 +4,7 @@ PlayScreen::PlayScreen() {
 	mTimer = Timer::Instance();
 	mAudio = AudioManager::Instance();
 
-	mLevel1 = new Level1;
+	
 
 	mGameOver = false;
 	
@@ -21,6 +21,8 @@ PlayScreen::PlayScreen() {
 	mBeanz->Parent(this);
 	mBeanz->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mBeanz->Active(true);
+
+	mLevel1 = new Level1(mGump,mBeanz);
 
 	delete mWad;
 	mWad = new Wad();
@@ -81,12 +83,13 @@ void PlayScreen::Update() {
 	if (!mGameOver) {
 		mGump->Update();
 		mBeanz->Update();
-		mWad->Update();
-		mRumpff->Update();
+		
 
 		
 		switch (mLevel) {
 		case 0:
+			mWad->Update();
+			mRumpff->Update();
 			mGump->HandleCollision(mGump, mSugarCube);
 			mGump->HandleCollision(mGump, mWall);
 			mGump->HandleCollision(mGump, mSpoon);
@@ -94,10 +97,21 @@ void PlayScreen::Update() {
 			mBeanz->HandleCollision(mBeanz, mSugarCube);
 			mBeanz->HandleCollision(mBeanz, mWall);
 			mBeanz->HandleCollision(mBeanz, mSpoon);
+			if (mGump->CheckCollision(mWad)) {
+				mGameOver = true;
+				mAudio->PauseMusic();
+				mAudio->PlaySFX("SFX/EW.wav", 0);
+			}
+			if (mGump->CheckCollision(mRumpff)) {
+				mGameOver = true;
+				mAudio->PauseMusic();
+
+			}
 			break;
 
 		case 1:
 			mLevel1->Update();
+
 			break;
 		}
 
@@ -106,19 +120,12 @@ void PlayScreen::Update() {
 			mAudio->PauseMusic();
 			mAudio->PlaySFX("SFX/BEANZZZ.wav", 0);	
 		}
-		if (mGump->CheckCollision(mWad)) {
-			mGameOver = true;
-			mAudio->PauseMusic();
-			mAudio->PlaySFX("SFX/EW.wav", 0);
-		}
-		if (mGump->CheckCollision(mRumpff)) {
-			mGameOver = true;
-			mAudio->PauseMusic();
-			
-		}
+		
 		if (mGump->Position().x > Graphics::SCREEN_WIDTH && mBeanz->Position().x > Graphics::SCREEN_WIDTH) {
 			// Increase level by 1
 			mLevel++;
+			mGump->Position(0.0f, mGump->Position().y);
+			mBeanz->Position(50.0f, mBeanz->Position().y);
 		}
 		
 	}
@@ -177,6 +184,8 @@ void PlayScreen::Render() {
 		mSugarCube->Render();
 	}
 	if (mLevel == 1) {
+		mGump->Render();
+		mBeanz->Render();
 		mLevel1->Render();
 	}
 
