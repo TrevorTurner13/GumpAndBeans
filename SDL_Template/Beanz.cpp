@@ -8,29 +8,35 @@ void Beanz::HandleMovement() {
 	if (mInput->KeyDown(SDL_SCANCODE_RIGHT)) {
 		Translate(Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
 		mBeanz = mBeanzRight;
+		mMovingRight = true;
 	}
 	if (mInput->KeyDown(SDL_SCANCODE_LEFT)) {
 		Translate(-Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
 		mBeanz = mBeanzLeft;
+		mMovingRight = false;
 	}
 	if (mInput->KeyDown(SDL_SCANCODE_UP)) {
 		Translate(-Vec2_Up * mMoveSpeed * mTimer->DeltaTime(), World);
 		mBeanz = mBeanzUp;
+		mMovingUp = true;
 	}
 	if (mInput->KeyDown(SDL_SCANCODE_DOWN)) {
 		Translate(Vec2_Up * mMoveSpeed * mTimer->DeltaTime(), World);
 		mBeanz = mBeanzDown;
+		mMovingUp = false;
 	}
-	if (!mInput->KeyDown(SDL_SCANCODE_RIGHT)&&!mInput->KeyDown(SDL_SCANCODE_LEFT)&&!mInput->KeyDown(SDL_SCANCODE_UP)&&!mInput->KeyDown(SDL_SCANCODE_DOWN)){
-		Vector2 direction = DirectionToGump();
-		Translate(direction * mMoveSpeed * 0.0005 * mTimer->DeltaTime(), World);
-		if (direction.x < 0) {
-			mBeanz = mBeanzLeft;
-		}
-		else {
-			mBeanz = mBeanzRight;
-		}
-	}
+	//if (!mInput->KeyDown(SDL_SCANCODE_RIGHT)&&!mInput->KeyDown(SDL_SCANCODE_LEFT)&&!mInput->KeyDown(SDL_SCANCODE_UP)&&!mInput->KeyDown(SDL_SCANCODE_DOWN)){
+	//	Vector2 direction = DirectionToGump();
+	//	Translate(direction * mMoveSpeed * 0.0005 * mTimer->DeltaTime(), World);
+	//	if (direction.x < 0) {
+	//		mBeanz = mBeanzLeft;
+	//		mMovingRight = false;
+	//	}
+	//	else {
+	//		mBeanz = mBeanzRight;
+	//		mMovingRight = true;
+	//	}
+	//}
 }
 
 Vector2 Beanz::DirectionToGump() {

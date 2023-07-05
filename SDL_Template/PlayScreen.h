@@ -12,8 +12,10 @@ class PlayScreen : public GameEntity {
 private:
 	Timer * mTimer;
 	AudioManager * mAudio;
+	InputManager* mInput;
 
 	bool mGameOver;
+	bool mTurnSpoon;
 
 	Gump * mGump;
 	Beanz* mBeanz;
@@ -23,6 +25,7 @@ private:
 	Texture* mFloor;
 
 	Object* mSpoon;
+	Object* mSpoonTurned;
 	Object* mWall;
 	Object* mSugarCube;
 
@@ -38,6 +41,9 @@ private:
 public:
 	PlayScreen();
 	~PlayScreen();
+
+	void CollisionHandler();
+	void JumpScareHandler();
 
 	void Update() override;
 	void Render() override;

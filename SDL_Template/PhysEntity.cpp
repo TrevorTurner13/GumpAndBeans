@@ -2,6 +2,7 @@
 #include "PhysicsHelper.h"
 #include "PhysicsManager.h"
 
+
 void PhysEntity::AddCollider(Collider * collider, Vector2 localPos) {
 	collider->Parent(this);
 	collider->Position(localPos);

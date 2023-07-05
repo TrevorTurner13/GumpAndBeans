@@ -18,6 +18,9 @@ private:
 	AnimatedGLTexture* mBeanzUp;
 	AnimatedGLTexture* mBeanzDown;
 
+	bool mMovingRight;
+	bool mMovingUp;
+
 	int mBeanzVerticalStrength;
 	int mBeanzHorizontalStrength;
 
@@ -33,6 +36,8 @@ public:
 	~Beanz();
 
 	Vector2 DirectionToGump();
+	bool GetMovingRight() { return mMovingRight; }
+	bool GetMovingUp() { return mMovingUp; }
 
 	void Update() override;
 	void Render() override;
