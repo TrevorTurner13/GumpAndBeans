@@ -6,11 +6,13 @@
 #include "Beanz.h"
 #include "Wad.h"
 #include "Rumpff.h"
-
+#include "Object.h"
+#include "Level0.h"
 #include "Level1.h"
 
 class PlayScreen : public GameEntity {
 private:
+	Level0* mLevel0;
 	Level1* mLevel1;
 	
 	Timer * mTimer;
@@ -18,7 +20,9 @@ private:
 	InputManager* mInput;
 
 	bool mGameOver;
-	bool mTurnSpoon;
+	bool mGameOverBeanz;
+	bool mGameOverWad;
+	bool mGameOverRumpff;
 
 	Gump * mGump;
 	Beanz* mBeanz;
@@ -26,11 +30,6 @@ private:
 	Rumpff* mRumpff;
 
 	Texture* mFloor;
-
-	Object* mSpoon;
-	Object* mSpoonTurned;
-	Object* mWall;
-	Object* mSugarCube;
 
 	Texture* mBeanzJumpScare;
 	Texture* mWadJumpScare;
@@ -41,7 +40,6 @@ private:
 	bool mJumpScareDone;
 
 	int mLevel;
-
 
 public:
 	PlayScreen();

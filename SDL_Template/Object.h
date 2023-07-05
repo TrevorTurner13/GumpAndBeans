@@ -1,5 +1,5 @@
 #ifndef __OBJECT_H	
-#define __DEFINE_H
+#define __OBJECT_H
 #include "PhysEntity.h"
 #include "BoxCollider.h"
 #include "CircleCollider.h"

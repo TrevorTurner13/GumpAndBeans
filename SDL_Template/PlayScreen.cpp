@@ -5,9 +5,10 @@ PlayScreen::PlayScreen() {
 	mAudio = AudioManager::Instance();
 	mInput = InputManager::Instance();
 
-	
-
 	mGameOver = false;
+	mGameOverBeanz = false;
+	mGameOverWad = false;
+	mGameOverRumpff = false;
 	
 	mLevel = 0;
 
@@ -23,7 +24,6 @@ PlayScreen::PlayScreen() {
 	mBeanz->Position(Graphics::SCREEN_WIDTH * 0.2f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mBeanz->Active(true);
 
-	mLevel1 = new Level1(mGump,mBeanz);
 
 	delete mWad;
 	mWad = new Wad();
@@ -37,22 +37,10 @@ PlayScreen::PlayScreen() {
 	mRumpff->Position(Graphics::SCREEN_WIDTH * 0.3f, Graphics::SCREEN_HEIGHT * 0.6f);
 	mRumpff->Active(true);
 
+	mLevel0 = new Level0(mGump, mBeanz, mWad, mRumpff);
+	mLevel1 = new Level1(mGump, mBeanz);
+
 	mFloor = new GLTexture("floor tile 256x256.png", 0, 0, 256, 256);
-
-	mSpoon = new Object(new GLTexture("Utensils 256x256.png", 0, 0, 64, 304), new BoxCollider(Vector2(30.0f, 275.0f)), 60, 60);
-	mSpoon->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
-
-	mTurnSpoon = false;
-
-	mSpoonTurned = new Object(new GLTexture("Utensils 256x256.png", 0, 0, 64, 304), new BoxCollider(Vector2(275.0f, 30.0f)), 60, 60);
-	mSpoonTurned->RotateTexture();
-	mSpoonTurned->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
-
-	mWall = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256),  new BoxCollider(Vector2(100.0f,256.0f)), 100, 100);
-	mWall->Position(800.0f, 200.0f);
-
-	mSugarCube = new Object(new GLTexture("sugar cube 64x64.png", 0, 0, 64, 64), new BoxCollider(Vector2(64.0f, 64.0f)), 30, 30);
-	mSugarCube->Position(200.0f, 500.0f);
 
 	mBeanzJumpScare = new GLTexture("JumpScareBeanz.png", 0, 0, 128, 172);
 	mBeanzJumpScare->Parent(this);
@@ -88,16 +76,26 @@ PlayScreen::~PlayScreen() {
 
 void PlayScreen::Update() {
 	if (!mGameOver) {
-		mGump->Update();
-		mBeanz->Update();
-		
 
-		//Handle Collision
-		
-		
 		switch (mLevel) {
 		case 0:
-			CollisionHandler();
+			mLevel0->Update();
+			if (mGump->CheckCollision(mBeanz)) {
+				mGameOver = true;
+				mAudio->PauseMusic();
+				mAudio->PlaySFX("SFX/BEANZZZ.wav", 0);
+			}
+
+			if (mGump->CheckCollision(mWad)) {
+				mGameOver = true;
+				mAudio->PauseMusic();
+				mAudio->PlaySFX("SFX/EW.wav", 0);
+			}
+
+			if (mGump->CheckCollision(mRumpff)) {
+				mGameOver = true;
+				mAudio->PauseMusic();
+			}
 			break;
 
 		case 1:
@@ -106,12 +104,6 @@ void PlayScreen::Update() {
 			break;
 		}
 
-		if (mGump->CheckCollision(mBeanz)) {
-			mGameOver = true;
-			mAudio->PauseMusic();
-			mAudio->PlaySFX("SFX/BEANZZZ.wav", 0);	
-		}
-		
 		if (mGump->Position().x > Graphics::SCREEN_WIDTH && mBeanz->Position().x > Graphics::SCREEN_WIDTH) {
 			// Increase level by 1
 			mLevel++;
@@ -128,19 +120,7 @@ void PlayScreen::Update() {
 void PlayScreen::Render() {
 	mFloor->RenderRepeatedTexture(mFloor, 256, 256);
 	if (mLevel == 0) {
-		mGump->Render();
-		mBeanz->Render();
-		mWad->Render();
-		mRumpff->Render();
-		mWall->Render();
-		if (!mTurnSpoon) {
-			mSpoon->Render();
-		}
-		else {
-			mSpoonTurned->Render();
-		}
-		
-		mSugarCube->Render();
+		mLevel0->Render();
 	}
 	if (mLevel == 1) {
 		mGump->Render();
@@ -159,36 +139,10 @@ void PlayScreen::Render() {
 			mWadJumpScare->Render();
 		}
 	}
+	
 }
 
-void PlayScreen::CollisionHandler() {
-	mGump->HandleCollision(mGump, mSugarCube);
-	mGump->HandleCollision(mGump, mWall);
 
-	mSugarCube->HandleCollision(mSugarCube, mWall);
-	mSugarCube->HandleCollision(mSugarCube, mSpoon);
-
-	mBeanz->HandleCollision(mBeanz, mSugarCube);
-	mBeanz->HandleCollision(mBeanz, mWall);
-	if (!mTurnSpoon) {
-		mGump->HandleCollision(mGump, mSpoon);
-		mBeanz->HandleCollision(mBeanz, mSpoon);
-		if (mInput->KeyDown(SDL_SCANCODE_LSHIFT)) {
-			if (mBeanz->CheckCollision(mSpoon)) {
-				mTurnSpoon = true;
-			}
-		}
-	}
-	else {
-		mGump->HandleCollision(mGump, mSpoonTurned);
-		mBeanz->HandleCollision(mBeanz, mSpoonTurned);
-		if (mInput->KeyDown(SDL_SCANCODE_LSHIFT)) {
-			if (mBeanz->CheckCollision(mSpoonTurned)) {
-				mTurnSpoon = false;
-			}
-		}
-	}
-}
 
 void PlayScreen::JumpScareHandler() {
 	if (mGump->CheckCollision(mBeanz)) {
