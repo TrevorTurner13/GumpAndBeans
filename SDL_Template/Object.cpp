@@ -14,7 +14,6 @@ Object::Object(GLTexture* texture, BoxCollider* collider, int vertStrength, int 
 Object::~Object() {
 	delete mObjectTexture;
 	mObjectTexture = nullptr;
-
 }
 
 
@@ -26,4 +25,8 @@ void Object::Render() {
 	mObjectTexture->Render();
 
 	PhysEntity::Render();
+}
+
+void Object::RotateTexture() {
+	mObjectTexture->Rotate(90.0f);
 }

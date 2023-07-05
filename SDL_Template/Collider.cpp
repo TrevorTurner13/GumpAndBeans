@@ -16,7 +16,6 @@ Collider::~Collider() {
 	mDebugTexture = nullptr;
 }
 
-
 Collider::ColliderType Collider::GetType() {
 	return mType;
 }

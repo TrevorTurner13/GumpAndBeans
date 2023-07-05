@@ -2,6 +2,7 @@
 #define __DEFINE_H
 #include "PhysEntity.h"
 #include "BoxCollider.h"
+#include "CircleCollider.h"
 
 using namespace SDLFramework;
 
@@ -15,9 +16,10 @@ public:
 	Object(GLTexture* texture, BoxCollider* collider, int vertStrength, int horizStrength);
 	~Object();
 
+	void RotateTexture();
+
 	void Update() override;
 	void Render() override;
-
 };
 
 #endif
