@@ -10,7 +10,7 @@ void Beanz::HandleMovement() {
 		mBeanz = mBeanzRight;
 		mMovingRight = true;
 	}
-	if (mInput->KeyDown(SDL_SCANCODE_LEFT)) {
+	if (mInput->KeyDown(SDL_SCANCODE_LEFT) && Position().x <= Graphics::SCREEN_WIDTH) {
 		Translate(-Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
 		mBeanz = mBeanzLeft;
 		mMovingRight = false;
@@ -25,18 +25,20 @@ void Beanz::HandleMovement() {
 		mBeanz = mBeanzDown;
 		mMovingUp = false;
 	}
-	//if (!mInput->KeyDown(SDL_SCANCODE_RIGHT)&&!mInput->KeyDown(SDL_SCANCODE_LEFT)&&!mInput->KeyDown(SDL_SCANCODE_UP)&&!mInput->KeyDown(SDL_SCANCODE_DOWN)){
-	//	Vector2 direction = DirectionToGump();
-	//	Translate(direction * mMoveSpeed * 0.0005 * mTimer->DeltaTime(), World);
-	//	if (direction.x < 0) {
-	//		mBeanz = mBeanzLeft;
-	//		mMovingRight = false;
-	//	}
-	//	else {
-	//		mBeanz = mBeanzRight;
-	//		mMovingRight = true;
-	//	}
-	//}
+	if (!mInput->KeyDown(SDL_SCANCODE_RIGHT) && !mInput->KeyDown(SDL_SCANCODE_LEFT) && !mInput->KeyDown(SDL_SCANCODE_UP) && !mInput->KeyDown(SDL_SCANCODE_DOWN)) {
+		Vector2 direction = DirectionToGump();
+		// Prevent moving left if Beanz is off the screen to the right
+		if (direction.x < 0 && Position().x > Graphics::SCREEN_WIDTH) {
+			direction.x = 0;
+		}
+		Translate(direction * mMoveSpeed * 0.0005 * mTimer->DeltaTime(), World);
+		if (direction.x < 0) {
+			mBeanz = mBeanzLeft;
+		}
+		else {
+			mBeanz = mBeanzRight;
+		}
+	}
 }
 
 Vector2 Beanz::DirectionToGump() {
