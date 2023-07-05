@@ -9,7 +9,7 @@ void Beanz::HandleMovement() {
 		Translate(Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
 		mBeanz = mBeanzRight;
 	}
-	if (mInput->KeyDown(SDL_SCANCODE_LEFT)) {
+	if (mInput->KeyDown(SDL_SCANCODE_LEFT) && Position().x <= Graphics::SCREEN_WIDTH) {
 		Translate(-Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
 		mBeanz = mBeanzLeft;
 	}
@@ -21,8 +21,12 @@ void Beanz::HandleMovement() {
 		Translate(Vec2_Up * mMoveSpeed * mTimer->DeltaTime(), World);
 		mBeanz = mBeanzDown;
 	}
-	if (!mInput->KeyDown(SDL_SCANCODE_RIGHT)&&!mInput->KeyDown(SDL_SCANCODE_LEFT)&&!mInput->KeyDown(SDL_SCANCODE_UP)&&!mInput->KeyDown(SDL_SCANCODE_DOWN)){
+	if (!mInput->KeyDown(SDL_SCANCODE_RIGHT) && !mInput->KeyDown(SDL_SCANCODE_LEFT) && !mInput->KeyDown(SDL_SCANCODE_UP) && !mInput->KeyDown(SDL_SCANCODE_DOWN)) {
 		Vector2 direction = DirectionToGump();
+		// Prevent moving left if Beanz is off the screen to the right
+		if (direction.x < 0 && Position().x > Graphics::SCREEN_WIDTH) {
+			direction.x = 0;
+		}
 		Translate(direction * mMoveSpeed * 0.0005 * mTimer->DeltaTime(), World);
 		if (direction.x < 0) {
 			mBeanz = mBeanzLeft;

@@ -7,9 +7,12 @@
 #include "Wad.h"
 #include "Rumpff.h"
 #include "Object.h"
+#include "Level1.h"
 
 class PlayScreen : public GameEntity {
 private:
+	Level1* mLevel1;
+	
 	Timer * mTimer;
 	AudioManager * mAudio;
 
@@ -33,6 +36,8 @@ private:
 	float mJumpScareTotalTime;
 	float mJumpScareScale;
 	bool mJumpScareDone;
+
+	int mLevel;
 
 
 public:

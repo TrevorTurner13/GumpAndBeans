@@ -4,7 +4,11 @@ PlayScreen::PlayScreen() {
 	mTimer = Timer::Instance();
 	mAudio = AudioManager::Instance();
 
+	mLevel1 = new Level1;
+
 	mGameOver = false;
+	
+	mLevel = 0;
 
 	delete mGump;
 	mGump = new Gump();
@@ -80,15 +84,22 @@ void PlayScreen::Update() {
 		mWad->Update();
 		mRumpff->Update();
 
-		//Handle Collision
+		
+		switch (mLevel) {
+		case 0:
+			mGump->HandleCollision(mGump, mSugarCube);
+			mGump->HandleCollision(mGump, mWall);
+			mGump->HandleCollision(mGump, mSpoon);
 
-		mGump->HandleCollision(mGump, mSugarCube);
-		mGump->HandleCollision(mGump, mWall);
-		mGump->HandleCollision(mGump, mSpoon);
+			mBeanz->HandleCollision(mBeanz, mSugarCube);
+			mBeanz->HandleCollision(mBeanz, mWall);
+			mBeanz->HandleCollision(mBeanz, mSpoon);
+			break;
 
-		mBeanz->HandleCollision(mBeanz, mSugarCube);
-		mBeanz->HandleCollision(mBeanz, mWall);
-		mBeanz->HandleCollision(mBeanz, mSpoon);
+		case 1:
+			mLevel1->Update();
+			break;
+		}
 
 		if (mGump->CheckCollision(mBeanz)) {
 			mGameOver = true;
@@ -105,6 +116,11 @@ void PlayScreen::Update() {
 			mAudio->PauseMusic();
 			
 		}
+		if (mGump->Position().x > Graphics::SCREEN_WIDTH && mBeanz->Position().x > Graphics::SCREEN_WIDTH) {
+			// Increase level by 1
+			mLevel++;
+		}
+		
 	}
 	else {
 		if (mGump->CheckCollision(mBeanz)) {
@@ -150,8 +166,8 @@ void PlayScreen::Update() {
 }
 
 void PlayScreen::Render() {
-
-		mFloor->RenderRepeatedTexture(mFloor, 256, 256);
+	mFloor->RenderRepeatedTexture(mFloor, 256, 256);
+	if (mLevel == 0) {
 		mGump->Render();
 		mBeanz->Render();
 		mWad->Render();
@@ -159,6 +175,11 @@ void PlayScreen::Render() {
 		mWall->Render();
 		mSpoon->Render();
 		mSugarCube->Render();
+	}
+	if (mLevel == 1) {
+		mLevel1->Render();
+	}
+
 	if (mGameOver) {
 		if (mGump->CheckCollision(mBeanz)) {
 			mBeanzJumpScare->Render();
