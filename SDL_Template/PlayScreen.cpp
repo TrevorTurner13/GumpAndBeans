@@ -168,6 +168,9 @@ void PlayScreen::CollisionHandler() {
 	mGump->HandleCollision(mGump, mSugarCube);
 	mGump->HandleCollision(mGump, mWall);
 
+	mSugarCube->HandleCollision(mSugarCube, mWall);
+	mSugarCube->HandleCollision(mSugarCube, mSpoon);
+
 	mBeanz->HandleCollision(mBeanz, mSugarCube);
 	mBeanz->HandleCollision(mBeanz, mWall);
 	if (!mTurnSpoon) {
