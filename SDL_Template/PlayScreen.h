@@ -45,8 +45,13 @@ public:
 	PlayScreen();
 	~PlayScreen();
 
-	void CollisionHandler();
 	void JumpScareHandler();
+
+	bool GetGameOver() { return mGameOver; }
+	bool GetGameOverBeanz() { return mGameOverBeanz; }
+	bool GetGameOverWad() { return mGameOverWad; }
+	bool GetGameOverRumpff() { return mGameOverRumpff; }
+	bool GetJumpScareDone() { return mJumpScareDone; }
 
 	void Update() override;
 	void Render() override;

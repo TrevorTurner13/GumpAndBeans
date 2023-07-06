@@ -99,6 +99,11 @@ void PlayScreen::Update() {
 
 		case 1:
 			mLevel1->Update();
+			if (mGump->CheckCollision(mBeanz)) {
+				mGameOver = true;
+				mAudio->PauseMusic();
+				mAudio->PlaySFX("SFX/BEANZZZ.wav", 0);
+			}
 
 			break;
 		}

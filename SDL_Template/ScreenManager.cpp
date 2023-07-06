@@ -38,6 +38,11 @@ void ScreenManager::Update() {
 			mAudio->PlayMusic("MUS/Game Start.mp3");
 			mCurrentScreen = Start;
 		}
+		if (mPlayScreen->GetGameOver() && mPlayScreen->GetJumpScareDone()) {
+			mCurrentScreen = GameOver;
+			mAudio->PauseMusic();
+			mAudio->PlayMusic("MUS/RICKMEMED.mp3");
+		}
 		break;
 
 	case Tutorial:
@@ -47,14 +52,16 @@ void ScreenManager::Update() {
 			mCurrentScreen = Start;
 		}
 		break;
-	
+	case GameOver:
+		mGameOver->Update();
+
+		break;
 	
 	}
 
 }
 
 void ScreenManager::Render() {
-
 
 	switch (mCurrentScreen) {
 	case Start:
@@ -63,10 +70,14 @@ void ScreenManager::Render() {
 	case Play:
 		mPlayScreen->Render();
 		break;
-	
+
 	case Tutorial:
 		mTutorialScreen->Render();
 		break;
+
+	case GameOver:
+		mGameOver->Render();
+
 	}
 }
 
@@ -78,6 +89,7 @@ ScreenManager::ScreenManager() {
 	mStartScreen = new StartScreen();
 	mPlayScreen = new PlayScreen();
 	mTutorialScreen = new TutorialScreen();
+	mGameOver = new GameOverScreen();
 
 	mCurrentScreen = Start;
 }
