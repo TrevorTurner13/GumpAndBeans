@@ -10,7 +10,7 @@ PlayScreen::PlayScreen() {
 	mGameOverWad = false;
 	mGameOverRumpff = false;
 	
-	mLevel = 1;
+	mLevel = 0;
 
 	delete mGump;
 	mGump = new Gump();
