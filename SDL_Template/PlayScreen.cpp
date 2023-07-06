@@ -10,7 +10,7 @@ PlayScreen::PlayScreen() {
 	mGameOverWad = false;
 	mGameOverRumpff = false;
 	
-	mLevel = 0;
+	mLevel = 1;
 
 	delete mGump;
 	mGump = new Gump();
@@ -76,16 +76,15 @@ PlayScreen::~PlayScreen() {
 
 void PlayScreen::Update() {
 	if (!mGameOver) {
-
+		if (mGump->CheckCollision(mBeanz)) {
+			mGameOver = true;
+			mAudio->PauseMusic();
+			mAudio->PlaySFX("SFX/BEANZZZ.wav", 0);
+		}
 		switch (mLevel) {
 		case 0:
 			mLevel0->Update();
-			if (mGump->CheckCollision(mBeanz)) {
-				mGameOver = true;
-				mAudio->PauseMusic();
-				mAudio->PlaySFX("SFX/BEANZZZ.wav", 0);
-			}
-
+			
 			if (mGump->CheckCollision(mWad)) {
 				mGameOver = true;
 				mAudio->PauseMusic();

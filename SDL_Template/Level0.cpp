@@ -47,7 +47,7 @@ Level0::Level0(Gump* Gump, Beanz* Beanz, Wad* wad, Rumpff* rumpff) {
 	mSpoon->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 
 	mSpoonTurned = new Object(new GLTexture("Utensils 256x256.png", 0, 0, 64, 304), new BoxCollider(Vector2(275.0f, 30.0f)), 60, 60);
-	mSpoonTurned->RotateTexture();
+	mSpoonTurned->RotateTexture(90);
 	mSpoonTurned->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 
 	mWall = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(100.0f, 256.0f)), 100, 100);
