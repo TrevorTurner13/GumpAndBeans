@@ -16,7 +16,7 @@ public:
 	Object(GLTexture* texture, BoxCollider* collider, int vertStrength, int horizStrength);
 	~Object();
 
-	void RotateTexture();
+	void RotateTexture(float degrees);
 
 	void Update() override;
 	void Render() override;

@@ -16,10 +16,28 @@ private:
 	static Level1* sInstance;
 
 	Object* mSugarCube;
+	Object* mWall1;
+	Object* mWall2;
+	Object* mWall3;
+	Object* mWall4;
+	Object* mWall5;
+	Object* mWall6;
+	Object* mWall7;
+	Object* mWall8;
+	Object* mWall9;
+	Object* mWall10;
+	Object* mWall11;
+	Object* mWall12;
+	Object* mWall13;
+	Object* mWall14;
+	Object* mWall15;
+	Object* mWall16;
+
 
 	Gump* mGump;
 	Beanz* mBeanz;
 	
+	Vector2 mWallScale;
 
 public:
 	Level1(Gump* Gump, Beanz* Beanz);
