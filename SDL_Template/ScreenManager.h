@@ -4,12 +4,13 @@
 #include "PlayScreen.h"
 #include "TutorialScreen.h"
 #include "AudioManager.h"
+#include "GameOverScreen.h"
 
 class ScreenManager {
 private:
 	static ScreenManager * sInstance;
 
-	enum Screens { Start, Play, Tutorial };
+	enum Screens { Start, Play, Tutorial, GameOver };
 	Screens mCurrentScreen;
 
 	InputManager * mInput;
@@ -18,6 +19,7 @@ private:
 	StartScreen * mStartScreen;
 	PlayScreen * mPlayScreen;
 	TutorialScreen* mTutorialScreen; 
+	GameOverScreen* mGameOver;
 
 public:
 	static ScreenManager * Instance();

@@ -14,7 +14,6 @@ private:
 	InputManager* mInput;
 	AudioManager* mAudio;
 
-
 	GLTexture* mFloor;
 
 	// Top Bar Entities
