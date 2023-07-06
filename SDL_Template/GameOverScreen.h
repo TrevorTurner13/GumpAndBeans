@@ -12,14 +12,22 @@ private:
 	//AnimatedGLTexture* mGameOverWad;
 	//AnimatedGLTexture* mGameOverRumpff;
 
+	Texture* mOnePlayerMode;
+	Texture* mTwoPlayerMode;
 	Texture* mRetry;
+	Texture* mRetryHighlight;
 	Texture* mQuit;
+	Texture* mQuitHighlight;
 	Texture* mGameOverText;
 	
 	int mSelectedMode;
 public:
 	GameOverScreen();
 	~GameOverScreen();
+
+	int SelectedMode();
+
+	void ChangeSelectedMode(int change);
 
 	void Update() override;
 	void Render() override;

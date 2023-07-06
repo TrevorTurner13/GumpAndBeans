@@ -8,22 +8,18 @@ void Beanz::HandleMovement() {
 	if (mInput->KeyDown(SDL_SCANCODE_RIGHT)) {
 		Translate(Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
 		mBeanz = mBeanzRight;
-		mMovingRight = true;
 	}
 	if (mInput->KeyDown(SDL_SCANCODE_LEFT) && Position().x <= Graphics::SCREEN_WIDTH) {
 		Translate(-Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
 		mBeanz = mBeanzLeft;
-		mMovingRight = false;
 	}
 	if (mInput->KeyDown(SDL_SCANCODE_UP)) {
 		Translate(-Vec2_Up * mMoveSpeed * mTimer->DeltaTime(), World);
 		mBeanz = mBeanzUp;
-		mMovingUp = true;
 	}
 	if (mInput->KeyDown(SDL_SCANCODE_DOWN)) {
 		Translate(Vec2_Up * mMoveSpeed * mTimer->DeltaTime(), World);
 		mBeanz = mBeanzDown;
-		mMovingUp = false;
 	}
 	if (!mInput->KeyDown(SDL_SCANCODE_RIGHT) && !mInput->KeyDown(SDL_SCANCODE_LEFT) && !mInput->KeyDown(SDL_SCANCODE_UP) && !mInput->KeyDown(SDL_SCANCODE_DOWN)) {
 		Vector2 direction = DirectionToGump();
@@ -89,8 +85,8 @@ Beanz::~Beanz() {
 	mBeanzRight = nullptr;
 	delete mBeanzLeft;
 	mBeanzLeft = nullptr;
-	delete mBeanzUp;
-	mBeanzUp = nullptr;
+	//delete mBeanzUp;
+	//mBeanzUp = nullptr;
 	delete mBeanzDown;
 	mBeanzDown = nullptr;
 }

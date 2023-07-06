@@ -54,7 +54,15 @@ void ScreenManager::Update() {
 		break;
 	case GameOver:
 		mGameOver->Update();
-
+		if (mInput->KeyPressed(SDL_SCANCODE_RETURN) && mGameOver->SelectedMode() == 0) {
+			delete mPlayScreen;
+			mPlayScreen = new PlayScreen();
+			mCurrentScreen = Play;
+			mAudio->PlayMusic("MUS/Game Music.mp3");
+		}
+		else if (mInput->KeyPressed(SDL_SCANCODE_RETURN) && mGameOver->SelectedMode() == 1) {
+			std::exit(0);
+		}
 		break;
 	
 	}
@@ -77,7 +85,7 @@ void ScreenManager::Render() {
 
 	case GameOver:
 		mGameOver->Render();
-
+		break;
 	}
 }
 
@@ -102,6 +110,13 @@ ScreenManager::~ScreenManager() {
 
 	delete mPlayScreen;
 	mPlayScreen = nullptr;
+
+	delete mTutorialScreen;
+	mTutorialScreen = nullptr;
+
+	delete mGameOver;
+	mGameOver = nullptr;
+
 }
 
 void ScreenManager::RenderRepeatedTexture(Texture* texture, int textureWidth, int textureHeight) {

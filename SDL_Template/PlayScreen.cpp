@@ -72,6 +72,15 @@ PlayScreen::~PlayScreen() {
 
 	delete mFloor;
 	mFloor = nullptr;
+
+	delete mBeanzJumpScare;
+	mBeanzJumpScare = nullptr;
+
+	delete mRumpffJumpScare;
+	mRumpffJumpScare = nullptr;
+
+	delete mWadJumpScare;
+	mWadJumpScare = nullptr;
 }
 
 void PlayScreen::Update() {

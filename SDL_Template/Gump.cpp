@@ -65,8 +65,8 @@ Gump::~Gump() {
 	mGumpLeft = nullptr;
 	delete mGumpUp;
 	mGumpUp = nullptr;
-	delete mGumpDown;
-	mGumpDown = nullptr;
+	//delete mGumpDown;
+	//mGumpDown = nullptr;
 	
 }
 
