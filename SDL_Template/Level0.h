@@ -13,7 +13,6 @@ using namespace SDLFramework;
 
 class Level0 : public PhysEntity {
 private:
-	static Level0* sInstance;
 	InputManager* mInput;
 
 	Gump* mGump;
@@ -29,11 +28,7 @@ private:
 	bool mTurnSpoon;
 
 public:
-	Level0();
 	~Level0();
-
-	static Level0* Instance();
-	static void Release();
 
 	Level0(Gump* Gump, Beanz* Beanz, Wad* wad, Rumpff* rumpff);
 

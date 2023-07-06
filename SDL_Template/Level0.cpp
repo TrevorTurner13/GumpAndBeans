@@ -1,38 +1,5 @@
 #include "Level0.h"
 
-Level0* Level0::sInstance = nullptr;
-
-Level0* Level0::Instance() {
-	if (sInstance == nullptr) {
-		sInstance = new Level0();
-	}
-
-	return sInstance;
-}
-
-void Level0::Release() {
-	delete sInstance;
-	sInstance = nullptr;
-}
-
-Level0::Level0() {
-	mInput = InputManager::Instance();
-
-	mGump = new Gump();
-	mBeanz = new Beanz(mGump);
-	mWad = new Wad();
-	mRumpff = new Rumpff();
-	
-	mSpoon = new Object(new GLTexture("Utensils 256x256.png", 0, 0, 64, 304), new BoxCollider(Vector2(30.0f, 275.0f)), 60, 60);
-	
-	mSpoonTurned = new Object(new GLTexture("Utensils 256x256.png", 0, 0, 64, 304), new BoxCollider(Vector2(275.0f, 30.0f)), 60, 60);
-	
-	mWall = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(100.0f, 256.0f)), 100, 100);
-	
-	mSugarCube = new Object(new GLTexture("sugar cube 64x64.png", 0, 0, 64, 64), new BoxCollider(Vector2(64.0f, 64.0f)), 30, 30);
-
-}
-
 Level0::Level0(Gump* Gump, Beanz* Beanz, Wad* wad, Rumpff* rumpff) {
 	mInput = InputManager::Instance();
 

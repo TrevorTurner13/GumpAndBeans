@@ -13,8 +13,6 @@ class Level1 : public PhysEntity {
 private:
 	InputManager* mInput;
 
-	static Level1* sInstance;
-
 	Object* mSugarCube;
 	Object* mWall1;
 	Object* mWall2;
@@ -41,11 +39,7 @@ private:
 
 public:
 	Level1(Gump* Gump, Beanz* Beanz);
-	Level1();
 	~Level1();
-
-	static Level1* Instance();
-	static void Release();
 
 	void Update();
 	void Render();

@@ -32,7 +32,23 @@ GameOverScreen::GameOverScreen() {
 }
 
 GameOverScreen::~GameOverScreen() {
+	delete mQuitHighlight;
+	mQuitHighlight = nullptr;
 
+	delete mQuit;
+	mQuit = nullptr;
+
+	delete mRetryHighlight;
+	mRetryHighlight = nullptr;
+
+	delete mRetry;
+	mRetry = nullptr;
+
+	delete mGameOverText;
+	mGameOverText = nullptr;
+
+	delete mGameOverBeanz;
+	mGameOverBeanz = nullptr;
 }
 
 void GameOverScreen::Update() {
