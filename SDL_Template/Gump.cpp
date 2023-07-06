@@ -57,17 +57,19 @@ Gump::~Gump() {
 	mInput = nullptr;
 	mAudio = nullptr;
 
-	delete mGump;
-	mGump = nullptr;
 	delete mGumpRight;
 	mGumpRight = nullptr;
+	
 	delete mGumpLeft;
 	mGumpLeft = nullptr;
+	
 	delete mGumpUp;
 	mGumpUp = nullptr;
-	//delete mGumpDown;
-	//mGumpDown = nullptr;
 	
+	delete mGumpDown;
+	mGumpDown = nullptr;
+	
+	mGump = nullptr;
 }
 
 void Gump::Update() {

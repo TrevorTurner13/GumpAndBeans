@@ -79,16 +79,19 @@ Beanz::~Beanz() {
 	mInput = nullptr;
 	mAudio = nullptr;
 
-	delete mBeanz;
-	mBeanz = nullptr;
 	delete mBeanzRight;
 	mBeanzRight = nullptr;
+
 	delete mBeanzLeft;
 	mBeanzLeft = nullptr;
-	//delete mBeanzUp;
-	//mBeanzUp = nullptr;
+
+	delete mBeanzUp;
+	mBeanzUp = nullptr;
+
 	delete mBeanzDown;
 	mBeanzDown = nullptr;
+
+	mBeanz = nullptr;
 }
 
 void Beanz::Update() {
