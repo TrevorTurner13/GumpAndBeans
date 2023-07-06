@@ -97,7 +97,7 @@ ScreenManager::ScreenManager() {
 	mStartScreen = new StartScreen();
 	mPlayScreen = new PlayScreen();
 	mTutorialScreen = new TutorialScreen();
-	mGameOver = new GameOverScreen();
+	mGameOver = new GameOverScreen(mPlayScreen);
 
 	mCurrentScreen = Start;
 }

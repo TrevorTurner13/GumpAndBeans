@@ -8,9 +8,11 @@ private:
 	AudioManager* mAudio;
 	InputManager* mInput;
 
+	PlayScreen* mPlayScreen;
+
 	AnimatedGLTexture* mGameOverBeanz;
 	//AnimatedGLTexture* mGameOverWad;
-	//AnimatedGLTexture* mGameOverRumpff;
+	AnimatedGLTexture* mGameOverRumpff;
 
 	Texture* mOnePlayerMode;
 	Texture* mTwoPlayerMode;
@@ -22,7 +24,7 @@ private:
 	
 	int mSelectedMode;
 public:
-	GameOverScreen();
+	GameOverScreen(PlayScreen* playScreen);
 	~GameOverScreen();
 
 	int SelectedMode();

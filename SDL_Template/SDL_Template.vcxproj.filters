@@ -150,6 +150,12 @@
     <ClCompile Include="Level1.cpp">
       <Filter>Source Files\Galaga</Filter>
     </ClCompile>
+    <ClCompile Include="GameOverScreen.cpp">
+      <Filter>Source Files\Galaga</Filter>
+    </ClCompile>
+    <ClCompile Include="Level0.cpp">
+      <Filter>Source Files\Galaga</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEntity.h">
@@ -258,6 +264,12 @@
       <Filter>Header Files\Galaga</Filter>
     </ClInclude>
     <ClInclude Include="Level1.h">
+      <Filter>Header Files\Galaga</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverScreen.h">
+      <Filter>Header Files\Galaga</Filter>
+    </ClInclude>
+    <ClInclude Include="Level0.h">
       <Filter>Header Files\Galaga</Filter>
     </ClInclude>
   </ItemGroup>

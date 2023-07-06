@@ -87,6 +87,7 @@ void PlayScreen::Update() {
 	if (!mGameOver) {
 		if (mGump->CheckCollision(mBeanz)) {
 			mGameOver = true;
+			mGameOverBeanz = true;
 			mAudio->PauseMusic();
 			mAudio->PlaySFX("SFX/BEANZZZ.wav", 0);
 		}
@@ -94,14 +95,16 @@ void PlayScreen::Update() {
 		case 0:
 			mLevel0->Update();
 			
-			if (mGump->CheckCollision(mWad)) {
+			if (mGump->CheckCollision(mWad) || mBeanz->CheckCollision(mWad)) {
 				mGameOver = true;
+				mGameOverWad = true;
 				mAudio->PauseMusic();
 				mAudio->PlaySFX("SFX/EW.wav", 0);
 			}
 
-			if (mGump->CheckCollision(mRumpff)) {
+			if (mGump->CheckCollision(mRumpff) || mBeanz->CheckCollision(mRumpff)) {
 				mGameOver = true;
+				mGameOverRumpff = true;
 				mAudio->PauseMusic();
 			}
 			break;
@@ -145,10 +148,10 @@ void PlayScreen::Render() {
 		if (mGump->CheckCollision(mBeanz)) {
 			mBeanzJumpScare->Render();
 		}
-		else if (mGump->CheckCollision(mRumpff)) {
+		else if (mGump->CheckCollision(mRumpff) || mBeanz->CheckCollision(mRumpff)) {
 			mRumpffJumpScare->Render();
 		}
-		else if (mGump->CheckCollision(mWad)) {
+		else if (mGump->CheckCollision(mWad) || mBeanz->CheckCollision(mWad)) {
 			mWadJumpScare->Render();
 		}
 	}
@@ -171,7 +174,7 @@ void PlayScreen::JumpScareHandler() {
 			}
 		}
 	}
-	else if (mGump->CheckCollision(mRumpff)) {
+	else if (mGump->CheckCollision(mRumpff) || mBeanz->CheckCollision(mRumpff)) {
 		mRumpffJumpScare->Update();
 		if (!mJumpScareDone) {
 			mJumpScareTimer += mTimer->DeltaTime();
@@ -184,7 +187,7 @@ void PlayScreen::JumpScareHandler() {
 			}
 		}
 	}
-	else if (mGump->CheckCollision(mWad)) {
+	else if (mGump->CheckCollision(mWad) || mBeanz->CheckCollision(mWad)) {
 		mWadJumpScare->Update();
 		if (!mJumpScareDone) {
 			mJumpScareTimer += mTimer->DeltaTime();
