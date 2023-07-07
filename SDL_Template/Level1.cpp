@@ -82,9 +82,9 @@ Level1::Level1(Gump* Gump, Beanz* Beanz) {
 	mCenterWall4->Position(Graphics::SCREEN_WIDTH * 0.5f + 256, Graphics::SCREEN_HEIGHT * 0.5f);
 	mCenterWall4->RotateTexture(90);
 
-	mPen = new Object(new GLTexture("Crumbs.png", 273, 0, 30,128), new BoxCollider(Vector2(30.0f, 128.0f)), 1000, 1000);
+	mPen = new Object(new GLTexture("Crumbs.png", 273, 0, 30,128), new BoxCollider(Vector2(10.0f, 128.0f)), 1000, 1000);
 	mPen->Position(Graphics::SCREEN_WIDTH * 0.5f+384, Graphics::SCREEN_HEIGHT *0.5+100);
-	mPen->Scale(Vector2(3.0f,3.0f));
+	
 	
 	
 	
