@@ -6,7 +6,6 @@
 #include "Beanz.h"
 #include "Gump.h"
 #include "Wad.h"
-#include "Rumpff.h"
 #include "Object.h";
 
 using namespace SDLFramework;
@@ -38,17 +37,16 @@ private:
 	Object* mKnife1;
 	Object* mKnife2;
 	Object* mFork;
-	Object* mCar1;
 	Object* mCar2;
     Gump* mGump;
 	Beanz* mBeanz;
 	Wad* mWad;
-	Rumpff* mRumpff;
+
 
 	Vector2 mWallScale;
 
 public:
-	Level2(Gump* Gump, Beanz* Beanz, Wad* Wad, Rumpff* Rumpff);
+	Level2(Gump* Gump, Beanz* Beanz, Wad* Wad);
 	~Level2();
 
 	void Update();
