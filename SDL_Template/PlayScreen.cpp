@@ -110,6 +110,7 @@ void PlayScreen::Update() {
 				mGameOver = true;
 				mGameOverRumpff = true;
 				mAudio->PauseMusic();
+				mAudio->PlaySFX("SFX/Zombie.mp3", 0);
 			}
 			break;
 
@@ -127,13 +128,12 @@ void PlayScreen::Update() {
 		case 2:
 			mLevel2->Update();
 
-			if (mGump->CheckCollision(mWad) || mBeanz->CheckCollision(mWad)) {
+			if (mGump->CheckCollision(mRumpff) || mBeanz->CheckCollision(mRumpff)) {
 				mGameOver = true;
-				mGameOverWad = true;
+				mGameOverRumpff = true;
 				mAudio->PauseMusic();
-				mAudio->PlaySFX("SFX/EW.wav", 0);
+				mAudio->PlaySFX("SFX/Zombie.mp3", 0);
 			}
-			
 
 			break;
 		}
