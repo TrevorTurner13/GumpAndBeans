@@ -37,8 +37,8 @@ PlayScreen::PlayScreen() {
 	mRumpff->Position(Graphics::SCREEN_WIDTH * 0.3f, Graphics::SCREEN_HEIGHT * 0.6f);
 	mRumpff->Active(true);
 
-	mLevel0 = new Level0(mGump, mBeanz, mWad, mRumpff, 0);
-	mLevel1 = new Level1(mGump, mBeanz,mWad, 1);
+	mLevel0 = new Level0(mGump, mBeanz, mWad, mRumpff);
+	mLevel1 = new Level1(mGump, mBeanz,mWad);
 
 	mFloor = new GLTexture("floor tile 256x256.png", 0, 0, 256, 256);
 
