@@ -90,8 +90,10 @@ Level1::Level1(Gump* Gump, Beanz* Beanz, Wad* Wad, int level) {
 	
 	mWad->Position(Graphics::SCREEN_WIDTH * 0.7f, Graphics::SCREEN_HEIGHT * 0.6f);
 	
+	mGump->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.6f);
+	mBeanz->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.3f);
 	
-
+	
 }
 
 Level1::~Level1() {

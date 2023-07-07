@@ -46,6 +46,8 @@ private:
 
 	Vector2 mWallScale;
 
+
+
 public:
 	Level1(Gump* Gump, Beanz* Beanz, Wad* wad, int level);
 	~Level1();
