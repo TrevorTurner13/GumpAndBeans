@@ -1,9 +1,9 @@
 #include "Level1.h"
 
-Level1::Level1(Gump* Gump, Beanz* Beanz, Wad* Wad, int level) {
+Level1::Level1(Gump* Gump, Beanz* Beanz, Wad* Wad) {
 	mInput = InputManager::Instance();
 
-	SetLevelNumber(level);
+	
 	mWallScale = (1, 4);
 
 	mGump = Gump;

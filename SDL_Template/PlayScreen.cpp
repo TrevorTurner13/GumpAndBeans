@@ -10,11 +10,8 @@ PlayScreen::PlayScreen() {
 	mGameOverWad = false;
 	mGameOverRumpff = false;
 	
-<<<<<<< Updated upstream
-	mLevel = 1;
-=======
 	mLevel = 2;
->>>>>>> Stashed changes
+
 
 	delete mGump;
 	mGump = new Gump();
@@ -42,12 +39,10 @@ PlayScreen::PlayScreen() {
 	mRumpff->Active(true);
 
 	mLevel0 = new Level0(mGump, mBeanz, mWad, mRumpff);
-<<<<<<< Updated upstream
+
 	mLevel1 = new Level1(mGump, mBeanz,mWad);
-=======
-	mLevel1 = new Level1(mGump, mBeanz);
+
 	mLevel2 = new Level2(mGump, mBeanz, mWad, mRumpff);
->>>>>>> Stashed changes
 
 	mFloor = new GLTexture("floor tile 256x256.png", 0, 0, 256, 256);
 

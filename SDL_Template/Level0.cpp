@@ -1,14 +1,12 @@
 #include "Level0.h"
 
-Level0::Level0(Gump* Gump, Beanz* Beanz, Wad* wad, Rumpff* rumpff, int level) {
+Level0::Level0(Gump* Gump, Beanz* Beanz, Wad* wad, Rumpff* rumpff) {
 	mInput = InputManager::Instance();
 
 	mGump = Gump;
 	mBeanz = Beanz;
 	mWad = wad;
 	mRumpff = rumpff;
-
-	SetLevelNumber(level);
 
 	mTurnSpoon = false;
 
