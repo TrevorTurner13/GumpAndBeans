@@ -1,87 +1,277 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="AnimatedGLTexture.cpp" />
-    <ClCompile Include="AnimatedTexture.cpp" />
-    <ClCompile Include="AssetManager.cpp" />
-    <ClCompile Include="AudioManager.cpp" />
-    <ClCompile Include="Beanz.cpp" />
     <ClCompile Include="BezierPath.cpp" />
-    <ClCompile Include="BoxCollider.cpp" />
-    <ClCompile Include="CircleCollider.cpp" />
-    <ClCompile Include="Collider.cpp" />
-    <ClCompile Include="GameOverScreen.cpp" />
-    <ClCompile Include="Level0.cpp" />
-    <ClCompile Include="Level1.cpp" />
-    <ClCompile Include="Level2.cpp" />
-    <ClCompile Include="Object.cpp" />
-    <ClCompile Include="Rumpff.cpp" />
-    <ClCompile Include="Wad.cpp" />
-    <ClCompile Include="GameEntity.cpp" />
-    <ClCompile Include="GameManager.cpp" />
-    <ClCompile Include="GLGraphics.cpp" />
-    <ClCompile Include="GLTexture.cpp" />
-    <ClCompile Include="Graphics.cpp" />
-    <ClCompile Include="Gump.cpp" />
-    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="PhysEntity.cpp" />
-    <ClCompile Include="PhysicsManager.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PlayScreen.cpp" />
     <ClCompile Include="Random.cpp" />
-    <ClCompile Include="Scoreboard.cpp" />
-    <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="ShaderUtil.cpp" />
-    <ClCompile Include="StartScreen.cpp" />
-    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="tinyxml2.cpp" />
-    <ClCompile Include="TutorialScreen.cpp" />
+    <ClCompile Include="AnimatedGLTexture.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedTexture.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEntity.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="GLTexture.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Beanz.cpp">
+      <Filter>Source Files\Gump and Beanz</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverScreen.cpp">
+      <Filter>Source Files\Gump and Beanz</Filter>
+    </ClCompile>
+    <ClCompile Include="Gump.cpp">
+      <Filter>Source Files\Gump and Beanz</Filter>
+    </ClCompile>
+    <ClCompile Include="Level0.cpp">
+      <Filter>Source Files\Gump and Beanz</Filter>
+    </ClCompile>
+    <ClCompile Include="Level1.cpp">
+      <Filter>Source Files\Gump and Beanz</Filter>
+    </ClCompile>
+    <ClCompile Include="Level2.cpp">
+      <Filter>Source Files\Gump and Beanz</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source Files\Gump and Beanz</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\Gump and Beanz</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayScreen.cpp">
+      <Filter>Source Files\Gump and Beanz</Filter>
+    </ClCompile>
+    <ClCompile Include="Rumpff.cpp">
+      <Filter>Source Files\Gump and Beanz</Filter>
+    </ClCompile>
+    <ClCompile Include="Scoreboard.cpp">
+      <Filter>Source Files\Gump and Beanz</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenManager.cpp">
+      <Filter>Source Files\Gump and Beanz</Filter>
+    </ClCompile>
+    <ClCompile Include="TutorialScreen.cpp">
+      <Filter>Source Files\Gump and Beanz</Filter>
+    </ClCompile>
+    <ClCompile Include="StartScreen.cpp">
+      <Filter>Source Files\Gump and Beanz</Filter>
+    </ClCompile>
+    <ClCompile Include="Wad.cpp">
+      <Filter>Source Files\Gump and Beanz</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="GLGraphics.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxCollider.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="CircleCollider.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysEntity.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsManager.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml2.cpp">
+      <Filter>Source Files\TinyXLM</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AnimatedGLTexture.h" />
-    <ClInclude Include="AnimatedTexture.h" />
-    <ClInclude Include="AssetManager.h" />
-    <ClInclude Include="AudioManager.h" />
-    <ClInclude Include="Beanz.h" />
-    <ClInclude Include="BoxCollider.h" />
-    <ClInclude Include="CircleCollider.h" />
-    <ClInclude Include="Collider.h" />
-    <ClInclude Include="GameOverScreen.h" />
-    <ClInclude Include="Level0.h" />
-    <ClInclude Include="Level1.h" />
-    <ClInclude Include="Level2.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="Rumpff.h" />
-    <ClInclude Include="Wad.h" />
-    <ClInclude Include="GameEntity.h" />
-    <ClInclude Include="GameManager.h" />
-    <ClInclude Include="GLGraphics.h" />
-    <ClInclude Include="GLTexture.h" />
-    <ClInclude Include="Graphics.h" />
-    <ClInclude Include="BezierPath.h" />
-    <ClInclude Include="Gump.h" />
-    <ClInclude Include="InputManager.h" />
-    <ClInclude Include="MathHelper.h" />
-    <ClInclude Include="PhysEntity.h" />
-    <ClInclude Include="PhysicsHelper.h" />
-    <ClInclude Include="PhysicsManager.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="PlayScreen.h" />
-    <ClInclude Include="Random.h" />
-    <ClInclude Include="Scoreboard.h" />
-    <ClInclude Include="ScreenManager.h" />
-    <ClInclude Include="ShaderUtil.h" />
-    <ClInclude Include="StartScreen.h" />
-    <ClInclude Include="Texture.h" />
-    <ClInclude Include="Timer.h" />
-    <ClInclude Include="tinyxml2.h" />
-    <ClInclude Include="TopArea1.h" />
-    <ClInclude Include="TutorialScreen.h" />
+    <ClInclude Include="AnimatedGLTexture.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedTexture.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEntity.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="GLTexture.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="GLGraphics.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxCollider.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="CircleCollider.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysEntity.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsHelper.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsManager.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml2.h">
+      <Filter>Header Files\TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="Beanz.h">
+      <Filter>Header Files\Gump and Beanz</Filter>
+    </ClInclude>
+    <ClInclude Include="BezierPath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverScreen.h">
+      <Filter>Header Files\Gump and Beanz</Filter>
+    </ClInclude>
+    <ClInclude Include="Gump.h">
+      <Filter>Header Files\Gump and Beanz</Filter>
+    </ClInclude>
+    <ClInclude Include="Level0.h">
+      <Filter>Header Files\Gump and Beanz</Filter>
+    </ClInclude>
+    <ClInclude Include="Level1.h">
+      <Filter>Header Files\Gump and Beanz</Filter>
+    </ClInclude>
+    <ClInclude Include="Level2.h">
+      <Filter>Header Files\Gump and Beanz</Filter>
+    </ClInclude>
+    <ClInclude Include="MathHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Header Files\Gump and Beanz</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files\Gump and Beanz</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayScreen.h">
+      <Filter>Header Files\Gump and Beanz</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rumpff.h">
+      <Filter>Header Files\Gump and Beanz</Filter>
+    </ClInclude>
+    <ClInclude Include="Scoreboard.h">
+      <Filter>Header Files\Gump and Beanz</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenManager.h">
+      <Filter>Header Files\Gump and Beanz</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderUtil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StartScreen.h">
+      <Filter>Header Files\Gump and Beanz</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TopArea1.h">
+      <Filter>Header Files\Gump and Beanz</Filter>
+    </ClInclude>
+    <ClInclude Include="TutorialScreen.h">
+      <Filter>Header Files\Gump and Beanz</Filter>
+    </ClInclude>
+    <ClInclude Include="Wad.h">
+      <Filter>Header Files\Gump and Beanz</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="fs.shader" />
-    <None Include="vs.shader" />
+    <None Include="fs.shader">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="vs.shader">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{e15ba13e-cf2d-45ea-b77c-4e95d206a1f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entities">
+      <UniqueIdentifier>{c96dd697-a86c-4388-aff9-fe608ac3cbad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gump and Beanz">
+      <UniqueIdentifier>{03ec6785-dbb3-46bc-bc3c-59f9554cbeed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Managers">
+      <UniqueIdentifier>{f939b521-25f9-4ae2-b410-023dd795a387}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Physics">
+      <UniqueIdentifier>{52cac710-e9ee-4a4d-b246-0c29a7221f38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TinyXML">
+      <UniqueIdentifier>{cd2b9bd1-3df4-4463-915f-be82a4e30525}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{4a2fe198-8db7-4aac-85f8-eb83b58d95db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Shaders">
+      <UniqueIdentifier>{93603f36-4aa6-441d-88b9-bdce589d0d97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{6fb71ffb-60c9-49fb-8800-b3c26acb195f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities">
+      <UniqueIdentifier>{c21c4088-4244-4316-bf18-de2213c39b07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gump and Beanz">
+      <UniqueIdentifier>{540fa128-1645-4955-89a0-470c5e214474}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Managers">
+      <UniqueIdentifier>{dd04f7ad-de13-4cde-a190-8b36f93726cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics">
+      <UniqueIdentifier>{15d70eff-336f-4ceb-95bf-ffecdc06220a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TinyXLM">
+      <UniqueIdentifier>{5c2df227-6913-47b8-9983-1ab37d59c1ef}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

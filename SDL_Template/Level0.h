@@ -7,7 +7,7 @@
 #include "Gump.h"
 #include "Wad.h"
 #include "Rumpff.h"
-#include "Object.h";
+#include "Object.h"
 
 using namespace SDLFramework;
 
