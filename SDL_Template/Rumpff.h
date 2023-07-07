@@ -20,6 +20,7 @@ private:
 
 	float mMoveSpeed;
 	float mMoveTime;
+	float mMoveTimeMax;
 	int mMoveDirection;
 
 	Vector2 mMoveBounds;
@@ -32,6 +33,7 @@ public:
 	~Rumpff();
 
 	void RumpffMovement();
+	void SetMoveTimeMax(float change);
 
 	void Update() override;
 	void Render() override;
