@@ -15,13 +15,13 @@ PlayScreen::PlayScreen() {
 	delete mGump;
 	mGump = new Gump();
 	mGump->Parent(this);
-	mGump->Position(Graphics::SCREEN_WIDTH * 0.2f, Graphics::SCREEN_HEIGHT * 0.2f);
+	mGump->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.6f);
 	mGump->Active(true);
 
 	delete mBeanz;
 	mBeanz = new Beanz(mGump);
 	mBeanz->Parent(this);
-	mBeanz->Position(Graphics::SCREEN_WIDTH * 0.2f, Graphics::SCREEN_HEIGHT * 0.5f);
+	mBeanz->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.3f);
 	mBeanz->Active(true);
 
 

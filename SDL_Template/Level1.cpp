@@ -79,11 +79,11 @@ Level1::Level1(Gump* Gump, Beanz* Beanz) {
 	mCenterWall3->RotateTexture(90);
 
 	mCenterWall4 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mCenterWall4->Position(Graphics::SCREEN_WIDTH * 0.5f + 256, Graphics::SCREEN_HEIGHT * 0.5f);
+	mCenterWall4->Position(Graphics::SCREEN_WIDTH * 0.5f + 260, Graphics::SCREEN_HEIGHT * 0.5f);
 	mCenterWall4->RotateTexture(90);
 
-	mPen = new Object(new GLTexture("Crumbs.png", 273, 0, 30,128), new BoxCollider(Vector2(10.0f, 128.0f)), 1000, 1000);
-	mPen->Position(Graphics::SCREEN_WIDTH * 0.5f+384, Graphics::SCREEN_HEIGHT *0.5+100);
+	mPen = new Object(new GLTexture("Pen.png", 0, 0, 64,256), new BoxCollider(Vector2(20.0f, 256.0f)), 30, 30);
+	mPen->Position(Graphics::SCREEN_WIDTH * 0.5+410, Graphics::SCREEN_HEIGHT *0.5+50);
 	
 	
 	
@@ -100,6 +100,7 @@ void Level1::Update() {
 	mBeanz->Update();
 
 	CollisionHandler();
+	
 }
 
 void Level1::Render() {
