@@ -8,10 +8,11 @@
 #include "Wad.h"
 #include "Rumpff.h"
 #include "Object.h";
+#include "Level.h"
 
 using namespace SDLFramework;
 
-class Level0 : public PhysEntity {
+class Level0 : public Level {
 private:
 	InputManager* mInput;
 
@@ -30,7 +31,7 @@ private:
 public:
 	~Level0();
 
-	Level0(Gump* Gump, Beanz* Beanz, Wad* wad, Rumpff* rumpff);
+	Level0(Gump* Gump, Beanz* Beanz, Wad* wad, Rumpff* rumpff, int levelNumber);
 
 	void Update() override;
 	void Render() override;

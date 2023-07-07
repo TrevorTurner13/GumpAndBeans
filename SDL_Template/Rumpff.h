@@ -1,5 +1,4 @@
-#pragma once
- #ifndef __RUMPFF_H
+#ifndef __RUMPFF_H
 #define __RUMPFF_H
 
 #include "AnimatedGLTexture.h"
@@ -7,8 +6,6 @@
 #include "InputManager.h"
 #include "Timer.h"
 #include "AudioManager.h"
-
-using namespace SDLFramework;
 
 class Rumpff : public PhysEntity {
 private:
