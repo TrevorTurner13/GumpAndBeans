@@ -57,6 +57,8 @@ void ScreenManager::Update() {
 		if (mInput->KeyPressed(SDL_SCANCODE_RETURN) && mGameOver->SelectedMode() == 0) {
 			delete mPlayScreen;
 			mPlayScreen = new PlayScreen();
+			delete mGameOver;
+			mGameOver = new GameOverScreen(mPlayScreen);
 			mCurrentScreen = Play;
 			mAudio->PlayMusic("MUS/Game Music.mp3");
 		}

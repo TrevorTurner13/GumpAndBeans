@@ -33,6 +33,7 @@ Wad::Wad() {
 	
 	mMoveSpeed = 100.0f;
 	mMoveTime = 0.0f;
+	mMoveTimeMax = 1.0f;
 	mMoveDirection = 1;
 
 

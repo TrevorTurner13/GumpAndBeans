@@ -10,8 +10,7 @@ PlayScreen::PlayScreen() {
 	mGameOverWad = false;
 	mGameOverRumpff = false;
 	
-	mLevel = 2;
-
+	mLevel = 0;
 
 	delete mGump;
 	mGump = new Gump();
@@ -92,6 +91,8 @@ void PlayScreen::Update() {
 		if (mGump->CheckCollision(mBeanz)) {
 			mGameOver = true;
 			mGameOverBeanz = true;
+			mGameOverWad = false;
+			mGameOverRumpff = false;
 			mAudio->PauseMusic();
 			mAudio->PlaySFX("SFX/BEANZZZ.wav", 0);
 		}
@@ -102,13 +103,17 @@ void PlayScreen::Update() {
 			if (mGump->CheckCollision(mWad) || mBeanz->CheckCollision(mWad)) {
 				mGameOver = true;
 				mGameOverWad = true;
+				mGameOverRumpff = false;
+				mGameOverBeanz = false;
 				mAudio->PauseMusic();
 				mAudio->PlaySFX("SFX/EW.wav", 0);
 			}
 
 			if (mGump->CheckCollision(mRumpff) || mBeanz->CheckCollision(mRumpff)) {
 				mGameOver = true;
+				mGameOverWad = false;
 				mGameOverRumpff = true;
+				mGameOverBeanz = false;
 				mAudio->PauseMusic();
 				mAudio->PlaySFX("SFX/Zombie.mp3", 0);
 			}
@@ -119,6 +124,8 @@ void PlayScreen::Update() {
 			if (mGump->CheckCollision(mWad) || mBeanz->CheckCollision(mWad)) {
 				mGameOver = true;
 				mGameOverWad = true;
+				mGameOverRumpff = false;
+				mGameOverBeanz = false;
 				mAudio->PauseMusic();
 				mAudio->PlaySFX("SFX/EW.wav", 0);
 			}

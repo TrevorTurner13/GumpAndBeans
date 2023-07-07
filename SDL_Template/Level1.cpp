@@ -9,6 +9,8 @@ Level1::Level1(Gump* Gump, Beanz* Beanz, Wad* Wad) {
 	mGump = Gump;
 	mBeanz = Beanz;
 	mWad = Wad;
+
+	mWad->SetMoveTimeMax(3.0f);
 	
 	mSugarCube = new Object(new GLTexture("sugar cube 64x64.png", 0, 0, 64, 64), new BoxCollider(Vector2(64.0f, 64.0f)), 30, 30);
 	mSugarCube->Position(200.0f, 500.0f);

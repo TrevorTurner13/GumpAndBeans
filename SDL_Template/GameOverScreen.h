@@ -11,7 +11,7 @@ private:
 	PlayScreen* mPlayScreen;
 
 	AnimatedGLTexture* mGameOverBeanz;
-	//AnimatedGLTexture* mGameOverWad;
+	AnimatedGLTexture* mGameOverWad;
 	AnimatedGLTexture* mGameOverRumpff;
 
 	Texture* mOnePlayerMode;

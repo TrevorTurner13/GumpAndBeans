@@ -7,13 +7,17 @@ GameOverScreen::GameOverScreen(PlayScreen* playScreen) {
 
 	mPlayScreen = playScreen;
 
-	mGameOverBeanz = new AnimatedGLTexture("GameOverBeanz.png", 0, 0, 416, 416, 16, 4.0f, Animation::Layouts::Horizontal);
+	mGameOverBeanz = new AnimatedGLTexture("GameOverBeanz.png", 0, 0, 416, 416, 16, 2.5f, Animation::Layouts::Horizontal);
 	mGameOverBeanz->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mGameOverBeanz->Scale(Vector2(1.5f, 1.5f));
 
-	mGameOverRumpff = new AnimatedGLTexture("GameOverRumpff.png", 0, 0, 416, 416, 16, 4.0f, Animation::Layouts::Horizontal);
+	mGameOverRumpff = new AnimatedGLTexture("GameOverRumpff.png", 0, 0, 416, 416, 16, 2.5f, Animation::Layouts::Horizontal);
 	mGameOverRumpff->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mGameOverRumpff->Scale(Vector2(1.5f, 1.5f));
+
+	mGameOverWad = new AnimatedGLTexture("GameOverWad.png", 0, 0, 416, 416, 16, 2.5f, Animation::Layouts::Horizontal);
+	mGameOverWad->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
+	mGameOverWad->Scale(Vector2(1.5f, 1.5f));
 	
 	mGameOverText = new GLTexture("GameOver.png", 0, 0, 236, 175);
 	mGameOverText->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.15f);
@@ -64,11 +68,15 @@ void GameOverScreen::Update() {
 	else if (mInput->KeyPressed(SDL_SCANCODE_UP)) {
 		ChangeSelectedMode(-1);
 	}
+
 	if (mPlayScreen->GetGameOverBeanz()) {
 		mGameOverBeanz->Update();
 	}
 	else if (mPlayScreen->GetGameOverRumpff()) {
 		mGameOverRumpff->Update();
+	}
+	else if (mPlayScreen->GetGameOverWad()) {
+		mGameOverWad->Update();
 	}
 	mOnePlayerMode->Update();
 	mTwoPlayerMode->Update();
@@ -80,6 +88,9 @@ void GameOverScreen::Render() {
 	}
 	else if (mPlayScreen->GetGameOverRumpff()) {
 		mGameOverRumpff->Render();
+	}
+	else if (mPlayScreen->GetGameOverWad()) {
+		mGameOverWad->Render();
 	}
 	
 	mGameOverText->Render();

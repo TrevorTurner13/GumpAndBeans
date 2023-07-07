@@ -34,6 +34,7 @@ Rumpff::Rumpff() {
 	mMoveSpeed = 65.0f;
 	mMoveTime = 0.0f;
 	mMoveDirection = 1;
+	mMoveTimeMax = 1.0f;
 }
 
 Rumpff::~Rumpff() {
