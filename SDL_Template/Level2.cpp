@@ -1,20 +1,22 @@
 #include "Level2.h"
 
-Level2::Level2(Gump* Gump, Beanz* Beanz, Wad* Wad) {
+Level2::Level2(Gump* Gump, Beanz* Beanz, Rumpff* Rumpff) {
 	mInput = InputManager::Instance();
 
 	mWallScale = (1, 4);
 
 	mGump = Gump;
 	mBeanz = Beanz;
-	mWad = Wad;
+	mRumpff = Rumpff;
 
 	mGump->Position(200.0f, 700.0f);
 	mBeanz->Position(200.0f, 200.0f);
-	mWad->Position(500.f, 100.0f);
+	mRumpff->Position(550.f, 320.0f);
+
+	mRumpff->SetMoveTimeMax(3.0f);
 
 	mSpoon = new Object(new GLTexture("Utensils 256x256.png", 0, 0, 64, 304), new BoxCollider(Vector2(275.0f, 30.0f)), 90, 90);
-	mSpoon->Position(Graphics::SCREEN_WIDTH * 0.7f, Graphics::SCREEN_HEIGHT * 0.58f);
+	mSpoon->Position(Graphics::SCREEN_WIDTH * 0.2f, Graphics::SCREEN_HEIGHT * 0.58f);
 	mSpoon->RotateTexture(90);
 
 	mKnife1 = new Object(new GLTexture("Utensils 256x256.png", 64, 0, 64, 304), new BoxCollider(Vector2(30.0f, 275.0f)), 90, 90);
@@ -29,6 +31,10 @@ Level2::Level2(Gump* Gump, Beanz* Beanz, Wad* Wad) {
 	mFork->Position(Graphics::SCREEN_WIDTH * 0.7f, Graphics::SCREEN_HEIGHT * 0.26f);
 	mFork->RotateTexture(90);
 
+	mCar1 = new Object(new GLTexture("ToyCar.png", 128, 0, 128 , 128), new BoxCollider(Vector2(120.0f, 63.0f)), 14, 14);
+	mCar1->Position(Graphics::SCREEN_WIDTH * 0.40f, Graphics::SCREEN_HEIGHT * 0.65f);
+	mCar1->RotateTexture(90);
+
 	mCar2 = new Object(new GLTexture("ToyCar.png", 0, 0, 128, 128), new BoxCollider(Vector2(63.0f, 120.0f)), 14, 90);
 	mCar2->Position(Graphics::SCREEN_WIDTH * 0.88f, Graphics::SCREEN_HEIGHT * 0.6f);
 	mCar2->RotateTexture(0);
@@ -40,10 +46,10 @@ Level2::Level2(Gump* Gump, Beanz* Beanz, Wad* Wad) {
 	mWall2->Position(25, 346);
 
 	mWall3 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall3->Position(25, 602);
+	mWall3->Position(25, 432);
 
 	mWall4 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall4->Position(25, 858);
+	mWall4->Position(25, 758);
 
 	mWall5 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
 	mWall5->Position(215, 890);
@@ -89,16 +95,16 @@ Level2::Level2(Gump* Gump, Beanz* Beanz, Wad* Wad) {
 	mWall16->Position(52, -35);
 	mWall16->RotateTexture(90);
 
-	mWall17 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall17->Position(800, 700);
-	mWall17->RotateTexture(0);
+	mWall17 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
+	mWall17->Position(695, 600);
+	mWall17->RotateTexture(90);
 
-	mWall18 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mWall18->Position(450, 550);
-	mWall18->RotateTexture(90);
+	mWall18 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
+	mWall18->Position(500, 765);
+	mWall18->RotateTexture(0);
 
 	mWall19 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall19->Position(400, 350);
+	mWall19->Position(400, 380);
 	mWall19->RotateTexture(0);
 
 
@@ -111,7 +117,7 @@ Level2::~Level2() {
 void Level2::Update() {
 	mGump->Update();
 	mBeanz->Update();
-	mWad->Update();
+	mRumpff->Update();
 
 	CollisionHandler();
 }
@@ -121,6 +127,7 @@ void Level2::Render() {
 	mKnife1->Render();
 	mKnife2->Render();
 	mFork->Render();
+	mCar1->Render();
 	mCar2->Render();
 	mWall1->Render();
 	mWall2->Render();
@@ -141,7 +148,7 @@ void Level2::Render() {
 	mWall17->Render();
 	mWall18->Render();
 	mWall19->Render();
-	mWad->Render();
+	mRumpff->Render();
 }
 
 void Level2::CollisionHandler() {
@@ -157,6 +164,12 @@ void Level2::CollisionHandler() {
 
 	mGump->HandleCollision(mGump, mFork);
 	mBeanz->HandleCollision(mBeanz, mFork);
+
+	mGump->HandleCollision(mGump, mCar1);
+	mBeanz->HandleCollision(mBeanz, mCar1);
+
+	mGump->HandleCollision(mGump, mCar2);
+	mBeanz->HandleCollision(mBeanz, mCar2);
 
 	mGump->HandleCollision(mGump, mCar2);
 	mBeanz->HandleCollision(mBeanz, mCar2);

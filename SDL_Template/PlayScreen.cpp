@@ -42,7 +42,7 @@ PlayScreen::PlayScreen() {
 
 	mLevel1 = new Level1(mGump, mBeanz,mWad);
 
-	mLevel2 = new Level2(mGump, mBeanz, mWad);
+	mLevel2 = new Level2(mGump, mBeanz, mRumpff);
 
 	mFloor = new GLTexture("floor tile 256x256.png", 0, 0, 256, 256);
 
@@ -141,7 +141,7 @@ void PlayScreen::Update() {
 		if (mGump->Position().x > Graphics::SCREEN_WIDTH && mBeanz->Position().x > Graphics::SCREEN_WIDTH) {
 			// Increase level by 1
 			mLevel++;
-			mGump->Position(0.0f, mGump->Position().y);
+			mGump->Position(2.0f, mGump->Position().y);
 			mBeanz->Position(50.0f, mBeanz->Position().y);
 		}
 		
