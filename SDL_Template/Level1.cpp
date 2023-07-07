@@ -8,6 +8,7 @@ Level1::Level1(Gump* Gump, Beanz* Beanz, Wad* Wad, int level) {
 
 	mGump = Gump;
 	mBeanz = Beanz;
+	mWad = Wad;
 	
 	mSugarCube = new Object(new GLTexture("sugar cube 64x64.png", 0, 0, 64, 64), new BoxCollider(Vector2(64.0f, 64.0f)), 30, 30);
 	mSugarCube->Position(200.0f, 500.0f);
@@ -80,13 +81,14 @@ Level1::Level1(Gump* Gump, Beanz* Beanz, Wad* Wad, int level) {
 	mCenterWall3->RotateTexture(90);
 
 	mCenterWall4 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mCenterWall4->Position(Graphics::SCREEN_WIDTH * 0.5f + 256, Graphics::SCREEN_HEIGHT * 0.5f);
+	mCenterWall4->Position(Graphics::SCREEN_WIDTH * 0.5f + 260, Graphics::SCREEN_HEIGHT * 0.5f);
 	mCenterWall4->RotateTexture(90);
 
-	mPen = new Object(new GLTexture("Crumbs.png", 273, 0, 30,128), new BoxCollider(Vector2(30.0f, 128.0f)), 1000, 1000);
-	mPen->Position(Graphics::SCREEN_WIDTH * 0.5f+384, Graphics::SCREEN_HEIGHT *0.5+100);
-	mPen->Scale(Vector2(3.0f,3.0f));
+	mPen = new Object(new GLTexture("Pen.png", 0, 0, 64,256), new BoxCollider(Vector2(20.0f, 256.0f)), 30, 30);
+	mPen->Position(Graphics::SCREEN_WIDTH * 0.5+410, Graphics::SCREEN_HEIGHT *0.5+50);
 	
+	
+	mWad->Position(Graphics::SCREEN_WIDTH * 0.7f, Graphics::SCREEN_HEIGHT * 0.6f);
 	
 	
 
@@ -101,6 +103,7 @@ void Level1::Update() {
 	mBeanz->Update();
 
 	CollisionHandler();
+	mWad->Update();
 }
 
 void Level1::Render() {
@@ -128,6 +131,8 @@ void Level1::Render() {
 	mCenterWall4->Render();
 
 	mPen->Render();
+
+	mWad->Render();
 
 }
 
@@ -198,5 +203,6 @@ void Level1::CollisionHandler() {
 	mGump->HandleCollision(mGump, mPen);
 	mBeanz->HandleCollision(mBeanz, mPen);
 
-
+	mWad->HandleCollision(mWad, mCenterWall4);
+	mWad->HandleCollision(mWad, mWall7);
 }

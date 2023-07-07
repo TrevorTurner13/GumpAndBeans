@@ -15,13 +15,13 @@ PlayScreen::PlayScreen() {
 	delete mGump;
 	mGump = new Gump();
 	mGump->Parent(this);
-	mGump->Position(Graphics::SCREEN_WIDTH * 0.2f, Graphics::SCREEN_HEIGHT * 0.2f);
+	mGump->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.6f);
 	mGump->Active(true);
 
 	delete mBeanz;
 	mBeanz = new Beanz(mGump);
 	mBeanz->Parent(this);
-	mBeanz->Position(Graphics::SCREEN_WIDTH * 0.2f, Graphics::SCREEN_HEIGHT * 0.5f);
+	mBeanz->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.3f);
 	mBeanz->Active(true);
 
 
@@ -38,7 +38,7 @@ PlayScreen::PlayScreen() {
 	mRumpff->Active(true);
 
 	mLevel0 = new Level0(mGump, mBeanz, mWad, mRumpff);
-	mLevel1 = new Level1(mGump, mBeanz);
+	mLevel1 = new Level1(mGump, mBeanz,mWad);
 
 	mFloor = new GLTexture("floor tile 256x256.png", 0, 0, 256, 256);
 
@@ -111,10 +111,11 @@ void PlayScreen::Update() {
 
 		case 1:
 			mLevel1->Update();
-			if (mGump->CheckCollision(mBeanz)) {
+			if (mGump->CheckCollision(mWad) || mBeanz->CheckCollision(mWad)) {
 				mGameOver = true;
+				mGameOverWad = true;
 				mAudio->PauseMusic();
-				mAudio->PlaySFX("SFX/BEANZZZ.wav", 0);
+				mAudio->PlaySFX("SFX/EW.wav", 0);
 			}
 
 			break;
