@@ -5,11 +5,13 @@
 #include "AnimatedGLTexture.h"
 #include "Beanz.h"
 #include "Gump.h"
+#include "Wad.h"
 #include "Object.h";
+#include "Level.h"
 
 using namespace SDLFramework;
 
-class Level1 : public PhysEntity {
+class Level1 : public Level {
 private:
 	InputManager* mInput;
 
@@ -40,11 +42,12 @@ private:
 
 	Gump* mGump;
 	Beanz* mBeanz;
-	
+	Wad* mWad;
+
 	Vector2 mWallScale;
 
 public:
-	Level1(Gump* Gump, Beanz* Beanz);
+	Level1(Gump* Gump, Beanz* Beanz, Wad* wad, int level);
 	~Level1();
 
 	void Update();
