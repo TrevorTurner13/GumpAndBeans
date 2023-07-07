@@ -1,12 +1,13 @@
 #include "Level1.h"
 
-Level1::Level1(Gump* Gump, Beanz* Beanz) {
+Level1::Level1(Gump* Gump, Beanz* Beanz, Wad* Wad) {
 	mInput = InputManager::Instance();
 
 	mWallScale = (1, 4);
 
 	mGump = Gump;
 	mBeanz = Beanz;
+	mWad = Wad;
 	
 	mSugarCube = new Object(new GLTexture("sugar cube 64x64.png", 0, 0, 64, 64), new BoxCollider(Vector2(64.0f, 64.0f)), 30, 30);
 	mSugarCube->Position(200.0f, 500.0f);
@@ -86,6 +87,7 @@ Level1::Level1(Gump* Gump, Beanz* Beanz) {
 	mPen->Position(Graphics::SCREEN_WIDTH * 0.5+410, Graphics::SCREEN_HEIGHT *0.5+50);
 	
 	
+	mWad->Position(Graphics::SCREEN_WIDTH * 0.7f, Graphics::SCREEN_HEIGHT * 0.6f);
 	
 	
 
@@ -100,7 +102,7 @@ void Level1::Update() {
 	mBeanz->Update();
 
 	CollisionHandler();
-	
+	mWad->Update();
 }
 
 void Level1::Render() {
@@ -128,6 +130,8 @@ void Level1::Render() {
 	mCenterWall4->Render();
 
 	mPen->Render();
+
+	mWad->Render();
 
 }
 
@@ -198,5 +202,6 @@ void Level1::CollisionHandler() {
 	mGump->HandleCollision(mGump, mPen);
 	mBeanz->HandleCollision(mBeanz, mPen);
 
-
+	mWad->HandleCollision(mWad, mCenterWall4);
+	mWad->HandleCollision(mWad, mWall7);
 }

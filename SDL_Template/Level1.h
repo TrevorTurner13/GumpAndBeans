@@ -6,6 +6,7 @@
 #include "Beanz.h"
 #include "Gump.h"
 #include "Object.h";
+#include "Wad.h"
 
 
 using namespace SDLFramework;
@@ -41,11 +42,13 @@ private:
 
 	Gump* mGump;
 	Beanz* mBeanz;
+
+	Wad* mWad;
 	
 	Vector2 mWallScale;
 
 public:
-	Level1(Gump* Gump, Beanz* Beanz);
+	Level1(Gump* Gump, Beanz* Beanz, Wad* Wad);
 	~Level1();
 
 	void Update();

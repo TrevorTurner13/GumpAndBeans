@@ -38,7 +38,7 @@ PlayScreen::PlayScreen() {
 	mRumpff->Active(true);
 
 	mLevel0 = new Level0(mGump, mBeanz, mWad, mRumpff);
-	mLevel1 = new Level1(mGump, mBeanz);
+	mLevel1 = new Level1(mGump, mBeanz,mWad);
 
 	mFloor = new GLTexture("floor tile 256x256.png", 0, 0, 256, 256);
 
@@ -111,10 +111,11 @@ void PlayScreen::Update() {
 
 		case 1:
 			mLevel1->Update();
-			if (mGump->CheckCollision(mBeanz)) {
+			if (mGump->CheckCollision(mWad) || mBeanz->CheckCollision(mWad)) {
 				mGameOver = true;
+				mGameOverWad = true;
 				mAudio->PauseMusic();
-				mAudio->PlaySFX("SFX/BEANZZZ.wav", 0);
+				mAudio->PlaySFX("SFX/EW.wav", 0);
 			}
 
 			break;
