@@ -22,6 +22,7 @@ private:
 
 	float mMoveSpeed;
 	float mMoveTime;
+	float mMoveTimeMax;
 	int mMoveDirection;
 
 	Vector2 mMoveBounds;
@@ -34,6 +35,7 @@ public:
 	~Wad();
 
 	void WadMovement();
+	void SetMoveTimeMax(float change);
 	
 	void Update() override;
 	void Render() override;

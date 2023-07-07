@@ -5,7 +5,7 @@
 
 void Wad::WadMovement() {
 	mMoveTime += mTimer->DeltaTime();
-	if (mMoveTime >= 3.0f) {  // 3 seconds has passed
+	if (mMoveTime >= mMoveTimeMax) {  // 3 seconds has passed
 		mMoveDirection *= -1;  // reverse direction
 		mMoveTime = 0.0f;  // reset timer
 	}
@@ -62,4 +62,8 @@ void Wad::Render() {
 	mWad->Render();
 
 	PhysEntity::Render();
+}
+
+void Wad::SetMoveTimeMax(float change) {
+	mMoveTimeMax = change;
 }

@@ -6,7 +6,7 @@
 
 void Rumpff::RumpffMovement() {
 	mMoveTime += mTimer->DeltaTime();
-	if (mMoveTime >= 5.0f) {  // 5 seconds has passed
+	if (mMoveTime >= mMoveTimeMax) {  // 5 seconds has passed
 		mMoveDirection *= -1;  // reverse direction
 		mMoveTime = 0.0f;  // reset timer
 	}
@@ -59,4 +59,8 @@ void Rumpff::Render() {
 	mRumpff->Render();
 
 	PhysEntity::Render();
+}
+
+void Rumpff::SetMoveTimeMax(float change) {
+	mMoveTimeMax = change;
 }
