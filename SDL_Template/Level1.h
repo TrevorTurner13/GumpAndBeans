@@ -31,6 +31,12 @@ private:
 	Object* mWall15;
 	Object* mWall16;
 
+	Object* mCenterWall;
+	Object* mCenterWall2;
+	Object* mCenterWall3;
+	Object* mCenterWall4;
+
+	Object* mPen;
 
 	Gump* mGump;
 	Beanz* mBeanz;

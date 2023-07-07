@@ -66,6 +66,29 @@ Level1::Level1(Gump* Gump, Beanz* Beanz) {
 	mWall16->Position(52, -35);
 	mWall16->RotateTexture(90);
 
+	mCenterWall = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
+	mCenterWall->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
+	mCenterWall->RotateTexture(90);
+
+	mCenterWall2 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
+	mCenterWall2->Position(Graphics::SCREEN_WIDTH * 0.5f-256, Graphics::SCREEN_HEIGHT * 0.5f);
+	mCenterWall2->RotateTexture(90);
+
+	mCenterWall3 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
+	mCenterWall3->Position(Graphics::SCREEN_WIDTH * 0.5f - 512, Graphics::SCREEN_HEIGHT * 0.5f);
+	mCenterWall3->RotateTexture(90);
+
+	mCenterWall4 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
+	mCenterWall4->Position(Graphics::SCREEN_WIDTH * 0.5f + 256, Graphics::SCREEN_HEIGHT * 0.5f);
+	mCenterWall4->RotateTexture(90);
+
+	mPen = new Object(new GLTexture("Crumbs.png", 273, 0, 30,128), new BoxCollider(Vector2(30.0f, 128.0f)), 1000, 1000);
+	mPen->Position(Graphics::SCREEN_WIDTH * 0.5f+384, Graphics::SCREEN_HEIGHT *0.5+100);
+	mPen->Scale(Vector2(3.0f,3.0f));
+	
+	
+	
+
 }
 
 Level1::~Level1() {
@@ -97,6 +120,14 @@ void Level1::Render() {
 	mWall14->Render();
 	mWall15->Render();
 	mWall16->Render();
+
+	mCenterWall->Render();
+	mCenterWall2->Render();
+	mCenterWall3->Render();
+	mCenterWall4->Render();
+
+	mPen->Render();
+
 }
 
 void Level1::CollisionHandler() {
@@ -150,4 +181,21 @@ void Level1::CollisionHandler() {
 
 	mGump->HandleCollision(mGump, mWall16);
 	mBeanz->HandleCollision(mBeanz, mWall16);
+
+	mGump->HandleCollision(mGump, mCenterWall);
+	mBeanz->HandleCollision(mBeanz, mCenterWall);
+
+	mGump->HandleCollision(mGump, mCenterWall2);
+	mBeanz->HandleCollision(mBeanz, mCenterWall2);
+
+	mGump->HandleCollision(mGump, mCenterWall3);
+	mBeanz->HandleCollision(mBeanz, mCenterWall3);
+
+	mGump->HandleCollision(mGump, mCenterWall4);
+	mBeanz->HandleCollision(mBeanz, mCenterWall4);
+
+	mGump->HandleCollision(mGump, mPen);
+	mBeanz->HandleCollision(mBeanz, mPen);
+
+
 }
