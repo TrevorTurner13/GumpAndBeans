@@ -9,11 +9,13 @@
 #include "Object.h"
 #include "Level0.h"
 #include "Level1.h"
+#include "Level2.h"
 
 class PlayScreen : public GameEntity {
 private:
 	Level0* mLevel0;
 	Level1* mLevel1;
+	Level2* mLevel2;
 	
 	Timer * mTimer;
 	AudioManager * mAudio;

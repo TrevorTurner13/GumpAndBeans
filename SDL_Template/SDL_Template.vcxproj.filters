@@ -156,7 +156,11 @@
     <ClCompile Include="Level0.cpp">
       <Filter>Source Files\Galaga</Filter>
     </ClCompile>
+<<<<<<< Updated upstream
     <ClCompile Include="Level.cpp">
+=======
+    <ClCompile Include="Level2.cpp">
+>>>>>>> Stashed changes
       <Filter>Source Files\Galaga</Filter>
     </ClCompile>
   </ItemGroup>
@@ -275,7 +279,11 @@
     <ClInclude Include="Level0.h">
       <Filter>Header Files\Galaga</Filter>
     </ClInclude>
+<<<<<<< Updated upstream
     <ClInclude Include="Level.h">
+=======
+    <ClInclude Include="Level2.h">
+>>>>>>> Stashed changes
       <Filter>Header Files\Galaga</Filter>
     </ClInclude>
   </ItemGroup>
