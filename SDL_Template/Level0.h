@@ -31,7 +31,7 @@ private:
 public:
 	~Level0();
 
-	Level0(Gump* Gump, Beanz* Beanz, Wad* wad, Rumpff* rumpff);
+	Level0(Gump* Gump, Beanz* Beanz, Wad* wad, Rumpff* rumpff, int levelNumber);
 
 	void Update() override;
 	void Render() override;

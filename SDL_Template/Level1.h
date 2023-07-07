@@ -49,7 +49,7 @@ private:
 
 
 public:
-	Level1(Gump* Gump, Beanz* Beanz, Wad* wad);
+	Level1(Gump* Gump, Beanz* Beanz, Wad* wad, int level);
 	~Level1();
 
 	void Update();
