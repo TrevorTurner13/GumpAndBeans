@@ -13,6 +13,7 @@ Level3::Level3(Gump* Gump, Beanz* Beanz, Rumpff* Rumpff, Wad* Wad) {
 	mGump->Position(300.0f, 730.0f);
 	mBeanz->Position(200.0f, 200.0f);
 	mRumpff->Position(550.f, 320.0f);
+	mWad->Position()
 
 	mRumpff->SetMoveTimeMax(3.0f);
 
