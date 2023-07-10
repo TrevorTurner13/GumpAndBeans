@@ -4,7 +4,7 @@ Level1::Level1(Gump* Gump, Beanz* Beanz, Wad* Wad) {
 	mInput = InputManager::Instance();
 
 	
-	mWallScale = (1, 4);
+	mWallScale = Vector2(1.0f, 4.0f);
 
 	mGump = Gump;
 	mBeanz = Beanz;
@@ -15,79 +15,79 @@ Level1::Level1(Gump* Gump, Beanz* Beanz, Wad* Wad) {
 	mSugarCube = new Object(new GLTexture("sugar cube 64x64.png", 0, 0, 64, 64), new BoxCollider(Vector2(64.0f, 64.0f)), 30, 30);
 	mSugarCube->Position(200.0f, 500.0f);
 	mWall1 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall1->Position(25, 90);
+	mWall1->Position(25.0f, 90.0f);
 	
 	mWall2 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall2->Position(25, 346);
+	mWall2->Position(25.0f, 346.0f);
 	
 	mWall3 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall3->Position(25, 602);
+	mWall3->Position(25.0f, 602.0f);
 	
 	mWall4 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall4->Position(25, 858);
+	mWall4->Position(25.0f, 858.0f);
 	
 	mWall5 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mWall5->Position(215, 890);
-	mWall5->RotateTexture(90);
+	mWall5->Position(215.0f, 890.0f);
+	mWall5->RotateTexture(90.0f);
 	
 	mWall6 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mWall6->Position(471, 890);
-	mWall6->RotateTexture(90);
+	mWall6->Position(471.0f, 890.0f);
+	mWall6->RotateTexture(90.0f);
 	
 	mWall7 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mWall7->Position(727, 890);
-	mWall7->RotateTexture(270);
+	mWall7->Position(727.0f, 890.0f);
+	mWall7->RotateTexture(270.0f);
 	
 	mWall8 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mWall8->Position(983, 890);
-	mWall8->RotateTexture(90);
+	mWall8->Position(983.0f, 890.0f);
+	mWall8->RotateTexture(90.0f);
 
 	mWall9 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall9->Position(1010, 725);
+	mWall9->Position(1010.0f, 725.0f);
 
 	mWall10 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall10->Position(1010, 419);
+	mWall10->Position(1010.0f, 419.0f);
 	
 	mWall11 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall11->Position(1010, 285);
+	mWall11->Position(1010.0f, 285.0f);
 
 	mWall12 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall12->Position(1010, -100);
+	mWall12->Position(1010.0f, -100.0f);
 
 	mWall13 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mWall13->Position(820, -35);
-	mWall13->RotateTexture(90);
+	mWall13->Position(820.0f, -35.0f);
+	mWall13->RotateTexture(90.0f);
 
 	mWall14 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mWall14->Position(564, -35);
-	mWall14->RotateTexture(270);
+	mWall14->Position(564.0f, -35.0f);
+	mWall14->RotateTexture(270.0f);
 
 	mWall15 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mWall15->Position(308, -35);
-	mWall15->RotateTexture(90);
+	mWall15->Position(308.0f, -35.0f);
+	mWall15->RotateTexture(90.0f);
 
 	mWall16 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mWall16->Position(52, -35);
-	mWall16->RotateTexture(90);
+	mWall16->Position(52.0f, -35.0f);
+	mWall16->RotateTexture(90.0f);
 
 	mCenterWall = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
 	mCenterWall->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
-	mCenterWall->RotateTexture(90);
+	mCenterWall->RotateTexture(90.0f);
 
 	mCenterWall2 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mCenterWall2->Position(Graphics::SCREEN_WIDTH * 0.5f-256, Graphics::SCREEN_HEIGHT * 0.5f);
-	mCenterWall2->RotateTexture(90);
+	mCenterWall2->Position(Graphics::SCREEN_WIDTH * 0.5f-256.0f, Graphics::SCREEN_HEIGHT * 0.5f);
+	mCenterWall2->RotateTexture(90.0f);
 
 	mCenterWall3 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mCenterWall3->Position(Graphics::SCREEN_WIDTH * 0.5f - 512, Graphics::SCREEN_HEIGHT * 0.5f);
-	mCenterWall3->RotateTexture(90);
+	mCenterWall3->Position(Graphics::SCREEN_WIDTH * 0.5f - 512.0f, Graphics::SCREEN_HEIGHT * 0.5f);
+	mCenterWall3->RotateTexture(90.0f);
 
 	mCenterWall4 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mCenterWall4->Position(Graphics::SCREEN_WIDTH * 0.5f + 260, Graphics::SCREEN_HEIGHT * 0.5f);
-	mCenterWall4->RotateTexture(90);
+	mCenterWall4->Position(Graphics::SCREEN_WIDTH * 0.5f + 260.0f, Graphics::SCREEN_HEIGHT * 0.5f);
+	mCenterWall4->RotateTexture(90.0f);
 
 	mPen = new Object(new GLTexture("Pen.png", 0, 0, 64,256), new BoxCollider(Vector2(20.0f, 256.0f)), 30, 30);
-	mPen->Position(Graphics::SCREEN_WIDTH * 0.5+410, Graphics::SCREEN_HEIGHT *0.5+50);
+	mPen->Position(Graphics::SCREEN_WIDTH * 0.5+410.0f, Graphics::SCREEN_HEIGHT *0.5+50.0f);
 	
 	
 	mWad->Position(Graphics::SCREEN_WIDTH * 0.7f, Graphics::SCREEN_HEIGHT * 0.6f);

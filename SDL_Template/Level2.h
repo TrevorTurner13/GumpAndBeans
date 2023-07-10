@@ -6,7 +6,7 @@
 #include "Beanz.h"
 #include "Gump.h"
 #include "Rumpff.h"
-#include "Object.h";
+#include "Object.h"
 
 using namespace SDLFramework;
 
