@@ -1,6 +1,6 @@
-#include "Level2.h"
+#include "Level3.h"
 
-Level2::Level2(Gump* Gump, Beanz* Beanz, Rumpff* Rumpff) {
+Level3::Level3(Gump* Gump, Beanz* Beanz, Rumpff* Rumpff, Wad* Wad) {
 	mInput = InputManager::Instance();
 
 	mWallScale = (1, 4);
@@ -8,8 +8,9 @@ Level2::Level2(Gump* Gump, Beanz* Beanz, Rumpff* Rumpff) {
 	mGump = Gump;
 	mBeanz = Beanz;
 	mRumpff = Rumpff;
+	mWad = Wad;
 
-	mGump->Position(200.0f, 700.0f);
+	mGump->Position(300.0f, 730.0f);
 	mBeanz->Position(200.0f, 200.0f);
 	mRumpff->Position(550.f, 320.0f);
 
@@ -31,7 +32,7 @@ Level2::Level2(Gump* Gump, Beanz* Beanz, Rumpff* Rumpff) {
 	mFork->Position(Graphics::SCREEN_WIDTH * 0.7f, Graphics::SCREEN_HEIGHT * 0.26f);
 	mFork->RotateTexture(90);
 
-	mCar1 = new Object(new GLTexture("ToyCar.png", 128, 0, 128 , 128), new BoxCollider(Vector2(120.0f, 73.0f)), 14, 14);
+	mCar1 = new Object(new GLTexture("ToyCar.png", 128, 0, 128, 128), new BoxCollider(Vector2(120.0f, 63.0f)), 14, 14);
 	mCar1->Position(Graphics::SCREEN_WIDTH * 0.40f, Graphics::SCREEN_HEIGHT * 0.65f);
 	mCar1->RotateTexture(90);
 
@@ -95,7 +96,7 @@ Level2::Level2(Gump* Gump, Beanz* Beanz, Rumpff* Rumpff) {
 	mWall16->Position(52, -35);
 	mWall16->RotateTexture(90);
 
-	mWall17 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 138.0f)), 1000, 1000);
+	mWall17 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
 	mWall17->Position(695, 600);
 	mWall17->RotateTexture(90);
 
@@ -110,19 +111,20 @@ Level2::Level2(Gump* Gump, Beanz* Beanz, Rumpff* Rumpff) {
 
 }
 
-Level2::~Level2() {
+Level3::~Level3() {
 
 }
 
-void Level2::Update() {
+void Level3::Update() {
 	mGump->Update();
 	mBeanz->Update();
 	mRumpff->Update();
+	mWad->Update();
 
 	CollisionHandler();
 }
 
-void Level2::Render() {
+void Level3::Render() {
 	mSpoon->Render();
 	mKnife1->Render();
 	mKnife2->Render();
@@ -151,7 +153,7 @@ void Level2::Render() {
 	mRumpff->Render();
 }
 
-void Level2::CollisionHandler() {
+void Level3::CollisionHandler() {
 
 	mGump->HandleCollision(mGump, mSpoon);
 	mBeanz->HandleCollision(mBeanz, mSpoon);

@@ -10,7 +10,7 @@ PlayScreen::PlayScreen() {
 	mGameOverWad = false;
 	mGameOverRumpff = false;
 	
-	mLevel = 0;
+	mLevel = 2;
 
 	delete mGump;
 	mGump = new Gump();
@@ -42,6 +42,8 @@ PlayScreen::PlayScreen() {
 	mLevel1 = new Level1(mGump, mBeanz,mWad);
 
 	mLevel2 = new Level2(mGump, mBeanz, mRumpff);
+	
+	mLevel3 = new Level3(mGump, mBeanz, mRumpff, mWad);
 
 	mFloor = new GLTexture("floor tile 256x256.png", 0, 0, 256, 256);
 
@@ -143,6 +145,18 @@ void PlayScreen::Update() {
 			}
 
 			break;
+
+		case 3:
+			mLevel3->Update();
+
+			if (mGump->CheckCollision(mRumpff) || mBeanz->CheckCollision(mRumpff)) {
+				mGameOver = true;
+				mGameOverRumpff = true;
+				mAudio->PauseMusic();
+				mAudio->PlaySFX("SFX/Zombie.mp3", 0);
+			}
+
+			break;
 		}
 
 		if (mGump->Position().x > Graphics::SCREEN_WIDTH && mBeanz->Position().x > Graphics::SCREEN_WIDTH) {
@@ -173,7 +187,11 @@ void PlayScreen::Render() {
 		mBeanz->Render();
 		mLevel2->Render();
 	}
-
+	if (mLevel == 3) {
+		mGump->Render();
+		mBeanz->Render();
+		mLevel3->Render();
+	}
 	if (mGameOver) {
 		if (mGump->CheckCollision(mBeanz)) {
 			mBeanzJumpScare->Render();
