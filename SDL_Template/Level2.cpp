@@ -3,7 +3,7 @@
 Level2::Level2(Gump* Gump, Beanz* Beanz, Rumpff* Rumpff) {
 	mInput = InputManager::Instance();
 
-	mWallScale = (1, 4);
+	mWallScale = Vector2(1.0f, 4.0f);
 
 	mGump = Gump;
 	mBeanz = Beanz;
