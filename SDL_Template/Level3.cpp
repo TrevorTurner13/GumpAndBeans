@@ -3,15 +3,12 @@
 Level3::Level3(Gump* Gump, Beanz* Beanz, Rumpff* Rumpff, Wad* Wad) {
 	mInput = InputManager::Instance();
 
-	mWallScale = (1, 4);
+	mWallScale = (1.0f, 4.0f);
 
 	mGump = Gump;
 	mBeanz = Beanz;
 	mRumpff = Rumpff;
 	mWad = Wad;
-
-	mRumpff->Position(550.f, 320.0f);
-	mWad->Position()
 
 	mRumpff->SetMoveTimeMax(3.0f);
 
@@ -40,71 +37,71 @@ Level3::Level3(Gump* Gump, Beanz* Beanz, Rumpff* Rumpff, Wad* Wad) {
 	mCar2->RotateTexture(0);
 
 	mWall1 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall1->Position(25, 90);
+	mWall1->Position(25.0f, 90.0f);
 
 	mWall2 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall2->Position(25, 346);
+	mWall2->Position(25.0f, 346.0f);
 
 	mWall3 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall3->Position(25, 432);
+	mWall3->Position(25.0f, 432.0f);
 
 	mWall4 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall4->Position(25, 758);
+	mWall4->Position(25.0f, 758.0f);
 
 	mWall5 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mWall5->Position(215, 890);
+	mWall5->Position(215.0f, 890.0f);
 	mWall5->RotateTexture(90);
 
 	mWall6 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mWall6->Position(471, 890);
+	mWall6->Position(471.0f, 890.0f);
 	mWall6->RotateTexture(90);
 
 	mWall7 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mWall7->Position(727, 890);
+	mWall7->Position(727.0f, 890.0f);
 	mWall7->RotateTexture(270);
 
 	mWall8 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mWall8->Position(983, 890);
+	mWall8->Position(983.0f, 890.0f);
 	mWall8->RotateTexture(90);
 
 	mWall9 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall9->Position(1010, 708);
+	mWall9->Position(1010.0f, 708.0f);
 
 	mWall10 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall10->Position(1010, 249);
+	mWall10->Position(1010.0f, 249.0f);
 
 	mWall11 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall11->Position(1010, 155);
+	mWall11->Position(1010.0f, 155.0f);
 
 	mWall12 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall12->Position(1010, -100);
+	mWall12->Position(1010.0f, -100.0f);
 
 	mWall13 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mWall13->Position(820, -35);
+	mWall13->Position(820.0f, -35.0f);
 	mWall13->RotateTexture(90);
 
 	mWall14 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mWall14->Position(564, -35);
+	mWall14->Position(564.0f, -35.0f);
 	mWall14->RotateTexture(270);
 
 	mWall15 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mWall15->Position(308, -35);
+	mWall15->Position(308.0f, -35.0f);
 	mWall15->RotateTexture(90);
 
 	mWall16 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mWall16->Position(52, -35);
+	mWall16->Position(52.0f, -35.0f);
 	mWall16->RotateTexture(90);
 
 	mWall17 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mWall17->Position(695, 600);
+	mWall17->Position(695.0f, 600.0f);
 	mWall17->RotateTexture(90);
 
 	mWall18 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall18->Position(500, 765);
+	mWall18->Position(500.0f, 765.0f);
 	mWall18->RotateTexture(0);
 
 	mWall19 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall19->Position(400, 380);
+	mWall19->Position(400.0f, 380.0f);
 	mWall19->RotateTexture(0);
 
 

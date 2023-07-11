@@ -6,8 +6,8 @@
 #include "Beanz.h"
 #include "Gump.h"
 #include "Rumpff.h"
-#include "Object.h";
-#include "Wad.h";
+#include "Object.h"
+#include "Wad.h"
 
 using namespace SDLFramework;
 

@@ -16,8 +16,6 @@ public:
 private:
 	InputManager* mInput;
 
-	bool mConvoDone;
-
 	Gump* mGump;
 	Beanz* mBeanz;
 
@@ -32,6 +30,12 @@ private:
 	GLTexture* mText4;
 	GLTexture* mText5;
 	GLTexture* mText6;
+	GLTexture* mText7;
+	GLTexture* mText8;
+	GLTexture* mText9;
+	GLTexture* mText10;
+	GLTexture* mText11;
+	GLTexture* mText12;
 
 	AnimatedGLTexture* mMightee;
 	AnimatedGLTexture* mLesserMite1;

@@ -3,8 +3,6 @@
 Level0::Level0(Gump* Gump, Beanz* Beanz) {
 	mInput = InputManager::Instance();
 
-	mConvoDone = false;
-
 	mCurrentLore = START;
 
 	mGump = Gump;
@@ -24,8 +22,29 @@ Level0::Level0(Gump* Gump, Beanz* Beanz) {
 	mPressSpace = new GLTexture("Press Space to Continue", "ARCADE.TTF", 25, { 250,250,250 });
 	mPressSpace->Position(Vector2(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.95f));
 
-	mText1 = new GLTexture("Migthtee: ", "ARCADE.TTF", 20, { 250, 250, 250 });
-	mText1->Position(Vector2(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.9f));
+	mText1 = new GLTexture("Migthtee: Gump, Beanz, Why you here?", "ARCADE.TTF", 20, { 250, 250, 250 });
+	mText1->Position(Vector2(Graphics::SCREEN_WIDTH * 0.55f, Graphics::SCREEN_HEIGHT * 0.87f));
+
+	mText2 = new GLTexture("You come to add to The Pile?", "ARCADE.TTF", 20, { 250, 250, 250 });
+	mText2->Position(Vector2(Graphics::SCREEN_WIDTH * 0.55f, Graphics::SCREEN_HEIGHT * 0.89f));
+
+	mText3 = new GLTexture("Great Oombra demands gifts!", "ARCADE.TTF", 20, { 250, 250, 250 });
+	mText3->Position(Vector2(Graphics::SCREEN_WIDTH * 0.55f, Graphics::SCREEN_HEIGHT * 0.91f));
+
+	mText4 = new GLTexture("Gump: We'z seeks path beyond OondaFreej", "ARCADE.TTF", 20, { 250, 250, 250 });
+	mText4->Position(Vector2(Graphics::SCREEN_WIDTH * 0.52f, Graphics::SCREEN_HEIGHT * 0.89f));
+	
+	mText5 = new GLTexture("Into lights of Keechin", "ARCADE.TTF", 20, { 250, 250, 250 });
+	mText5->Position(Vector2(Graphics::SCREEN_WIDTH * 0.52f, Graphics::SCREEN_HEIGHT * 0.91f));
+
+	mText6 = new GLTexture("Beanz: Heh Heh, Yeah Boi", "ARCADE.TTF", 20, { 250, 250, 250 });
+	mText6->Position(Vector2(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.9f));
+
+	mText7 = new GLTexture("Gump: Great Mightee of Mites", "ARCADE.TTF", 20, { 250, 250, 250 });
+	mText7->Position(Vector2(Graphics::SCREEN_WIDTH * 0.52f, Graphics::SCREEN_HEIGHT * 0.89f));
+	
+	mText8 = new GLTexture("will show way beyond?", "ARCADE.TTF", 20, { 250, 250, 250 });
+	mText8->Position(Vector2(Graphics::SCREEN_WIDTH * 0.52f, Graphics::SCREEN_HEIGHT * 0.91f));
 
 	mMightee = new AnimatedGLTexture("Mightee.png", 0, 64, 64, 64, 1, 1.0f, Animation::Layouts::Horizontal);
 	mMightee->Position(Vector2(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.3f));
@@ -406,23 +425,28 @@ void Level0::Render() {
 	case START:
 		mMighteeSpeech->Render();
 		mText1->Render();
+		mText2->Render();
+		mText3->Render();
 		break;
 	case ONE:
-		mBeanzSpeech->Render();
-	
+		mGumpSpeech->Render();
+		mText4->Render();
+		mText5->Render();
 		break;
 	case TWO:
-		mGumpSpeech->Render();
-		
+		mBeanzSpeech->Render();
+		mText6->Render();
 		break;
 	case THREE:
-		mMighteeSpeech->Render();
+		mGumpSpeech->Render();
+		mText7->Render();
+		mText8->Render();
 		break;
 	case FOUR:
 		mBeanzSpeech->Render();
 		break;
 	case FIVE:
-		mGumpSpeech->Render();
+		
 		break;
 	case SIX:
 		mMighteeSpeech->Render();

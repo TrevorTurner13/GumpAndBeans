@@ -122,11 +122,11 @@ ScreenManager::~ScreenManager() {
 }
 
 void ScreenManager::RenderRepeatedTexture(Texture* texture, int textureWidth, int textureHeight) {
-	int offsetX = textureWidth / 2;
-	int offsetY = textureHeight / 2;
+	float offsetX = textureWidth / 2;
+	float offsetY = textureHeight / 2;
 
-	for (int y = -offsetY; y < Graphics::SCREEN_HEIGHT; y += textureHeight) {
-		for (int x = -offsetX; x < Graphics::SCREEN_WIDTH; x += textureWidth) {
+	for (float y = -offsetY; y < Graphics::SCREEN_HEIGHT; y += textureHeight) {
+		for (float x = -offsetX; x < Graphics::SCREEN_WIDTH; x += textureWidth) {
 			texture->Position(x, y);
 			texture->Render();
 		}
