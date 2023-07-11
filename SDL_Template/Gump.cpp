@@ -33,7 +33,7 @@ Gump::Gump() {
 	mGumpLeft = new AnimatedGLTexture("Gump 128x128.png", 0, 256, 128, 128, 7, 1.0f, Animation::Layouts::Horizontal);
 	mGumpUp = new AnimatedGLTexture("Gump 128x128.png", 0, 384, 128, 128, 7, 1.0f, Animation::Layouts::Horizontal);
 	mGumpDown = new AnimatedGLTexture("Gump 128x128.png", 0, 128, 128, 128, 7, 1.0f, Animation::Layouts::Horizontal);
-	mGump = new AnimatedGLTexture("Gump 128x128.png", 0, 0, 128, 128, 7, 1.0f, Animation::Layouts::Horizontal);
+	mGump = new AnimatedGLTexture("Gump 128x128.png", 0, 384, 128, 128, 7, 1.0f, Animation::Layouts::Horizontal);
 	
 	mGump->Parent(this);
 	mGumpRight->Parent(this);

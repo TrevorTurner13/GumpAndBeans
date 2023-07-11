@@ -9,8 +9,6 @@ Level2::Level2(Gump* Gump, Beanz* Beanz, Rumpff* Rumpff) {
 	mBeanz = Beanz;
 	mRumpff = Rumpff;
 
-	mGump->Position(200.0f, 700.0f);
-	mBeanz->Position(200.0f, 200.0f);
 	mRumpff->Position(550.f, 320.0f);
 
 	mRumpff->SetMoveTimeMax(3.0f);

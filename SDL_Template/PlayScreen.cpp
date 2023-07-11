@@ -10,20 +10,19 @@ PlayScreen::PlayScreen() {
 	mGameOverWad = false;
 	mGameOverRumpff = false;
 	
-	mLevel = 2;
+	mLevel = 0;
 
 	delete mGump;
 	mGump = new Gump();
 	mGump->Parent(this);
-	mGump->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.6f);
+	mGump->Position(Graphics::SCREEN_WIDTH * 0.4f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mGump->Active(true);
 
 	delete mBeanz;
 	mBeanz = new Beanz(mGump);
 	mBeanz->Parent(this);
-	mBeanz->Position(Graphics::SCREEN_WIDTH * 0.1f, Graphics::SCREEN_HEIGHT * 0.3f);
+	mBeanz->Position(Graphics::SCREEN_WIDTH * 0.6f, Graphics::SCREEN_HEIGHT * 0.5f);
 	mBeanz->Active(true);
-
 
 	delete mWad;
 	mWad = new Wad();
@@ -37,9 +36,9 @@ PlayScreen::PlayScreen() {
 	mRumpff->Position(Graphics::SCREEN_WIDTH * 0.3f, Graphics::SCREEN_HEIGHT * 0.6f);
 	mRumpff->Active(true);
 
-	mLevel0 = new Level0(mGump, mBeanz, mWad, mRumpff);
+	mLevel0 = new Level0(mGump, mBeanz);
 
-	mLevel1 = new Level1(mGump, mBeanz,mWad);
+	mLevel1 = new Level1(mGump, mBeanz, mWad);
 
 	mLevel2 = new Level2(mGump, mBeanz, mRumpff);
 	
@@ -101,23 +100,12 @@ void PlayScreen::Update() {
 		switch (mLevel) {
 		case 0:
 			mLevel0->Update();
-			
-			if (mGump->CheckCollision(mWad) || mBeanz->CheckCollision(mWad)) {
-				mGameOver = true;
-				mGameOverWad = true;
-				mGameOverRumpff = false;
-				mGameOverBeanz = false;
-				mAudio->PauseMusic();
-				mAudio->PlaySFX("SFX/EW.wav", 0);
-			}
-
-			if (mGump->CheckCollision(mRumpff) || mBeanz->CheckCollision(mRumpff)) {
-				mGameOver = true;
-				mGameOverWad = false;
-				mGameOverRumpff = true;
-				mGameOverBeanz = false;
-				mAudio->PauseMusic();
-				mAudio->PlaySFX("SFX/Zombie.mp3", 0);
+			if (mLevel0->mCurrentLore == 11) {
+				mLevel++;
+				mGump->Active(true);
+				mBeanz->Active(true);
+				mGump->Position(Vector2(Graphics::SCREEN_WIDTH * 0.3f, Graphics::SCREEN_HEIGHT * 0.7f));
+				mBeanz->Position(Vector2(Graphics::SCREEN_WIDTH * 0.3f, Graphics::SCREEN_HEIGHT * 0.3f));
 			}
 			break;
 
@@ -162,7 +150,7 @@ void PlayScreen::Update() {
 		if (mGump->Position().x > Graphics::SCREEN_WIDTH && mBeanz->Position().x > Graphics::SCREEN_WIDTH) {
 			// Increase level by 1
 			mLevel++;
-			mGump->Position(2.0f, mGump->Position().y);
+			mGump->Position(50.0f, mGump->Position().y);
 			mBeanz->Position(50.0f, mBeanz->Position().y);
 		}
 		

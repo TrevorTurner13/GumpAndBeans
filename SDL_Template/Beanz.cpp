@@ -55,7 +55,7 @@ Beanz::Beanz(Gump* gump) {
 	mBeanzLeft = new AnimatedGLTexture("Beanz 128x128.png", 0, 256, 128, 128, 1, 1.0f, Animation::Layouts::Horizontal);
 	mBeanzUp = new AnimatedGLTexture("Beanz 128x128.png", 0, 384, 128, 128, 1, 1.0f, Animation::Layouts::Horizontal);
 	mBeanzDown = new AnimatedGLTexture("Beanz 128x128.png", 0, 128, 128, 128, 1, 1.0f, Animation::Layouts::Horizontal);
-	mBeanz = new AnimatedGLTexture("Beanz 128x128.png", 0, 0, 128, 128, 1, 1.0f, Animation::Layouts::Horizontal);
+	mBeanz = new AnimatedGLTexture("Beanz 128x128.png", 0, 384, 128, 128, 1, 1.0f, Animation::Layouts::Horizontal);
 
 	mBeanz->Parent(this);
 	mBeanzRight->Parent(this);
