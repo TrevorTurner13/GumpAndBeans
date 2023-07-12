@@ -1,6 +1,7 @@
 #ifndef __LEVEL0_H
 #define __LEVEL0_H
 #include "InputManager.h"
+#include "AudioManager.h"
 #include "GLTexture.h"
 #include "AnimatedGLTexture.h"
 #include "Beanz.h"
@@ -11,10 +12,11 @@ using namespace SDLFramework;
 
 class Level0 : public PhysEntity {
 public:
-	enum Lore{ START = 0, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, END };
+	enum Lore{ START = 0, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, END };
 	Lore mCurrentLore;
 private:
 	InputManager* mInput;
+	AudioManager* mAudio;
 
 	Gump* mGump;
 	Beanz* mBeanz;
@@ -36,6 +38,14 @@ private:
 	GLTexture* mText10;
 	GLTexture* mText11;
 	GLTexture* mText12;
+	GLTexture* mText13;
+	GLTexture* mText14;
+	GLTexture* mText15;
+	GLTexture* mText16;
+	GLTexture* mText17;
+	GLTexture* mText18;
+	GLTexture* mText19;
+	GLTexture* mText20;
 
 	AnimatedGLTexture* mMightee;
 	AnimatedGLTexture* mLesserMite1;

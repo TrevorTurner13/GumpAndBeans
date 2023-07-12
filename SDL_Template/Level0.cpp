@@ -2,6 +2,7 @@
 
 Level0::Level0(Gump* Gump, Beanz* Beanz) {
 	mInput = InputManager::Instance();
+	mAudio = AudioManager::Instance();
 
 	mCurrentLore = START;
 
@@ -22,7 +23,7 @@ Level0::Level0(Gump* Gump, Beanz* Beanz) {
 	mPressSpace = new GLTexture("Press Space to Continue", "ARCADE.TTF", 25, { 250,250,250 });
 	mPressSpace->Position(Vector2(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.95f));
 
-	mText1 = new GLTexture("Migthtee: Gump, Beanz, Why you here?", "ARCADE.TTF", 20, { 250, 250, 250 });
+	mText1 = new GLTexture("Migthtee: Gump, Beanz, why you here?", "ARCADE.TTF", 20, { 250, 250, 250 });
 	mText1->Position(Vector2(Graphics::SCREEN_WIDTH * 0.55f, Graphics::SCREEN_HEIGHT * 0.87f));
 
 	mText2 = new GLTexture("You come to add to The Pile?", "ARCADE.TTF", 20, { 250, 250, 250 });
@@ -38,13 +39,49 @@ Level0::Level0(Gump* Gump, Beanz* Beanz) {
 	mText5->Position(Vector2(Graphics::SCREEN_WIDTH * 0.52f, Graphics::SCREEN_HEIGHT * 0.91f));
 
 	mText6 = new GLTexture("Beanz: Heh Heh, Yeah Boi", "ARCADE.TTF", 20, { 250, 250, 250 });
-	mText6->Position(Vector2(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.9f));
+	mText6->Position(Vector2(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.89f));
 
 	mText7 = new GLTexture("Gump: Great Mightee of Mites", "ARCADE.TTF", 20, { 250, 250, 250 });
 	mText7->Position(Vector2(Graphics::SCREEN_WIDTH * 0.52f, Graphics::SCREEN_HEIGHT * 0.89f));
 	
 	mText8 = new GLTexture("will show way beyond?", "ARCADE.TTF", 20, { 250, 250, 250 });
 	mText8->Position(Vector2(Graphics::SCREEN_WIDTH * 0.52f, Graphics::SCREEN_HEIGHT * 0.91f));
+
+	mText9 = new GLTexture("<The Mites begin to chitter, laughing>", "ARCADE.TTF", 20, { 250, 250, 250 });
+	mText9->Position(Vector2(Graphics::SCREEN_WIDTH * 0.52f, Graphics::SCREEN_HEIGHT * 0.87f));
+
+	mText10 = new GLTexture("Mightee: SILENCE! Gump and Beanz,", "ARCADE.TTF", 20, { 250, 250, 250 });
+	mText10->Position(Vector2(Graphics::SCREEN_WIDTH * 0.52f, Graphics::SCREEN_HEIGHT * 0.89f));
+
+	mText11 = new GLTexture("You will find Lost Relics of Oombra.", "ARCADE.TTF", 20, { 250, 250, 250 });
+	mText11->Position(Vector2(Graphics::SCREEN_WIDTH * 0.52f, Graphics::SCREEN_HEIGHT * 0.91f));
+
+	mText12 = new GLTexture("Mightee: The Eternal French Fry", "ARCADE.TTF", 20, { 250, 250, 250 });
+	mText12->Position(Vector2(Graphics::SCREEN_WIDTH * 0.52f, Graphics::SCREEN_HEIGHT * 0.87f));
+
+	mText13 = new GLTexture("The Sewer of Fates", "ARCADE.TTF", 20, { 250, 250, 250 });
+	mText13->Position(Vector2(Graphics::SCREEN_WIDTH * 0.52f, Graphics::SCREEN_HEIGHT * 0.89f));
+
+	mText14 = new GLTexture("And lastly, The Orb of...", "ARCADE.TTF", 20, { 250, 250, 250 });
+	mText14->Position(Vector2(Graphics::SCREEN_WIDTH * 0.52f, Graphics::SCREEN_HEIGHT * 0.91f));
+	
+	mText15 = new GLTexture("SYMBOLISM!", "ARCADE.TTF", 40, { 250, 250, 250 });
+	mText15->Position(Vector2(Graphics::SCREEN_WIDTH * 0.52f, Graphics::SCREEN_HEIGHT * 0.89f));
+	
+	mText16 = new GLTexture("Mightee: You work together.", "ARCADE.TTF", 20, { 250, 250, 250 });
+	mText16->Position(Vector2(Graphics::SCREEN_WIDTH * 0.52f, Graphics::SCREEN_HEIGHT * 0.87f));
+
+	mText17 = new GLTexture(" But beware... Madness feeds ", "ARCADE.TTF", 20, { 250, 250, 250 });
+	mText17->Position(Vector2(Graphics::SCREEN_WIDTH * 0.52f, Graphics::SCREEN_HEIGHT * 0.89f));
+
+	mText18 = new GLTexture("on minds of OondaFreej. They hunger...", "ARCADE.TTF", 20, { 250, 250, 250 });
+	mText18->Position(Vector2(Graphics::SCREEN_WIDTH * 0.52f, Graphics::SCREEN_HEIGHT * 0.91f));
+
+	mText19 = new GLTexture("<Beanz eyes Gump up and down>", "ARCADE.TTF", 20, { 250, 250, 250 });
+	mText19->Position(Vector2(Graphics::SCREEN_WIDTH * 0.52f, Graphics::SCREEN_HEIGHT * 0.87f));
+
+	mText20 = new GLTexture("Mightee: Good luck...", "ARCADE.TTF", 20, { 250, 250, 250 });
+	mText20->Position(Vector2(Graphics::SCREEN_WIDTH * 0.52f, Graphics::SCREEN_HEIGHT * 0.89f));
 
 	mMightee = new AnimatedGLTexture("Mightee.png", 0, 64, 64, 64, 1, 1.0f, Animation::Layouts::Horizontal);
 	mMightee->Position(Vector2(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.3f));
@@ -118,7 +155,6 @@ Level0::Level0(Gump* Gump, Beanz* Beanz) {
 
 	mThePile = new GLTexture("ThePile.png", 0, 0, 768, 272);
 	mThePile->Position(Vector2(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.3f));
-
 
 	mToyCar1 = new Object(new GLTexture("ToyCar.png", 0, 0, 128, 128), new BoxCollider(Vector2(100.0f, 100.0f)), 1000, 1000);
 	mToyCar2 = new Object(new GLTexture("ToyCar.png", 128, 0, 128, 128), new BoxCollider(Vector2(100.0f, 100.0f)), 1000, 1000);;
@@ -310,6 +346,7 @@ void Level0::Update() {
 	case ONE:
 		if (mInput->KeyPressed(SDL_SCANCODE_SPACE)) {
 			mCurrentLore = TWO;
+			mAudio->PlaySFX("SFX/yeahboy.mp3", 0);
 		}
 		break;
 	case TWO:
@@ -340,6 +377,7 @@ void Level0::Update() {
 	case SEVEN:
 		if (mInput->KeyPressed(SDL_SCANCODE_SPACE)) {
 			mCurrentLore = EIGHT;
+			mAudio->PlaySFX("SFX/yeahboy.mp3", 0);
 		}
 		break;
 	case EIGHT:
@@ -348,11 +386,6 @@ void Level0::Update() {
 		}
 		break;
 	case NINE:
-		if (mInput->KeyPressed(SDL_SCANCODE_SPACE)) {
-			mCurrentLore = TEN;
-		}
-		break;
-	case TEN:
 		if (mInput->KeyPressed(SDL_SCANCODE_SPACE)) {
 			mCurrentLore = END;
 		}
@@ -443,25 +476,35 @@ void Level0::Render() {
 		mText8->Render();
 		break;
 	case FOUR:
-		mBeanzSpeech->Render();
+		mMighteeSpeech->Render();
+		mText9->Render();
+		mText10->Render();
+		mText11->Render();
 		break;
 	case FIVE:
-		
+		mMighteeSpeech->Render();
+		mText12->Render();
+		mText13->Render();
+		mText14->Render();
 		break;
 	case SIX:
 		mMighteeSpeech->Render();
+		mText15->Render();
 		break;
 	case SEVEN:
-		mBeanzSpeech->Render();
+		mMighteeSpeech->Render();
+		mText16->Render();
+		mText17->Render();
+		mText18->Render();
 		break;
 	case EIGHT:
-		mGumpSpeech->Render();
+		mBeanzSpeech->Render();
+		mText19->Render();
+		mText6->Render();
 		break;
 	case NINE:
 		mMighteeSpeech->Render();
-		break;
-	case TEN:
-		mBeanzSpeech->Render();
+		mText20->Render();
 		break;
 	}
 	mPressSpace->Render();

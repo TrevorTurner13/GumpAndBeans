@@ -5,6 +5,19 @@ PlayScreen::PlayScreen() {
 	mAudio = AudioManager::Instance();
 	mInput = InputManager::Instance();
 
+	mCollection = new GLTexture("Collection.png", 0, 0, 224, 64);
+	mCollection->Position(Vector2(150.0f, 50.0f));
+
+	mFadeOut = new AnimatedGLTexture("FadeOut.png", 0, 0, 128, 112, 10, 2.0f, Animation::Layouts::Horizontal);
+	mFadeOut->Position(Vector2(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f));
+	mFadeOut->Scale(Vector2(8.0f, 8.0f));
+	mFadeOut->SetWrapMode(Animation::WrapModes::Once);
+
+	mFadeIn = new AnimatedGLTexture("FadeIn.png", 0, 0, 128, 112, 10, 2.0f, Animation::Layouts::Horizontal);
+	mFadeIn->Position(Vector2(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f));
+	mFadeIn->Scale(Vector2(8.0f, 8.0f));
+	mFadeIn->SetWrapMode(Animation::WrapModes::Once);
+
 	mGameOver = false;
 	mGameOverBeanz = false;
 	mGameOverWad = false;
@@ -62,6 +75,10 @@ PlayScreen::PlayScreen() {
 	mJumpScareTimer = 0.0f;
 	mJumpScareScale = 0.0f;
 	mJumpScareDone = false;
+
+	mFadeTimer = 0.0f;
+	mFadeTotalTime = 2.0f;
+	mFadeDone = false;
 }
 
 PlayScreen::~PlayScreen() {
@@ -100,10 +117,17 @@ void PlayScreen::Update() {
 		switch (mLevel) {
 		case 0:
 			mLevel0->Update();
-			if (mLevel0->mCurrentLore == 11) {
+			if (mLevel0->mCurrentLore == 10 && !mFadeDone) {
+				mFadeOut->Update();
+				mFadeTimer += mTimer->DeltaTime();
+				if (mFadeTimer >= mFadeTotalTime) {
+					mFadeDone = true;
+				}
+			}
+			if (mLevel0->mCurrentLore == 10 && mFadeDone) {
 				mLevel++;
-				mGump->Active(true);
-				mBeanz->Active(true);
+				mFadeDone = false;
+				mFadeTimer = 0.0f;
 				mGump->Position(Vector2(Graphics::SCREEN_WIDTH * 0.3f, Graphics::SCREEN_HEIGHT * 0.7f));
 				mBeanz->Position(Vector2(Graphics::SCREEN_WIDTH * 0.3f, Graphics::SCREEN_HEIGHT * 0.3f));
 			}
@@ -111,6 +135,17 @@ void PlayScreen::Update() {
 
 		case 1:
 			mLevel1->Update();
+			if (!mFadeDone) {
+				mFadeIn->Update();
+				mFadeTimer += mTimer->DeltaTime();
+				if (mFadeTimer >= mFadeTotalTime) {
+					mFadeDone = true;
+				}
+			}
+			if (mFadeDone) {
+				mGump->Active(true);
+				mBeanz->Active(true);
+			}
 			if (mGump->CheckCollision(mWad) || mBeanz->CheckCollision(mWad)) {
 				mGameOver = true;
 				mGameOverWad = true;
@@ -164,11 +199,17 @@ void PlayScreen::Render() {
 	mFloor->RenderRepeatedTexture(mFloor, 256, 256);
 	if (mLevel == 0) {
 		mLevel0->Render();
+		if (mLevel0->mCurrentLore == 10 && !mFadeDone) {
+			mFadeOut->Render();			
+		}
 	}
 	if (mLevel == 1) {
 		mGump->Render();
 		mBeanz->Render();
 		mLevel1->Render();
+		if (!mFadeDone) {		
+			mFadeIn->Render();
+		}
 	}
 	if (mLevel == 2) {
 		mGump->Render();
@@ -190,6 +231,9 @@ void PlayScreen::Render() {
 		else if (mGump->CheckCollision(mWad) || mBeanz->CheckCollision(mWad)) {
 			mWadJumpScare->Render();
 		}
+	}
+	if (mLevel0->mCurrentLore >= 6 ) {
+		mCollection->Render();
 	}
 	
 }

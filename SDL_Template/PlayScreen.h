@@ -23,6 +23,11 @@ private:
 	AudioManager * mAudio;
 	InputManager* mInput;
 
+	GLTexture* mCollection;
+
+	AnimatedGLTexture* mFadeOut;
+	AnimatedGLTexture* mFadeIn;
+
 	bool mGameOver;
 	bool mGameOverBeanz;
 	bool mGameOverWad;
@@ -42,6 +47,10 @@ private:
 	float mJumpScareTotalTime;
 	float mJumpScareScale;
 	bool mJumpScareDone;
+
+	float mFadeTimer;
+	float mFadeTotalTime;
+	bool mFadeDone;
 
 	int mLevel;
 
