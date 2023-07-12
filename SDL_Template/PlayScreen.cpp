@@ -10,7 +10,7 @@ PlayScreen::PlayScreen() {
 	mGameOverWad = false;
 	mGameOverRumpff = false;
 	
-	mLevel = 3;
+	mLevel = 1;
 
 	delete mGump;
 	mGump = new Gump();
@@ -164,6 +164,15 @@ void PlayScreen::Update() {
 			mLevel++;
 			mGump->Position(2.0f, mGump->Position().y);
 			mBeanz->Position(50.0f, mBeanz->Position().y);
+		}
+
+		if (mGump->CheckCollision(mWad) || mBeanz->CheckCollision(mWad)) {
+			mGameOver = true;
+			mGameOverWad = true;
+			mGameOverRumpff = false;
+			mGameOverBeanz = false;
+			mAudio->PauseMusic();
+			mAudio->PlaySFX("SFX/EW.wav", 0);
 		}
 		
 	}

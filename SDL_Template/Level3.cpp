@@ -10,36 +10,33 @@ Level3::Level3(Gump* Gump, Beanz* Beanz, Rumpff* Rumpff, Wad* Wad) {
 	mRumpff = Rumpff;
 	mWad = Wad;
 
-	mGump->Position(300.0f, 730.0f);
+	mGump->Position(340.0f, 730.0f);
 	mBeanz->Position(200.0f, 200.0f);
 	mRumpff->Position(550.f, 320.0f);
-	mWad->Position()
+	mWad->Position(400.0f, 600.0f);
 
 	mRumpff->SetMoveTimeMax(3.0f);
+	mWad->SetMoveTimeMax(2.0f);
 
 	mSpoon = new Object(new GLTexture("Utensils 256x256.png", 0, 0, 64, 304), new BoxCollider(Vector2(275.0f, 30.0f)), 90, 90);
 	mSpoon->Position(Graphics::SCREEN_WIDTH * 0.2f, Graphics::SCREEN_HEIGHT * 0.58f);
 	mSpoon->RotateTexture(90);
 
 	mKnife1 = new Object(new GLTexture("Utensils 256x256.png", 64, 0, 64, 304), new BoxCollider(Vector2(30.0f, 275.0f)), 90, 90);
-	mKnife1->Position(Graphics::SCREEN_WIDTH * 0.82f, Graphics::SCREEN_HEIGHT * 0.43f);
+	mKnife1->Position(Graphics::SCREEN_WIDTH * 0.82f, Graphics::SCREEN_HEIGHT * 0.7f);
 	mKnife1->RotateTexture(0);
 
 	mKnife2 = new Object(new GLTexture("Utensils 256x256.png", 64, 0, 64, 304), new BoxCollider(Vector2(275.0f, 30.0f)), 90, 90);
-	mKnife2->Position(Graphics::SCREEN_WIDTH * 1.05f, Graphics::SCREEN_HEIGHT * 0.58f);
+	mKnife2->Position(Graphics::SCREEN_WIDTH * 1.05f, Graphics::SCREEN_HEIGHT * 0.1f);
 	mKnife2->RotateTexture(90);
 
 	mFork = new Object(new GLTexture("Utensils 256x256.png", 128, 0, 64, 304), new BoxCollider(Vector2(275.0f, 30.0f)), 90, 90);
-	mFork->Position(Graphics::SCREEN_WIDTH * 0.7f, Graphics::SCREEN_HEIGHT * 0.26f);
+	mFork->Position(Graphics::SCREEN_WIDTH * 0.7f, Graphics::SCREEN_HEIGHT * 0.63f);
 	mFork->RotateTexture(90);
 
-	mCar1 = new Object(new GLTexture("ToyCar.png", 128, 0, 128, 128), new BoxCollider(Vector2(120.0f, 63.0f)), 14, 14);
-	mCar1->Position(Graphics::SCREEN_WIDTH * 0.40f, Graphics::SCREEN_HEIGHT * 0.65f);
-	mCar1->RotateTexture(90);
-
-	mCar2 = new Object(new GLTexture("ToyCar.png", 0, 0, 128, 128), new BoxCollider(Vector2(63.0f, 120.0f)), 14, 90);
-	mCar2->Position(Graphics::SCREEN_WIDTH * 0.88f, Graphics::SCREEN_HEIGHT * 0.6f);
-	mCar2->RotateTexture(0);
+	mCar1 = new Object(new GLTexture("ToyCar.png", 128, 0, 128, 128), new BoxCollider(Vector2(63.0f, 120.0f)), 14, 51);
+	mCar1->Position(Graphics::SCREEN_WIDTH * 0.29f, Graphics::SCREEN_HEIGHT * 0.35f);
+	mCar1->RotateTexture(0);
 
 	mWall1 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
 	mWall1->Position(25, 90);
@@ -70,13 +67,13 @@ Level3::Level3(Gump* Gump, Beanz* Beanz, Rumpff* Rumpff, Wad* Wad) {
 	mWall8->RotateTexture(90);
 
 	mWall9 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall9->Position(1010, 708);
+	mWall9->Position(1010, 740);
 
 	mWall10 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall10->Position(1010, 249);
+	mWall10->Position(1010, 500);
 
 	mWall11 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall11->Position(1010, 155);
+	mWall11->Position(1010,370);
 
 	mWall12 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
 	mWall12->Position(1010, -100);
@@ -98,16 +95,24 @@ Level3::Level3(Gump* Gump, Beanz* Beanz, Rumpff* Rumpff, Wad* Wad) {
 	mWall16->RotateTexture(90);
 
 	mWall17 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(256.0f, 128.0f)), 1000, 1000);
-	mWall17->Position(695, 600);
+	mWall17->Position(460, 500);
 	mWall17->RotateTexture(90);
 
 	mWall18 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall18->Position(500, 765);
+	mWall18->Position(680, 765);
 	mWall18->RotateTexture(0);
 
 	mWall19 = new Object(new GLTexture("DustWallVertical1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(128.0f, 256.0f)), 1000, 1000);
-	mWall19->Position(400, 380);
+	mWall19->Position(400, 100);
 	mWall19->RotateTexture(0);
+
+	mWall20 = new Object(new GLTexture("DustWallDiagonal1 256x256.png", 0, 0, 256, 256), new BoxCollider(Vector2(200.0f, 256.0f)), 1000, 1000);
+	mWall20->Position(650, 150);
+	mWall20->RotateTexture(0);
+
+
+	mSugarCube = new Object(new GLTexture("sugar cube 64x64.png", 0, 0, 64, 64), new BoxCollider(Vector2(64.0f, 64.0f)), 9, 9);
+	mSugarCube->Position(900.0f, 700.0f);
 
 
 }
@@ -131,7 +136,6 @@ void Level3::Render() {
 	mKnife2->Render();
 	mFork->Render();
 	mCar1->Render();
-	mCar2->Render();
 	mWall1->Render();
 	mWall2->Render();
 	mWall3->Render();
@@ -151,7 +155,10 @@ void Level3::Render() {
 	mWall17->Render();
 	mWall18->Render();
 	mWall19->Render();
+	mWall20->Render();
 	mRumpff->Render();
+	mSugarCube->Render();
+	mWad->Render();
 }
 
 void Level3::CollisionHandler() {
@@ -170,12 +177,6 @@ void Level3::CollisionHandler() {
 
 	mGump->HandleCollision(mGump, mCar1);
 	mBeanz->HandleCollision(mBeanz, mCar1);
-
-	mGump->HandleCollision(mGump, mCar2);
-	mBeanz->HandleCollision(mBeanz, mCar2);
-
-	mGump->HandleCollision(mGump, mCar2);
-	mBeanz->HandleCollision(mBeanz, mCar2);
 
 	mGump->HandleCollision(mGump, mWall1);
 	mBeanz->HandleCollision(mBeanz, mWall1);
@@ -233,4 +234,49 @@ void Level3::CollisionHandler() {
 
 	mGump->HandleCollision(mGump, mWall19);
 	mBeanz->HandleCollision(mBeanz, mWall19);
+
+	mGump->HandleCollision(mGump, mWall20);
+	mBeanz->HandleCollision(mBeanz, mWall20);
+
+	mGump->HandleCollision(mGump, mSugarCube);
+	mBeanz->HandleCollision(mBeanz, mSugarCube);
+
+	mSugarCube->HandleCollision(mSugarCube, mWall1);
+
+	mSugarCube->HandleCollision(mSugarCube, mWall2);
+
+	mSugarCube->HandleCollision(mSugarCube, mWall3);
+
+	mSugarCube->HandleCollision(mSugarCube, mWall4);
+
+	mSugarCube->HandleCollision(mSugarCube, mWall5);
+
+	mSugarCube->HandleCollision(mSugarCube, mWall6);
+
+	mSugarCube->HandleCollision(mSugarCube, mWall7);
+
+	mSugarCube->HandleCollision(mSugarCube, mWall8);
+
+	mSugarCube->HandleCollision(mSugarCube, mWall9);
+
+	mSugarCube->HandleCollision(mSugarCube, mWall10);
+
+	mSugarCube->HandleCollision(mSugarCube, mWall11);
+
+	mSugarCube->HandleCollision(mSugarCube, mWall12);
+
+	mSugarCube->HandleCollision(mSugarCube, mWall13);
+
+	mSugarCube->HandleCollision(mSugarCube, mWall14);
+
+	mSugarCube->HandleCollision(mSugarCube, mWall15);
+
+	mSugarCube->HandleCollision(mSugarCube, mWall16);
+
+	mSugarCube->HandleCollision(mSugarCube, mWall17);
+
+	mSugarCube->HandleCollision(mSugarCube, mWall18);
+
+	mSugarCube->HandleCollision(mSugarCube, mWall19);
+
 }

@@ -34,16 +34,17 @@ private:
 	Object* mWall17;
 	Object* mWall18;
 	Object* mWall19;
+	Object* mWall20;
 	Object* mSpoon;
 	Object* mKnife1;
 	Object* mKnife2;
 	Object* mFork;
 	Object* mCar1;
-	Object* mCar2;
 	Gump* mGump;
 	Beanz* mBeanz;
 	Rumpff* mRumpff;
 	Wad* mWad;
+	Object* mSugarCube;
 
 
 	Vector2 mWallScale;
