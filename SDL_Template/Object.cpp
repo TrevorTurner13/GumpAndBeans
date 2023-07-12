@@ -24,7 +24,7 @@ void Object::Update() {
 void Object::Render() {
 	mObjectTexture->Render();
 
-	PhysEntity::Render();
+	//PhysEntity::Render();
 }
 
 void Object::RotateTexture(float degrees) {

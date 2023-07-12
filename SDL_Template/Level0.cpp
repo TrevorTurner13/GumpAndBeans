@@ -12,6 +12,10 @@ Level0::Level0(Gump* Gump, Beanz* Beanz) {
 	mGump->Active(false);
 	mBeanz->Active(false);
 
+	mMiteDark = new GLTexture("MiteDark.png", 0, 0, 128, 112);
+	mMiteDark->Position(Vector2(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f));
+	mMiteDark->Scale(Vector2(8.0f, 8.0f));
+
 	mMighteeSpeech = new GLTexture("Speech Bubbles.png", 0, 0, 512, 112);
 	mBeanzSpeech = new GLTexture("Speech Bubbles.png", 0, 112, 512, 112);
 	mGumpSpeech = new GLTexture("Speech Bubbles.png", 0, 224, 512, 112);
@@ -454,7 +458,9 @@ void Level0::Render() {
 	mGump->Render();
 	mBeanz->Render();
 	mMightee->Render();
+	mMiteDark->Render();
 	switch (mCurrentLore) {
+		
 	case START:
 		mMighteeSpeech->Render();
 		mText1->Render();
@@ -506,6 +512,7 @@ void Level0::Render() {
 		mMighteeSpeech->Render();
 		mText20->Render();
 		break;
+	
 	}
 	mPressSpace->Render();
 }

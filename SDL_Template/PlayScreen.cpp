@@ -18,6 +18,10 @@ PlayScreen::PlayScreen() {
 	mFadeIn->Scale(Vector2(8.0f, 8.0f));
 	mFadeIn->SetWrapMode(Animation::WrapModes::Once);
 
+	mDark = new GLTexture("DarkAlt.png", 0, 0, 128, 112);
+	mDark->Position(Vector2(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f));
+	mDark->Scale(Vector2(8.0f, 8.0f));
+
 	mGameOver = false;
 	mGameOverBeanz = false;
 	mGameOverWad = false;
@@ -231,6 +235,9 @@ void PlayScreen::Render() {
 		else if (mGump->CheckCollision(mWad) || mBeanz->CheckCollision(mWad)) {
 			mWadJumpScare->Render();
 		}
+	}
+	if (mLevel != 0) {
+		mDark->Render();
 	}
 	if (mLevel0->mCurrentLore >= 6 ) {
 		mCollection->Render();

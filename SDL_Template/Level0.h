@@ -25,6 +25,8 @@ private:
 	GLTexture* mBeanzSpeech;
 	GLTexture* mGumpSpeech;
 
+	GLTexture* mMiteDark;
+
 	GLTexture* mPressSpace;
 	GLTexture* mText1;
 	GLTexture* mText2;

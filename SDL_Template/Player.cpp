@@ -125,5 +125,5 @@ void Player::Render() {
 		mBullets[i]->Render();
 	}*/
 
-	PhysEntity::Render();
+	//PhysEntity::Render();
 }

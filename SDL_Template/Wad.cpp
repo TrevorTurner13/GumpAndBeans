@@ -35,8 +35,6 @@ Wad::Wad() {
 	mMoveTime = 0.0f;
 	mMoveTimeMax = 1.0f;
 	mMoveDirection = 1;
-
-
 }
 
 Wad::~Wad() {
@@ -62,7 +60,7 @@ void Wad::Update() {
 void Wad::Render() {
 	mWad->Render();
 
-	PhysEntity::Render();
+	//PhysEntity::Render();
 }
 
 void Wad::SetMoveTimeMax(float change) {

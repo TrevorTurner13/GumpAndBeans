@@ -82,5 +82,5 @@ void Gump::Update() {
 void Gump::Render() {
 	mGump->Render();
 
-	PhysEntity::Render();
+	//PhysEntity::Render();
 }

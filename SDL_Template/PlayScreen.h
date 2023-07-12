@@ -24,6 +24,7 @@ private:
 	InputManager* mInput;
 
 	GLTexture* mCollection;
+	GLTexture* mDark;
 
 	AnimatedGLTexture* mFadeOut;
 	AnimatedGLTexture* mFadeIn;

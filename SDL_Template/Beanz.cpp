@@ -105,5 +105,5 @@ void Beanz::Update() {
 void Beanz::Render() {
 	mBeanz->Render();
 
-	PhysEntity::Render();
+	//PhysEntity::Render();
 }

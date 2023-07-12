@@ -59,7 +59,7 @@ void Rumpff::Update() {
 void Rumpff::Render() {
 	mRumpff->Render();
 
-	PhysEntity::Render();
+	//PhysEntity::Render();
 }
 
 void Rumpff::SetMoveTimeMax(float change) {
