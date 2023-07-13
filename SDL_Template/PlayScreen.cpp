@@ -192,6 +192,15 @@ void PlayScreen::Update() {
 			mGump->Position(50.0f, mGump->Position().y);
 			mBeanz->Position(50.0f, mBeanz->Position().y);
 		}
+
+		if (mGump->CheckCollision(mWad) || mBeanz->CheckCollision(mWad)) {
+			mGameOver = true;
+			mGameOverWad = true;
+			mGameOverRumpff = false;
+			mGameOverBeanz = false;
+			mAudio->PauseMusic();
+			mAudio->PlaySFX("SFX/EW.wav", 0);
+		}
 		
 	}
 	else {
